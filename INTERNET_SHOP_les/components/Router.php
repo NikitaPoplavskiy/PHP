@@ -44,7 +44,7 @@ class Router {
                 //ОПРЕДЕЛИТЬ КАКОЙ КОНТРОЛЛЕР И action ОБРАБАТЫВАЮТ ЗАПРОС
                 $segment = explode('/', $path);
                 
-                
+                //DAROVA
                 echo '<pre>';
                 print_r($segment);
                 echo '</pre>';
