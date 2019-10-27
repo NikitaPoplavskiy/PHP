@@ -36,19 +36,25 @@ class Router {
             //echo "<br>$uriPattern -> $path";
 
             if (preg_match("~$uriPattern~", $uri)) {
+
+                // ПОЛУЧАЕМ ВНУТРЕННИЙ ПУТЬ ИЗ ВНЕШНЕГО СОГЛАСНО ПРАВИЛУ
+
+                $internalRouter = preg_replace("~uriPattern~", $path, $uri);
+
                 //ОПРЕДЕЛИТЬ КАКОЙ КОНТРОЛЛЕР И action ОБРАБАТЫВАЮТ ЗАПРОС
                 $segment = explode('/', $path);
-
-                //echo '<pre>';
-                //print_r($segment);
-                //echo '</pre>';
+                
+                
+                echo '<pre>';
+                print_r($segment);
+                echo '</pre>';
 
                 $controllerName = array_shift($segment) . 'Controller';
                 $controllerName = ucfirst($controllerName);
                 
                 $actionName = 'action' . ucfirst(array_shift($segment));
-                //echo '<br>Класс: ' . $controllerName;
-                //echo '<br>Метод: ' . $actionName;
+                echo '<br>Класс: ' . $controllerName;
+                echo '<br>Метод: ' . $actionName;
 
                 // ПОДКЛЮЧИТЬ ФАЙЛ КЛАССА-КОНТРОЛЛЕРА
 
