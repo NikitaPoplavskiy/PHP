@@ -39,22 +39,36 @@ class Router {
 
                 // ПОЛУЧАЕМ ВНУТРЕННИЙ ПУТЬ ИЗ ВНЕШНЕГО СОГЛАСНО ПРАВИЛУ
 
-                $internalRouter = preg_replace("~uriPattern~", $path, $uri);
+                echo "<br>Где ищем (запрос, который набрал пользователь): " . $uri;
+                echo "<br>Что ищем (совпадения из правила): " . $uriPattern;
+                echo "<br>Кто обрабатывает: " . $path;
+                
+
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+
+                echo "<br>Нужно оформить: " . $internalRoute . "<br>";
 
                 //ОПРЕДЕЛИТЬ КАКОЙ КОНТРОЛЛЕР И action ОБРАБАТЫВАЮТ ЗАПРОС
-                $segment = explode('/', $path);
+                $segments = explode('/', $internalRoute);
+
+                //echo "<br><br>Segments: " . print_r($segments);                
                 
                 //DAROVA
-                echo '<pre>';
-                print_r($segment);
-                echo '</pre>';
+                //echo '<pre>';                
+                //print_r($segments);
+                //echo '</pre>';
 
-                $controllerName = array_shift($segment) . 'Controller';
+                $controllerName = array_shift($segments) . 'Controller';
+                //echo "<br><br>ControllerName: " . $controllerName;
                 $controllerName = ucfirst($controllerName);
                 
-                $actionName = 'action' . ucfirst(array_shift($segment));
+                $actionName = 'action' . ucfirst(array_shift($segments));
                 echo '<br>Класс: ' . $controllerName;
                 echo '<br>Метод: ' . $actionName;
+                $parameters = $segments;
+                echo '<pre>';                
+                print_r($parameters);
+                echo '</pre>';
 
                 // ПОДКЛЮЧИТЬ ФАЙЛ КЛАССА-КОНТРОЛЛЕРА
 
@@ -66,8 +80,12 @@ class Router {
 
                 // СОЗДАТЬ ОБЪЕКТ, ВЫЗВАТЬ МЕТОД (Т.Е action )
 
-                $controllerObject = new $controllerName;
-                $result = $controllerObject->$actionName();
+                $controllerObject = new $controllerName;                
+
+                //$result = $controllerObject->$actionName($parameters);
+
+                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+
 
                 if ($result != null) {
                     break;
