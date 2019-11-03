@@ -39,14 +39,14 @@ class Router {
 
                 // ПОЛУЧАЕМ ВНУТРЕННИЙ ПУТЬ ИЗ ВНЕШНЕГО СОГЛАСНО ПРАВИЛУ
 
-                echo "<br>Где ищем (запрос, который набрал пользователь): " . $uri;
-                echo "<br>Что ищем (совпадения из правила): " . $uriPattern;
-                echo "<br>Кто обрабатывает: " . $path;
+                //echo "<br>Где ищем (запрос, который набрал пользователь): " . $uri;
+                //echo "<br>Что ищем (совпадения из правила): " . $uriPattern;
+                //echo "<br>Кто обрабатывает: " . $path;
                 
 
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 
-                echo "<br>Нужно оформить: " . $internalRoute . "<br>";
+                //echo "<br>Нужно оформить: " . $internalRoute . "<br>";
 
                 //ОПРЕДЕЛИТЬ КАКОЙ КОНТРОЛЛЕР И action ОБРАБАТЫВАЮТ ЗАПРОС
                 $segments = explode('/', $internalRoute);
@@ -63,12 +63,12 @@ class Router {
                 $controllerName = ucfirst($controllerName);
                 
                 $actionName = 'action' . ucfirst(array_shift($segments));
-                echo '<br>Класс: ' . $controllerName;
-                echo '<br>Метод: ' . $actionName;
+                //echo '<br>Класс: ' . $controllerName;
+                //echo '<br>Метод: ' . $actionName;
                 $parameters = $segments;
-                echo '<pre>';                
-                print_r($parameters);
-                echo '</pre>';
+                //echo '<pre>';                
+                //print_r($parameters);
+                //echo '</pre>';
 
                 // ПОДКЛЮЧИТЬ ФАЙЛ КЛАССА-КОНТРОЛЛЕРА
 
