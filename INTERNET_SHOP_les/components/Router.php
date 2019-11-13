@@ -37,38 +37,17 @@ class Router {
 
             if (preg_match("~$uriPattern~", $uri)) {
 
-                // ПОЛУЧАЕМ ВНУТРЕННИЙ ПУТЬ ИЗ ВНЕШНЕГО СОГЛАСНО ПРАВИЛУ
-
-                //echo "<br>Где ищем (запрос, который набрал пользователь): " . $uri;
-                //echo "<br>Что ищем (совпадения из правила): " . $uriPattern;
-                //echo "<br>Кто обрабатывает: " . $path;
-                
+                // ПОЛУЧАЕМ ВНУТРЕННИЙ ПУТЬ ИЗ ВНЕШНЕГО СОГЛАСНО ПРАВИЛУ               
 
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
-
-                //echo "<br>Нужно оформить: " . $internalRoute . "<br>";
-
+                
                 //ОПРЕДЕЛИТЬ КАКОЙ КОНТРОЛЛЕР И action ОБРАБАТЫВАЮТ ЗАПРОС
-                $segments = explode('/', $internalRoute);
 
-                //echo "<br><br>Segments: " . print_r($segments);                
-                
-                //DAROVA
-                //echo '<pre>';                
-                //print_r($segments);
-                //echo '</pre>';
-
-                $controllerName = array_shift($segments) . 'Controller';
-                //echo "<br><br>ControllerName: " . $controllerName;
-                $controllerName = ucfirst($controllerName);
-                
-                $actionName = 'action' . ucfirst(array_shift($segments));
-                //echo '<br>Класс: ' . $controllerName;
-                //echo '<br>Метод: ' . $actionName;
-                $parameters = $segments;
-                //echo '<pre>';                
-                //print_r($parameters);
-                //echo '</pre>';
+                $segments = explode('/', $internalRoute);                                                               
+                $controllerName = array_shift($segments) . 'Controller';               
+                $controllerName = ucfirst($controllerName);                
+                $actionName = 'action' . ucfirst(array_shift($segments));                
+                $parameters = $segments;                
 
                 // ПОДКЛЮЧИТЬ ФАЙЛ КЛАССА-КОНТРОЛЛЕРА
 
