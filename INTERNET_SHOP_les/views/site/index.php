@@ -71,7 +71,17 @@
 					<div class="left-sidebar">
 						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
+							<?php foreach ($categories as $categoryItem): ?>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title"><a href="/category/<?php echo $categoryItem("id");?>">
+											<?php echo $categoryItem("name");?>
+											</a>
+										</h4>
+									</div>
+								</div>
+							<?php endforeach; ?>
+							<!-- <div class="panel panel-default"> >
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
@@ -174,7 +184,7 @@
 								<div class="panel-heading">
 									<h4 class="panel-title"><a href="#">Shoes</a></h4>
 								</div>
-							</div>
+							</div -->
 						</div><!--/category-products-->
 					
 						<div class="brands_products"><!--brands_products-->
