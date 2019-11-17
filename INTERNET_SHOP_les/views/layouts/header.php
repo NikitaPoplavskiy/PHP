@@ -86,11 +86,9 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+								<li><a href="#"><i class="fa fa-user"></i> Аккаунт</a></li>																								
+								<li><a href="login.html"><i class="fa fa-lock"></i> Вход</a></li>
 							</ul>
 						</div>
 					</div>
@@ -112,34 +110,34 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="/" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down_"></i></a>
-                                    <!--ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
+								<li><a href="/" class="active">Главная</a></li>
+								<li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+										<li><a href="/catalog/">Каталог</a></li>
+                                        <!--li><a href="shop.html">Products</a></li>
 										<li><a href="product-details.html">Product Details</a></li> 
 										<li><a href="checkout.html">Checkout</a></li> 
 										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul-->
+										<li><a href="login.html">Login</a></li--> 
+                                    </ul>
                                 </li> 
-								<li class="dropdown"><a href="/blog/">Blog<i class="fa fa-angle-down_"></i></a>
+								<li class="dropdown"><a href="/blog/">Блог<i class="fa fa-angle-down_"></i></a>
                                     <!--ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
 										<li><a href="blog-single.html">Blog Single</a></li>
                                     </ul-->
                                 </li> 
-								<li><a href="404.html">404</a></li>
-								<li><a href="/contacts/">Contact</a></li>
-								<li><a href="/catalog/">Catalog</a></li>
+								<li><a href="404.html">О магазине</a></li>
+								<li><a href="/contacts/">Контакты</a></li>								
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<!--div class="col-sm-3">
 						<div class="search_box pull-right">
 							<input type="text" placeholder="Search"/>
 						</div>
 					</div>
-				</div>
+				</div-->
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->

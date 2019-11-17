@@ -249,7 +249,12 @@ a#scrollUp i{
 
 .mainmenu ul li a:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
 	background:none;
-	color:#fdb45e;
+  color:#fdb45e;  
+}
+#category a.active {
+  /* background:none; */
+  /* color:#fdb45e; */
+  font-size: 50px;
 }
 
 .search_box input {

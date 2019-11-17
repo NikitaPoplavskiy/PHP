@@ -1,6 +1,6 @@
 <?php include ROOT."/views/layouts/header.php"; ?>   
-    <section id="slider"><!--slider-->
-		<div class="container">
+    <!--section id="slider"--><!--slider-->
+		<!--div class="container">
 			<div class="row">
 				<div class="col-sm-12">
 					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
@@ -61,21 +61,21 @@
 					
 				</div>
 			</div>
-		</div>
-	</section><!--/slider-->
+		</div-->
+	<!--/section--><!--/slider-->
 	
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Category</h2>
+						<h2>Категория</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<?php foreach ($categories as $categoryItem): ?>
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">																						
-											<a href="/category/<?php echo $categoryItem["id"];?>" class="<?php if($categoryId == $categoryItem["id"]) echo "active"; ?>">
+											<a id= "category" href="/category/<?php echo $categoryItem["id"];?>" class="<?php if($categoryId == $categoryItem["id"]) echo "active"; ?>">
 												<?php echo $categoryItem["name"];?>
 											</a>
 										</h4>
@@ -84,7 +84,7 @@
 							<?php endforeach; ?>							
 						</div><!--/category-products-->
 					
-						<div class="brands_products"><!--brands_products-->
+						<!--div class="brands_products"><brands_products>
 							<h2>Brands</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
@@ -97,7 +97,7 @@
 									<li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
 								</ul>
 							</div>
-						</div><!--/brands_products-->
+						</div></brands_products-->
 						
 						<div class="price-range"><!--price-range-->
 							<h2>Price Range</h2>
@@ -107,16 +107,16 @@
 							</div>
 						</div><!--/price-range-->
 						
-						<div class="shipping text-center"><!--shipping-->
+						<!--div class="shipping text-center"><shipping>
 							<img src="/template/images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
+						</div></shipping-->
 					
 					</div>
 				</div>
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
+						<h2 class="title text-center">Последние товары</h2>
 						<?php foreach ($latestProducts as $product): ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
@@ -281,8 +281,8 @@
 						
 					</div><!--features_items-->
 					
-					<div class="category-tab"><!--category-tab-->
-						<div class="col-sm-12">
+					<!--div class="category-tab"--><!--category-tab-->
+						<!--div class="col-sm-12">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
 								<li><a href="#blazers" data-toggle="tab">Blazers</a></li>
@@ -566,11 +566,11 @@
 									</div>
 								</div>
 							</div>
-						</div>
-					</div><!--/category-tab-->
+						</div-->
+					<!--/div--><!--/category-tab-->
 					
-					<div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">recommended items</h2>
+					<!--div class="recommended_items"--><!--recommended_items-->
+						<!--h2 class="title text-center">recommended items</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
@@ -663,8 +663,8 @@
 							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
 								<i class="fa fa-angle-right"></i>
 							  </a>			
-						</div>
-					</div><!--/recommended_items-->
+						</div-->
+					<!--/div--><!--/recommended_items-->
 					
 				</div>
 			</div>

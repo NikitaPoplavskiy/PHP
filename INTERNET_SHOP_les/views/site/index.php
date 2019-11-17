@@ -69,7 +69,7 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Category</h2>
+						<h2>Категория</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<?php foreach ($categories as $categoryItem): ?>
 								<div class="panel panel-default">
@@ -83,7 +83,7 @@
 							<?php endforeach; ?>							
 						</div><!--/category-products-->
 					
-						<div class="brands_products"><!--brands_products-->
+						<!--div class="brands_products"><brands_products>
 							<h2>Brands</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
@@ -96,7 +96,7 @@
 									<li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
 								</ul>
 							</div>
-						</div><!--/brands_products-->
+						</div></brands_products-->
 						
 						<div class="price-range"><!--price-range-->
 							<h2>Price Range</h2>
@@ -115,7 +115,7 @@
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
+						<h2 class="title text-center">Последние товары</h2>
 						<?php foreach ($latestProducts as $product): ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
