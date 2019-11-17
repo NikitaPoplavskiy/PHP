@@ -29,7 +29,7 @@
 						</div><!--/price-range-->
 						
 						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
+							<img src="/template/images/home/shipping.jpg" alt="" />
 						</div><!--/shipping-->
 						
 					</div>
@@ -39,7 +39,7 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="images/product-details/1.jpg" alt="" />
+								<img src="/template/images/home/product1.jpg" alt="" />
 								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -76,23 +76,26 @@
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
-								<h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-								<p>Web ID: 1089772</p>
-								<img src="images/product-details/rating.png" alt="" />
+								<?php if ($product["is_new"] > 0): ?>
+								<img  src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
+								<?php endif; ?>
+								<h2><?php echo $product["name"]; ?></h2>
+								<p>Web ID: <?php echo $product["code"]; ?></p>
+								<img src="/template/images/product-details/rating.png" alt="" />
 								<span>
-									<span>US $59</span>
+									<span>$<?php echo $product["price"]; ?></span>
 									<label>Quantity:</label>
 									<input type="text" value="3" />
 									<button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
-								</span>
-								<p><b>Availability:</b> In Stock</p>
-								<p><b>Condition:</b> New</p>
-								<p><b>Brand:</b> E-SHOPPER</p>
-								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+								</span>								
+								<p><b>Availability:</b>&nbsp;<?php echo ($product["availability"] > 0) ? "В наличии" : " Нет в наличии"; ?></p>
+								
+								<p><b>Condition:</b>&nbsp;<?php echo ($product["is_new"] > 0) ? "Новый" : "Не новый"; ?></p>
+								<p><b>Brand:</b>&nbsp;<?php echo $product["brand"]; ?></p>
+								<a href=""><img src="/template/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->

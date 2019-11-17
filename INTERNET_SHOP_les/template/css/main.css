@@ -1025,6 +1025,10 @@ h2.title {
 	color:#fff;
 }
 
+.active {
+  background:#FE980F;
+}
+
 .nav-tabs  li.active  a, .nav-tabs  li.active  a:hover, .nav-tabs  li.active  a:focus {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;

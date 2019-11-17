@@ -5,4 +5,6 @@ class ProductsController {
         echo "ProductsController_actionList";
         return true;
     }
+
+    
 }
