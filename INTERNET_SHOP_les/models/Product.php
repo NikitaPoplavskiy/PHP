@@ -81,6 +81,7 @@ class Product
             $product = $result->fetch();
 
             //echo var_dump($product);
+            
 
             return $product;
         }    
