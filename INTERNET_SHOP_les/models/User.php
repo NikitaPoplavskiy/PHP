@@ -2,8 +2,7 @@
 
 class User {
 
-    public static function register($name, $email, $password) {
-        
+    public static function register($name, $email, $password) {        
         $db = DB::getConnection();
 
         // Подготовленный запрос со специальным placeHolder (:email). Нужен для безопасности.
@@ -16,7 +15,14 @@ class User {
         $result->bindParam(":email", $email, PDO::PARAM_STR);
         $result->bindParam(":password", $password, PDO::PARAM_STR);
 
-        return $result->execute();
+        $test = $result->execute();
+        if ($test == false) {
+             //echo var_dump($result->errorInfo());
+             return $result->errorInfo();
+        }
+        // echo "Darova: " . var_dump($test);
+
+        return $test;  
 
     }
 
@@ -61,5 +67,47 @@ class User {
         }
         return false;
     }
-     
+
+    public static function checkUserData($email,$password) {
+        $db  = DB::getConnection();
+
+        // Подготовленный запрос со специальным placeHolder (:email). Нужен для безопасности.
+        $sql = "select * from user where email = :email and password = :password";
+                 
+        $result = $db->prepare($sql);
+
+        // Заменяем placeHolder на значение введенного email
+        $result->bindParam(":email", $email, PDO::PARAM_STR);
+        $result->bindParam(":password", $password, PDO::PARAM_STR);
+
+        // Извлекаем из БД
+        $result->execute();
+
+        $user = $result->fetch();
+        // Проверка на наличие записей в БД (если есть - вернем true)
+        if ($user) {
+            return $user["id"];
+        }
+        return false;
+    }
+
+    public static function auth($userId) {        
+        $_SESSION["user"] = $userId;
+    }
+
+    public static function checkLogged() {        
+        if (isset($_SESSION["user"])) {
+            return $_SESSION["user"];
+        }
+        header("Location: /user/login/");
+    }
+
+    public static function isGuest() {
+        if (isset($_SESSION["user"])) {
+            return false;
+        }
+        return true;
+    }
+
+
 }

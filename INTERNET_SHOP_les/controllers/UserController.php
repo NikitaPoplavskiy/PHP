@@ -36,8 +36,14 @@ class UserController {
             $errors[] = "Такой Email уже существует";
         }    
             
-        if ($errors == false) {        
-            $result = User::register($name, $email, $password);
+        if ($errors == false) {              
+            $result = User::register($name, $email, $password);            
+            if (is_array($result)) {
+                // echo var_dump($result);
+                $errors[] = $result[2];
+                $result = false;
+                // echo var_dump($errors);
+            }            
         }
         
         
@@ -60,5 +66,56 @@ class UserController {
         require_once(ROOT . "/views/user/register.php");
 
         return true;
+    }
+
+    public function actionLogin() {
+
+        $email = '';
+        $password = '';
+        $result = false;
+
+        if (isset($_POST["submit"])) {            
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+        }
+
+        $errors = false;        
+            
+        if (!User::checkPassword($password)) {
+
+            $errors[] = "Пароль должен быть не короче 6 символов";
+        } 
+        
+        if (!User::checkEmail($email)) {            
+            $errors[] = "неправильный Email";
+        }                 
+
+        $userId = User::checkUserData($email,$password);
+        
+        if ($userId == false) {
+            $errors[] = "Неверный email или пароль";
+        } else {
+            User::auth($userId);
+
+            header("Location: /cabinet/");
+        }
+            
+        if ($errors == false) {              
+            $result = User::register($name, $email, $password);            
+            if (is_array($result)) {
+                // echo var_dump($result);
+                $errors[] = $result[2];
+                $result = false;
+                // echo var_dump($errors);
+            }            
+        }
+        
+        require_once(ROOT . "/views/user/login.php");
+    }
+    
+    public function actionLogout() {
+        session_start();
+        unset($_SESSION["user"]);
+        header("Location: /");
     }
 }
