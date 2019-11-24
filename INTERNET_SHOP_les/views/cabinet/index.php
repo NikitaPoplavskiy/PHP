@@ -5,9 +5,9 @@
         <div class="row">             
             <div class = "col-sm-4 col-sm-offset-4 padding-right">                                                    
                 <h1>Кабинет пользователя</h1>
-
+                <h3>Привет, <?php echo $user["name"]; ?></h3>
                 <ul>
-                    <li><a href="/user/edit">Редактировать данные</a></li>
+                    <li><a href="/cabinet/edit">Редактировать данные</a></li>
                     <li><a href="/user/history">Список покупок</a></li>
                 </ul>
 

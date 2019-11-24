@@ -13,7 +13,9 @@ return array(
     "user/register" => "user/register",
     "user/login" => "user/login",
     "user/logout" => "user/logout",
-    "cabinet" => "cabinet/index",
+    "cabinet/edit" => "cabinet/edit",
+    "cabinet" => "cabinet/index",  
+    "contacts" => "site/contacts",  
 
     "" => "site/index", // indexList в siteConroller
 );

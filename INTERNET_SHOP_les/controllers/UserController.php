@@ -118,4 +118,5 @@ class UserController {
         unset($_SESSION["user"]);
         header("Location: /");
     }
+        
 }
