@@ -17,8 +17,14 @@ class Product
 
         $productsList = array();
 
-        $result = $db->query("select id, name, price, is_new from product where status = 1 order by id desc limit " . $count);
+        $sql = "select id, name, price, is_new from product where status = 1 order by id desc limit " . $count;
+
+        $result = $db->prepare($sql);
+
+        //$result = $db->query("select id, name, price, is_new from product where status = 1 order by id desc limit " . $count);
         // echo var_dump($result);
+
+        $result->execute();
 
         $i = 0;
         while ($row = $result->fetch()) {
@@ -48,8 +54,16 @@ class Product
 
             $products = array();
 
-            $result = $db->query("select id, name, price, is_new from product where status = 1 and category_id = '$categoryId' order by id asc limit "
-             . self::SHOW_BY_DEFAULT . " offset $offset");
+            $sql = "select id, name, price, is_new from product where status = 1 and category_id = :categoryId order by id asc limit " . self::SHOW_BY_DEFAULT . " offset $offset";
+
+            $result = $db->prepare($sql);
+
+            $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
+
+            $result->execute();
+
+            //$result = $db->query("select id, name, price, is_new from product where status = 1 and category_id = '$categoryId' order by id asc limit"
+             //. self::SHOW_BY_DEFAULT . " offset $offset");
             // echo var_dump($result);
 
             $i = 0;
@@ -76,7 +90,15 @@ class Product
         if ($productId) {                                        
             $db = Db::getConnection();            
 
-            $result = $db->query("select id, name, price, is_new, availability, brand, code from product where status = 1 and id = '$productId'");
+
+            $sql = "select id, name, price, is_new, availability, brand, code from product where status = 1 and id = :productId";
+
+            $result = $db->prepare($sql);
+
+            $result->bindParam(":productId", $productId, PDO::PARAM_STR);
+
+            $result->execute();
+            //$result = $db->query("select id, name, price, is_new, availability, brand, code from product where status = 1 and id = '$productId'");
             // echo var_dump($result);            
             $product = $result->fetch();
 
@@ -93,9 +115,17 @@ class Product
     public static function getTotalProductsInCategory($categoryId) {
         $db = Db::getConnection();            
 
-        $result = $db->query("select count(id) as count from product where status = 1 and category_id = '$categoryId'");
+        $sql = "select count(id) as count from product where status = 1 and category_id = :categoryId";
+
+        $result = $db->prepare($sql);
+
+        $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
+
+        $result->execute();
+
+        //$result = $db->query("select count(id) as count from product where status = 1 and category_id = '$categoryId'");
         // echo var_dump($result);            
-        $result->setFetchMode(PDO::FETCH_ASSOC);
+        //$result->setFetchMode(PDO::FETCH_ASSOC);
         $row = $result->fetch();        
 
         //echo var_dump($row);

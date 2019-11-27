@@ -15,7 +15,7 @@ class UserController {
             $name = $_POST["name"];
             $email = $_POST["email"];
             $password = $_POST["password"];
-        }
+        
 
         $errors = false;
 
@@ -45,6 +45,7 @@ class UserController {
                 // echo var_dump($errors);
             }            
         }
+    }
         
         
 
@@ -77,7 +78,7 @@ class UserController {
         if (isset($_POST["submit"])) {            
             $email = $_POST["email"];
             $password = $_POST["password"];
-        }
+        
 
         $errors = false;        
             
@@ -109,12 +110,12 @@ class UserController {
                 // echo var_dump($errors);
             }            
         }
-        
+    }
         require_once(ROOT . "/views/user/login.php");
     }
     
     public function actionLogout() {
-        session_start();
+        // session_start();
         unset($_SESSION["user"]);
         header("Location: /");
     }
