@@ -30,8 +30,8 @@ class CabinetController {
 
         if (isset($_POST["submit"])) {
             $name = $_POST["name"];            
-            $password = $_POST["password"];        
-
+            $password = $_POST["password"];
+                    
             $errors = false;
 
             if (!User::checkName($name)) {
@@ -39,7 +39,6 @@ class CabinetController {
             } 
                 
             if (!User::checkPassword($password)) {
-
                 $errors[] = "Пароль должен быть не короче 6 символов";
             }                                  
                 

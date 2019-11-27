@@ -51,21 +51,16 @@ class Product
             $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
             $db = Db::getConnection();
-
-            $products = array();
-
             $sql = "select id, name, price, is_new from product where status = 1 and category_id = :categoryId order by id asc limit " . self::SHOW_BY_DEFAULT . " offset $offset";
-
             $result = $db->prepare($sql);
-
             $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
-
             $result->execute();
 
             //$result = $db->query("select id, name, price, is_new from product where status = 1 and category_id = '$categoryId' order by id asc limit"
              //. self::SHOW_BY_DEFAULT . " offset $offset");
             // echo var_dump($result);
 
+            $products = array();
             $i = 0;
             while ($row = $result->fetch()) {
                 $products[$i]['id'] = $row['id'];

@@ -9,11 +9,14 @@ class User {
         $sql = "insert into user (name, email, password) values (:name, :email, :password)";
 
         $result = $db->prepare($sql);
+        //$password_hash = password_hash($password,PASSWORD_DEFAULT);
+
+        $password_hash = md5($password);        
 
         // Заменяем placeHolder на значения
         $result->bindParam(":name", $name, PDO::PARAM_STR);
         $result->bindParam(":email", $email, PDO::PARAM_STR);
-        $result->bindParam(":password", $password, PDO::PARAM_STR);
+        $result->bindParam(":password", $password_hash, PDO::PARAM_STR);
 
         $test = $result->execute();
         if ($test == false) {
@@ -76,9 +79,12 @@ class User {
                  
         $result = $db->prepare($sql);
 
+        // $password_hash = password_hash($password,PASSWORD_DEFAULT);
+        $password_hash = md5($password);        
+
         // Заменяем placeHolder на значение введенного email
         $result->bindParam(":email", $email, PDO::PARAM_STR);
-        $result->bindParam(":password", $password, PDO::PARAM_STR);
+        $result->bindParam(":password", $password_hash, PDO::PARAM_STR);
 
         // Извлекаем из БД
         $result->execute();
@@ -131,14 +137,25 @@ class User {
         $db = DB::getConnection();
 
         // Подготовленный запрос со специальным placeHolder (:email). Нужен для безопасности.
+        $password = trim($password);
+
         $sql = "update user set name = :name, password = :password where id = :id";
 
-        $result = $db->prepare($sql);
+        if (strlen($password) == 0) {
+            $sql = "update user set name = :name where id = :id";        
+        } else {
+            $password = md5($password);
+        }        
+
+        $result = $db->prepare($sql);        
+
 
         // Заменяем placeHolder на значения
         $result->bindParam(":id", $id, PDO::PARAM_STR);        
         $result->bindParam(":name", $name, PDO::PARAM_STR);
-        $result->bindParam(":password", $password, PDO::PARAM_STR);        
+        if (strlen($password) > 0) {
+            $result->bindParam(":password", $password, PDO::PARAM_STR);        
+        }  
 
         return $result->execute();                
     }
