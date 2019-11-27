@@ -93,11 +93,11 @@
 									</a>
 								</li>									
 								<?php if (User::isGuest()): ?>																							
-								<li><a href="/user/login/"><i class="fa fa-lock"></i> Вход</a></li>
-								<li><a href="/user/register/"><i class="fa fa-lock"></i> Регистрация</a></li>
+								<li><a href="/user/login/"><i class="fa fa-lock"></i>Вход</a></li>
+								<li><a href="/user/register/"><i class="fa fa-lock"></i>Регистрация</a></li>
 								<?php else: ?>								
-									<li><a href="/cabinet/"><i class="fa fa-user"></i> Аккаунт</a></li>
-									<li><a href="/user/logout/"><i class="fa fa-lock"></i> Выход</a></li>
+									<li><a href="/cabinet/"><i class="fa fa-user"></i>Аккаунт</a></li>
+									<li><a href="/user/logout/"><i class="fa fa-lock"></i>Выход</a></li>
 								<?php endif; ?>
 							</ul>
 						</div>
