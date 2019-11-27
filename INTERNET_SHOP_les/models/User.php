@@ -109,5 +109,38 @@ class User {
         return true;
     }
 
+    public static function getUserById($userId) {
+        $db  = DB::getConnection();
+
+        // Подготовленный запрос со специальным placeHolder (:email). Нужен для безопасности.
+        $sql = "select * from user where id = :id";
+                 
+        $result = $db->prepare($sql);
+
+        // Заменяем placeHolder на значение введенного email
+        $result->bindParam(":id", $userId, PDO::PARAM_STR);        
+
+        // Извлекаем из БД
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result->execute();
+
+        return $result->fetch();
+    }
+
+    public static function edit($id, $name, $password) {
+        $db = DB::getConnection();
+
+        // Подготовленный запрос со специальным placeHolder (:email). Нужен для безопасности.
+        $sql = "update user set name = :name, password = :password where id = :id";
+
+        $result = $db->prepare($sql);
+
+        // Заменяем placeHolder на значения
+        $result->bindParam(":id", $id, PDO::PARAM_STR);        
+        $result->bindParam(":name", $name, PDO::PARAM_STR);
+        $result->bindParam(":password", $password, PDO::PARAM_STR);        
+
+        return $result->execute();                
+    }
 
 }

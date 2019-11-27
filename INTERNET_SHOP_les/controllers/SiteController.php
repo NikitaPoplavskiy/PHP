@@ -18,4 +18,37 @@ class SiteController {
 
         return true;
     }
+
+    public function actionContacts() {        
+        $email = '';
+        $message = '';
+        
+        $result = false;
+        $isSend = false;
+
+        if (isset($_POST["submit"])) {            
+            $email = $_POST["email"];            
+            $message = trim($_POST["message"]);   
+        
+
+            $errors = false;                          
+            
+            if (!User::checkEmail($email)) {            
+                $errors[] = "неправильный Email";
+            }   
+                    
+            if (empty($message)){
+                $errors[] = "Сообщение не должно быть пустым";
+            } 
+                
+            if ($errors == false) {              
+                // $result = User::register($name, $email, $password);
+                $isSend = true;
+            }           
+        }
+        require_once(ROOT . "/views/site/contacts.php");
+
+        return true;
+    
+    }
 }
