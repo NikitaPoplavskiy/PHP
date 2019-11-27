@@ -15,7 +15,8 @@ return array(
     "user/logout" => "user/logout",
     "cabinet/edit" => "cabinet/edit",
     "cabinet" => "cabinet/index",  
-    "contacts" => "site/contacts",  
+    "contacts" => "site/contacts",
+    "cart/add/([0-9]+)" => "cart/add/$1",
 
     "" => "site/index", // indexList в siteConroller
 );
