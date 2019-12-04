@@ -15,4 +15,20 @@ class CartController {
 
         return true;
     }        
+
+    public function actionIndex() {
+
+        $categories = array();
+        $categories = Category::getCategoriesList();
+
+        $productsInCart = Cart::getProducts();
+
+        if ($productsInCart) {
+            $productsIds = array_keys($productsInCart);
+            $products = Product::getProductsIds($productsIds);
+
+            $totalPrice = Cart::getTotalPrice($products);
+        }
+        require_once(ROOT . "views/cart/index.php");
+    }
 }
