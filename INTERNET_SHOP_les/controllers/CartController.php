@@ -16,6 +16,12 @@ class CartController {
         return true;
     }        
 
+    public function actionAddAjax($id) {
+
+        echo Cart::addProduct($id);        
+        return true;
+    }
+
     public function actionIndex() {
 
         $categories = array();

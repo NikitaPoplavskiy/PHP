@@ -163,6 +163,22 @@
 	<script src="/template/js/jquery.scrollUp.min.js"></script>
 	<script src="/template/js/price-range.js"></script>
     <script src="/template/js/jquery.prettyPhoto.js"></script>
-    <script src="/template/js/main.js"></script>
+	<script src="/template/js/main.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$(".add-to-cart").click(function() {								
+				var id = $(this).attr("data-id");
+				if (id) {									
+					console.log(`Перед добавлением продукта в корзину. Id: ${id}`);
+					$.post("/cart/addAjax/"+id, {}, function(data) {
+						$("#cart-count").html(data);
+						console.log(`После добавления продукта в корзину. Id: ${id}, количество продуктов в корзине: ${data}`);						
+					});
+				}
+				return false;
+			});
+		});
+	</script>
 </body>
 </html>

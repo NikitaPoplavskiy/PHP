@@ -133,7 +133,7 @@ class Product
 
         $db = DB::getConnection();
 
-        $idString = implode('.',$idsArray);
+        $idString = implode(',', $idsArray);
 
         $sql = "select * from product where status = '1' and id in ($idString)";
 
