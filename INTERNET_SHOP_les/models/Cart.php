@@ -31,6 +31,25 @@ class Cart {
         return self::countItems();
     }
 
+    static function removeProduct($id) { 
+        $id = intval($id);
+
+        $productsInCart = array();
+        
+        if (isset($_SESSION["products"])) {
+            // То заполняем им наш массив
+            $productsInCart = $_SESSION["products"];
+        }
+
+        if (array_key_exists($id, $productsInCart)) {
+            // Если есть, то уменьшаем количество 
+            $productsInCart[$id]--; 
+        }
+        $_SESSION["products"] = $productsInCart;
+
+        return self::countItems();
+    }
+
     static function countItems() {
         if(isset($_SESSION["products"])) {
             $count = 0;

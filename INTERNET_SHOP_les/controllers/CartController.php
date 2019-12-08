@@ -22,6 +22,11 @@ class CartController {
         return true;
     }
 
+    public function actionCountMinusAjax($id) {
+        echo Cart::removeProduct($id);
+        return true;
+    }
+
     public function actionIndex() {
 
         $categories = array();
@@ -35,6 +40,6 @@ class CartController {
 
             $totalPrice = Cart::getTotalPrice($products);
         }
-        require_once(ROOT . "views/cart/index.php");
+        require_once(ROOT . "/views/cart/index.php");
     }
 }

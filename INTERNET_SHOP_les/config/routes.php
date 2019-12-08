@@ -19,6 +19,7 @@ return array(
     "cart/add/([0-9]+)" => "cart/add/$1",
     "cart/addAjax/([0-9]+)" => "cart/addAjax/$1",
     "cart" => "cart/index",
+    "/cart/countMinusAjax/" => "/cart/countMinusAjax/",
 
     "" => "site/index", // indexList в siteConroller
 );

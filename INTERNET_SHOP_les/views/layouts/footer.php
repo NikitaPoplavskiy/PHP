@@ -180,5 +180,21 @@
 			});
 		});
 	</script>
+
+	<!--script>
+	$(document).ready(function() {
+		$("#count_minus").click(function() {
+			var id = $(this).attr("data-id");
+			var count = $(this).attr("count");			
+			console.log(count);
+			if (count) {				
+				$.post("/cart/countMinusAjax/" , {}, function(data) {
+					$("#product-count").html(data);
+				});
+			}
+			return false;
+		});
+	});	
+	</script-->
 </body>
 </html>
