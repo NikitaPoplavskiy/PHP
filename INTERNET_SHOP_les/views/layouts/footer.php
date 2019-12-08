@@ -181,20 +181,33 @@
 		});
 	</script>
 
-	<!--script>
+	<script>
 	$(document).ready(function() {
-		$("#count_minus").click(function() {
+		$(".product_remove").click(function() {
 			var id = $(this).attr("data-id");
-			var count = $(this).attr("count");			
-			console.log(count);
-			if (count) {				
-				$.post("/cart/countMinusAjax/" , {}, function(data) {
-					$("#product-count").html(data);
+			// var count = $(this).attr("count");
+			if (id) {
+				$.post("/cart/productRemove/" + id , {}, function(data) {
+					$("#product-count-" + id).html(data);
+				});	
+			}
+			return false;	
+		});
+		// Добавление продукта в корзину
+		$(".product_add").click(function() {
+			var id = $(this).attr("data-id");			
+			if (id) {
+				$.post("/cart/productAdd/" + id , {}, function(data) {
+					$("#product-count-" + id).html(data);
+					/*console.log(JSON.stringify(data));
+					console.log(`Product ID: ${''id}` );
+					console.log(data['' + id]);
+					$("#product-count-" + id).html(data['' + id]);*/
 				});
 			}
 			return false;
-		});
+		});		
 	});	
-	</script-->
+	</script>
 </body>
 </html>

@@ -31,7 +31,7 @@ class Cart {
         return self::countItems();
     }
 
-    static function removeProduct($id) { 
+    static function countDec($id) { 
         $id = intval($id);
 
         $productsInCart = array();
@@ -43,11 +43,32 @@ class Cart {
 
         if (array_key_exists($id, $productsInCart)) {
             // Если есть, то уменьшаем количество 
-            $productsInCart[$id]--; 
+            if ($productsInCart[$id] > 0) {
+                $productsInCart[$id]--;
+            }             
         }
         $_SESSION["products"] = $productsInCart;
 
-        return self::countItems();
+        return $productsInCart[$id];
+    }
+
+    static function countInc($id) {
+        $id = intval($id);
+
+        $productsInCart = array();
+
+        if (isset($_SESSION["products"])) {
+            // То заполняем им наш массив
+            $productsInCart = $_SESSION["products"];
+        }
+
+        if (array_key_exists($id, $productsInCart)) {
+            // Если есть, то уменьшаем количество
+            $productsInCart[$id]++;
+        }
+        $_SESSION["products"] = $productsInCart;
+
+        return $productsInCart[$id];
     }
 
     static function countItems() {

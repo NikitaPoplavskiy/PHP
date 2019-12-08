@@ -40,11 +40,13 @@
 									<?php echo $product["name"]; ?>
 								</td>
 								<td><?php echo $product["price"]; ?></td>
-								<td><button id="count_minus" count="<?php echo $productsInCart[$product["id"]];?>">-</button>
-								<span id="product-count">
-									<?php echo $productsInCart[$product["id"]];?>
-								</span>
-								<button id="count_plus">+</button></td>
+								<td>
+									<button class="product_remove" data-id="<?php echo $product["id"]; ?>">-</button>
+									<span id="product-count-<?php echo $product["id"]; ?>">
+										<?php echo $productsInCart[$product["id"]];?>
+									</span>
+									<button class="product_add" data-id="<?php echo $product["id"]; ?>">+</button>
+								</td>
 							</tr>
 						<?php endforeach; ?>
 						<tr>
