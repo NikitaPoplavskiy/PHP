@@ -53,7 +53,10 @@
 							<td colspan="3">Общая стоимость</td>
 							<td><?php echo $totalPrice;?></td>
 						</tr>
-					</table>
+				</table>
+				<a href="/cart/checkout" class="btn btn-default">
+					Оформить заказ
+				</a>
 				<?php else: ?>
 					<p>Корзина пуста</p>
 				<?php endif; ?>

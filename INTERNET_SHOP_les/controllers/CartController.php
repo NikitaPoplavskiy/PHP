@@ -46,4 +46,70 @@ class CartController {
         }
         require_once(ROOT . "/views/cart/index.php");
     }
+
+    public function actionCheckout() {
+
+        $result = false;        
+
+        if (isset($_POST["submit"])) {
+
+            $userName = $_POST["name"];
+            $userPhone = $_POST["phone"];
+            $userComment = $_POST["comment"];
+
+            $errors = false;
+            if (!User::checkName($userName)) {
+                $errors[] = "Имя введено некорректно";
+            }
+            if (!User::checkPhone($userPhone)) {
+                $errors[] = "Номер телефона введен некорректно";
+            }
+
+            $productsInCart = Cart::getProducts();
+            if (User::isGuest()) {
+                $userId = false;
+            } else {
+                $userId = User::checkLogged();
+            }
+
+            $result = Order::save($userName, $userPhone, $userComment, $userId, $productsInCart);
+
+            if ($result) {
+                $adminEmail = "nikitos06102001@gmail.com";
+                $message = "Заказ";
+                $subject = "Новый заказ";
+                // mail($adminEmail,$subject,$message);
+
+                // Cart::clear();
+            }
+
+        } else {
+
+            $productsInCart = Cart::getProducts();
+
+            if ($productsInCart == false) {                
+                header("Location: /");
+            } else {
+                $productsIds = array_keys($productsInCart);
+                $products = Product::getProductsIds($productsIds);
+                $totalPrice = Cart::getTotalPrice($products);
+                $totalQuantity = Cart::countItems();
+
+                $userName = false;
+                $userPhone = false;
+                $userComment = false;
+
+                if (User::isGuest()) {
+
+                } else {
+                    $userId = User::checkLogged();
+                    $user = User::getUserById($userId);
+
+                    $userName = $user["name"];
+                }
+            }
+        }
+        require_once(ROOT . "/views/cart/checkout.php");
+        return true;
+    }
 }
