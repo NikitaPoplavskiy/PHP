@@ -90,6 +90,10 @@ class Cart {
         return false;
     }
 
+    static function clear() {
+        unset($_SESSION["products"]);
+    }
+
     static function getTotalPrice($products) {
         $productsInCart = self::getProducts();
 

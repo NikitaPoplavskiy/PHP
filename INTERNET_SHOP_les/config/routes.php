@@ -20,6 +20,7 @@ return array(
     "cart/addAjax/([0-9]+)" => "cart/addAjax/$1",
     "cart/productRemove/([0-9]+)" => "cart/productRemove/$1",
     "cart/productAdd/([0-9]+)" => "cart/productAdd/$1",
+    "cart/checkout" => "cart/checkout",
     "cart" => "cart/index",    
 
     "" => "site/index", // indexList в siteConroller

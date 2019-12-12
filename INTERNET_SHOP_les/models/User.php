@@ -36,6 +36,14 @@ class User {
         return false;
     }
 
+    public static function checkPhone($phone) {
+        // TODO: Доделать валидацию номера телефона
+        if (strlen($phone) >= 2) {
+            return true;
+        }
+        return false;
+    }
+
     public static function checkPassword($password) {
         if(strlen($password) >= 6) {
             return true;
