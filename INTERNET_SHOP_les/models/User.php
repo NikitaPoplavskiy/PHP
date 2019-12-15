@@ -38,7 +38,7 @@ class User {
 
     public static function checkPhone($phone) {
         // TODO: Доделать валидацию номера телефона
-        if (strlen($phone) >= 2) {
+        if (strlen($phone) == 12 && is_numeric($phone)) {
             return true;
         }
         return false;

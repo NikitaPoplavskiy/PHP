@@ -17,6 +17,11 @@ ul li {
   list-style: none;
 }
 
+div.cycle-slideshow img {
+  width: auto;
+  height: auto;
+}
+
 a:hover {
 outline: none;
 text-decoration:none;

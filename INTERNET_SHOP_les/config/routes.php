@@ -16,6 +16,7 @@ return array(
     "cabinet/edit" => "cabinet/edit",
     "cabinet" => "cabinet/index",  
     "contacts" => "site/contacts",
+    "about" => "site/about",
     "cart/add/([0-9]+)" => "cart/add/$1",
     "cart/addAjax/([0-9]+)" => "cart/addAjax/$1",
     "cart/productRemove/([0-9]+)" => "cart/productRemove/$1",

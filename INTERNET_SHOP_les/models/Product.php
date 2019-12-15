@@ -41,6 +41,29 @@ class Product
         return $productsList; 
     }
 
+    public static function getRecomendedProducts() {
+
+        $db = DB::getConnection();
+
+        $productsList = array();
+
+        $sql = "select id, name, price, is_recommended from product where is_recommended = 1";
+
+        $result = $db->prepare($sql);
+        $result->execute();
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['price'] = $row['price'];
+            // $productsList[$i]['image'] = $row['image'];
+            $productsList[$i]['is_recommended'] = $row['is_recommended'];
+            $i++;
+        }
+        return $productsList;
+    }
+
     /**
      * Returns an array of products for category
      */  

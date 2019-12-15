@@ -66,13 +66,19 @@ class CartController {
             }
 
             $productsInCart = Cart::getProducts();
+            $productsIds = array_keys($productsInCart);
+            $products = Product::getProductsIds($productsIds);
+            $totalPrice = Cart::getTotalPrice($products);
+            $totalQuantity = Cart::countItems();
+            
             if (User::isGuest()) {
                 $userId = false;
             } else {
                 $userId = User::checkLogged();
             }
-
-            $result = Order::save($userName, $userPhone, $userComment, $userId, $productsInCart);
+            if ($errors == false) {
+                $result = Order::save($userName, $userPhone, $userComment, $userId, $productsInCart);
+            }
 
             if ($result) {
                 $adminEmail = "nikitos06102001@gmail.com";

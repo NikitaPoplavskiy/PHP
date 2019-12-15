@@ -11,9 +11,10 @@ class SiteController {
 
         $latestProducts = array();
         $latestProducts = Product::getLatestProducts(6);
+
+        $recomendedProducts = array();
+        $recomendedProducts = Product::getRecomendedProducts();
          
-
-
         require_once(ROOT . "/views/site/index.php");
 
         return true;
@@ -48,7 +49,11 @@ class SiteController {
         }
         require_once(ROOT . "/views/site/contacts.php");
 
-        return true;
-    
+        return true;    
+    }    
+
+    public function actionAbout() {        
+
+        require_once(ROOT . "/views/site/about.php");
     }
 }

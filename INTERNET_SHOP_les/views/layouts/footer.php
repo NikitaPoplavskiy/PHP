@@ -164,6 +164,7 @@
 	<script src="/template/js/price-range.js"></script>
     <script src="/template/js/jquery.prettyPhoto.js"></script>
 	<script src="/template/js/main.js"></script>
+	<script src="/!resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
 	
 	<script>
 		$(document).ready(function() {
@@ -209,5 +210,29 @@
 		});		
 	});	
 	</script>
+	<script>
+		$(document).ready(function(){
+  			$(".owl-carousel").owlCarousel({
+				loop:true,
+				margin:10,
+				nav:true,
+				responsive:{
+					0:{
+						items:1
+					},
+					600:{
+						items:3
+					},
+					1000:{
+						items:5
+					}
+				}
+			});
+		});
+	</script>
+	
+	<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script-->
+	<!--script src="http://malsup.github.com/jquery.cycle2.js"></script>
+	<script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script-->
 </body>
 </html>

@@ -86,10 +86,11 @@
 									<span>$<?php echo $product["price"]; ?></span>
 									<label>Quantity:</label>
 									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart">
+									<!--button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
-									</button>
+									</button-->
+									<a href="#" class="btn btn-default add-to-cart" data-id=<?php echo $product["id"]; ?> ><i class="fa fa-shopping-cart"></i>Add to cart</a>
 								</span>								
 								<p><b>Availability:</b>&nbsp;<?php echo ($product["availability"] > 0) ? "В наличии" : " Нет в наличии"; ?></p>
 								
