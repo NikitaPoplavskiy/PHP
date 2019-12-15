@@ -601,7 +601,7 @@
 							  </a>			
 						</div>					
 					</div><!--/recommended_items-->
-					<div class="owl-carousel owl-theme">						
+					<!--div class="owl-carousel owl-theme">						
 						<div>
 						<a href="/product/<?php echo $rProduct["id"]; ?>">
 							<img src="/template/images/home/recommend1.jpg" alt="" />
@@ -620,7 +620,7 @@
 						<div class="item"><h4>11</h4></div>
 						<div class="item"><h4>12</h4></div>
 					</div>
-					<!--div class="slideshow" data-cycle-fx=carousel
+					<div class="slideshow" data-cycle-fx=carousel
 					data-cycle-timeout=1000
 					data-cycle-carousel-visible=1
 					data-cycle-carousel-fluid=true>

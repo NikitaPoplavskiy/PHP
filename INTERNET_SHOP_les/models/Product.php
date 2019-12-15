@@ -41,6 +41,42 @@ class Product
         return $productsList; 
     }
 
+    public static function getProductsList() { 
+        $db = DB::getConnection();
+
+        $productsList = array();
+
+        $sql = "select id, code, name, price from product";
+
+        $result = $db->prepare($sql);
+        $result->execute();
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['code'] = $row['code'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['price'] = $row['price'];            
+            $i++;
+        }
+        return $productsList;
+    }
+
+    public static function deleteProductById($id) {
+        $db = DB::getConnection();
+
+        $sql = "delete from product where id = :id";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(":id", $id, PDO::PARAM_STR);
+        // error_log("Продукт удален $id");
+         $result->execute();
+    }
+
+    public static function updateProductById($id) {
+        
+    }
+
     public static function getRecomendedProducts() {
 
         $db = DB::getConnection();
