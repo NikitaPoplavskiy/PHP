@@ -44,7 +44,7 @@ class Product
     public static function addProduct($options) { 
         $db = DB::getConnection();
 
-        $sql = "insert into product (name,code,price,category_id,brand,availability,description,is_new,is_recommended,status) values (:name,:code,:price,:category_id,:brand,:availability,:is_new,:is_recommended,:status)";
+        $sql = "insert into product (name,code,price,category_id,brand,availability,description,is_new,is_recommended,status) values (:name,:code,:price,:category_id,:brand,:availability,:description,:is_new,:is_recommended,:status)";
 
         $result = $db->prepare($sql);
 
@@ -63,9 +63,9 @@ class Product
             return $db->lastInsertId();
         }        
                             
+        return 0;        
+    }  
 
-        return true;        
-    }    
     public static function getProductsList() { 
         $db = DB::getConnection();
 
@@ -98,8 +98,31 @@ class Product
          $result->execute();
     }
 
-    public static function updateProductById($id) {
+    public static function updateProductById($options) {
+        $db = DB::getConnection();
+
+        $sql = "update product set name = :name, code = :code, price = :price, category_id = :category_id, brand = :brand, availability = :availability, description = :description, is_new = :is_new, is_recommended = :is_recommended, status = :status where id = :id";
+
+        $result = $db->prepare($sql);
+
+        $result->bindParam(":id", $options["id"], PDO::PARAM_STR);
+        $result->bindParam(":name", $options["name"], PDO::PARAM_STR);
+        $result->bindParam(":code", $options["code"], PDO::PARAM_STR);
+        $result->bindParam(":price", $options["price"], PDO::PARAM_STR);
+        $result->bindParam(":category_id", $options["category_id"], PDO::PARAM_STR);
+        $result->bindParam(":brand", $options["brand"], PDO::PARAM_STR);
+        $result->bindParam(":availability", $options["availability"], PDO::PARAM_STR);
+        $result->bindParam(":description", $options["description"], PDO::PARAM_STR);
+        $result->bindParam(":is_new", $options["is_new"], PDO::PARAM_STR);
+        $result->bindParam(":is_recommended", $options["is_recommended"], PDO::PARAM_STR);                                
+        $result->bindParam(":status", $options["status"], PDO::PARAM_STR);
         
+        
+        if (!$result->execute()) {
+            $error = $result->errorInfo();
+        }
+        
+        return Product::getProductById($options["id"]);
     }
 
     public static function getRecomendedProducts() {
@@ -186,6 +209,29 @@ class Product
 
             return $product;
         }    
+    }
+
+    public static function getProductById($productId) { 
+        if ($productId) {                                        
+            $db = Db::getConnection();            
+
+
+            $sql = "select * from product where id = :productId";
+
+            $result = $db->prepare($sql);
+
+            $result->bindParam(":productId", $productId, PDO::PARAM_STR);
+
+            $result->execute();
+            //$result = $db->query("select id, name, price, is_new, availability, brand, code from product where status = 1 and id = '$productId'");
+            // echo var_dump($result);            
+            $product = $result->fetch();
+
+            //echo var_dump($product);
+            
+
+            return $product;
+        }
     }
 
     /**

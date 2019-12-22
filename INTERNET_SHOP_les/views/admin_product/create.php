@@ -12,7 +12,7 @@
                         </ul>
                     <?php endif; ?>
                 <div class="signup-form"><!--sign up form-->
-                    <h2>Добавление нового товара №<?php echo $id; ?></h2>
+                    <h2>Добавление нового товара</h2>
                     <form action="#" method="post">                     
                         <p>Название товара</p>   
                         <input type="text" name="name" placeholder="Название" value = "<?php echo $name; ?>"/>
@@ -47,7 +47,7 @@
                             <option value="0">Нет</option>
                         </select>
                         <p>Рекомендуем</p>
-                        <select name="is_recomended">
+                        <select name="is_recommended">
                             <option value="1" selected="selected">Да</option>
                             <option value="0">Нет</option>
                         </select>

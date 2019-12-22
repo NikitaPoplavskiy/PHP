@@ -30,9 +30,35 @@ class AdminProductController extends AdminBase {
     public function actionUpdate($id) { 
         self::checkAdmin();
 
+        $categoryList = Category::getCategoriesList();
+        $product = Product::getProductById($id);
+
+        $result = false;
+        
+
         if (isset($_POST["submit"])) {
-            Product::updateProductById($id);
-            header("Location: /admin/product");
+            $options["id"] = $id;
+            $options["name"] = $_POST["name"];
+            $options["code"] = $_POST["code"];
+            $options["price"] = $_POST["price"];
+            $options["category_id"] = $_POST["category_id"];
+            $options["brand"] = $_POST["brand"];
+            $options["availability"] = $_POST["availability"];
+            $options["description"] = $_POST["description"];
+            $options["is_new"] = $_POST["is_new"];
+            $options["is_recommended"] = $_POST["is_recommended"];            
+            $options["status"] = $_POST["status"];
+
+            $errors = false;
+            if (!isset($options["name"]) || empty($options["name"])) {
+                $errors[] = "Заполните все поля";
+            }
+
+            if ($errors == false) {
+                $product = Product::updateProductById($options);
+                $result = true;
+                // header("Location: /admin/product");
+            }            
         }
 
         require_once(ROOT . "/views/admin_product/update.php");
@@ -47,6 +73,7 @@ class AdminProductController extends AdminBase {
         $price = "";
         $brand = "";
         $description = "";
+        $id = 0;
 
         if (isset($_POST["submit"])) {
             $options["name"] = $_POST["name"];
@@ -57,24 +84,24 @@ class AdminProductController extends AdminBase {
             $options["availability"] = $_POST["availability"];
             $options["description"] = $_POST["description"];
             $options["is_new"] = $_POST["is_new"];
-            $options["is_recommended"] = $_POST["is_recommended"];
+            $options["is_recommended"] = $_POST["is_recommended"];            
             $options["status"] = $_POST["status"];
 
             $errors = false;
             if (!isset($options["name"]) || empty($options["name"])) {
-                $errors = "Заполните все поля";
+                $errors[] = "Заполните все поля";
             }
 
             if ($errors == false) {
-                $id = Product::addProduct($options);                
+                $id = Product::addProduct($options);
+                header("Location: /admin/product");                
             }
 
             /*if ($id) {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
                     move_uploaded_file($_FILES["image"]["tmp_name"], $_SE)
                 }
-            }*/
-            header("Location: /admin/product");
+            }*/            
         }
 
         require_once(ROOT . "/views/admin_product/create.php");

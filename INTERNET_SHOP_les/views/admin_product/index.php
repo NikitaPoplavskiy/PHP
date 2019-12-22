@@ -22,7 +22,7 @@
 							<td><?php echo $product["name"]; ?></td>
 							<td><?php echo $product["price"]; ?></td>
 							<td>
-								<a href="/admin/product/update/<?php $product["id"]; ?>">Редактировать</a>
+								<a href="/admin/product/update/<?php echo $product["id"]; ?>">Редактировать</a>
 							</td>
 							<td><a href="/admin/product/delete/<?php echo $product["id"]; ?>">Удалить</a></td>
 						</tr>
