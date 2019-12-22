@@ -2,7 +2,8 @@
 	<section>		
 		<div class="col-sm-9 padding-right">
 			<div class="features_items">
-				<h2 class="title text-center">Каталог товаров</h2>			
+				<h2 class="title text-center">Каталог товаров</h2>
+				<a href="/admin/product/create/" class="btn btn-default">Добавить товар</a>			
 				<table class="table-bordered table-striped table">
 					<tr>
 						<th>Id товара</th>
