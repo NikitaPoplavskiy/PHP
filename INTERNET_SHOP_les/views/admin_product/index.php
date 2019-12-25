@@ -19,7 +19,7 @@
 							<td>
 								<?php echo $product["code"]; ?>
 							</td>
-							<td><?php echo $product["name"]; ?></td>
+							<td><?php echo htmlspecialchars($product["name"]); ?></td>
 							<td><?php echo $product["price"]; ?></td>
 							<td>
 								<a href="/admin/product/update/<?php echo $product["id"]; ?>">Редактировать</a>
