@@ -58,7 +58,14 @@ class AdminProductController extends AdminBase {
                 $product = Product::updateProductById($options);
                 $result = true;
                 // header("Location: /admin/product");
-            }            
+            }   
+            
+            if ($product) {
+                print_r($_FILES);
+                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"] . UPLOAD_IMAGE_PATH . "{$id}.jpg");
+                }
+            }
         }
 
         require_once(ROOT . "/views/admin_product/update.php");
@@ -97,11 +104,11 @@ class AdminProductController extends AdminBase {
                 header("Location: /admin/product");                
             }
 
-            /*if ($id) {
+            if ($id) {
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-                    move_uploaded_file($_FILES["image"]["tmp_name"], $_SE)
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"] . UPLOAD_IMAGE_PATH . "{$id}.jpg");
                 }
-            }*/            
+            }                     
         }
 
         require_once(ROOT . "/views/admin_product/create.php");

@@ -122,7 +122,8 @@
 								<div class="single-products">
 										<div class="productinfo text-center">
 											<a href="/product/<?php echo $product["id"]; ?>">
-												<img src="/template/images/home/product1.jpg" alt=""/>
+												<!--img src="/template/images/home/product1.jpg" alt=""/-->
+												<img src= <?php echo Product::getProductImage($product["id"]); ?> alt=""/>
 												<h2>$<?php echo $product["price"]; ?></h2>
 												<p>																								
 													<?php echo $product["name"]; ?>												

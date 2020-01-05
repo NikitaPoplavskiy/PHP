@@ -16,8 +16,8 @@
                     <?php endif; ?>
                 <div class="signup-form"><!--sign up form-->
                     <h2>Редактирование товара №<?php echo $id; ?></h2>
-                    <div class="signup-form"><!--sign up form-->                    
-                    <form action="#" method="post">                     
+                    <div class="signup-form"><!--sign up form-->
+                    <form action="#" method="post" enctype="multipart/form-data">
                         <p>Название товара</p>   
                         <input type="text" name="name" placeholder="Название" value = "<?php echo $product["name"]; ?>"/>
                         <p>Артикул</p>
@@ -36,8 +36,9 @@
                         </select>
                         <p>Производитель</p>
                         <input type="text" name="brand" placeholder="Производитель" value="<?php echo $product["brand"]; ?>"/>
-                        <!--p>Изображение товара</p>
-                        <input type="file" name="image" placeholder="Изображение товара" value=""/-->
+                        <p>Изображение товара</p>
+                        <img src="<?php echo Product::getProductImage($product["id"]); ?>" alt="">
+                        <input type="file" name="image" placeholder="Изображение товара" value=""/>
                         <p>Наличие на складе</p>
                         <select name="availability">
                             <option value="1" <?php echo $product["availability"] > 0 ? "selected" : "";  ?>>Да</option>

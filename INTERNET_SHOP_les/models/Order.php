@@ -117,11 +117,12 @@ class Order {
         $result->bindParam(":date", $options["date"], PDO::PARAM_STR);
         $result->bindParam(":status", $options["status"], PDO::PARAM_STR);        
         
-        /*if (!$result->execute()) {
+        if (!$result->execute()) {
             $error = $result->errorInfo();
-        }*/
+        }
         
         // return Product::getProductById($options["id"]);
+        // $result->execute();
 
         return Order::getOrder($options["id"]);
     }

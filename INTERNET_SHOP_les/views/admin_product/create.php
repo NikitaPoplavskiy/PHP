@@ -13,7 +13,7 @@
                     <?php endif; ?>
                 <div class="signup-form"><!--sign up form-->
                     <h2>Добавление нового товара</h2>
-                    <form action="#" method="post">                     
+                    <form action="#" method="post" enctype="multipart/form-data">                     
                         <p>Название товара</p>   
                         <input type="text" name="name" placeholder="Название" value = "<?php echo $name; ?>"/>
                         <p>Артикул</p>
@@ -32,8 +32,8 @@
                         </select>
                         <p>Производитель</p>
                         <input type="text" name="brand" placeholder="Производитель" value="<?php echo $brand; ?>"/>
-                        <!--p>Изображение товара</p>
-                        <input type="file" name="image" placeholder="Изображение товара" value=""/-->
+                        <p>Изображение товара</p>                        
+                        <input type="file" name="image" placeholder="Изображение товара" value=""/>
                         <p>Наличие на складе</p>
                         <select name="availability">
                             <option value="1" selected="selected">Да</option>

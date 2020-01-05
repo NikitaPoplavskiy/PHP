@@ -184,6 +184,15 @@ class Product
         } 
     }
 
+    public static function getProductImage($productId) { 
+        $image = $_SERVER["DOCUMENT_ROOT"] . UPLOAD_IMAGE_PATH . "{$productId}.jpg";
+
+        if (file_exists($image)) {
+            return UPLOAD_IMAGE_PATH . "{$productId}.jpg";
+        }
+        return UPLOAD_IMAGE_PATH . "no_image.jpg";
+    }
+
     /**
      * Returns single product by id
      */
