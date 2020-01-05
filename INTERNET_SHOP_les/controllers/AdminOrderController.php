@@ -24,6 +24,35 @@ class AdminOrderController extends AdminBase {
         return true;
     }
 
+    public function actionUpdate($id) { 
+        self::checkAdmin();
+
+        $order = Order::getOrder($id);
+
+        if (isset($_POST["submit"])) {        
+            $options["id"] = $id; 
+            $options["name"] = $_POST["name"];
+            $options["phone"] = $_POST["phone"];
+            $options["comment"] = $_POST["comment"];
+            $options["user_id"] = $_POST["user_id"];
+            $options["status"] = $_POST["status"];
+            $options["date"] = $_POST["date"];           
+
+            $errors = false;
+            if (!isset($options["name"]) || empty($options["name"])) {
+                $errors[] = "Заполните все поля";
+            }
+
+            if ($errors == false) {
+                $order = Order::updateOrderById($options);                
+                header("Location: /admin/order");
+            }                        
+            // header("Location: /admin/order");
+        }
+
+        require_once(ROOT . "/views/admin_order/update.php");
+    }
+
     public function actionView($id) {     
         self::checkAdmin();
 
@@ -61,6 +90,18 @@ class AdminOrderController extends AdminBase {
             default: $stringStatus = "unknown";
         }
         return $stringStatus;
+    }
+
+    public static function orderStatusToNum($status) { 
+        if ($status == "Новый заказ") {
+            return 1;
+        }
+        elseif ($status == "В обработке") {
+            return 2;
+        }
+        elseif ($status == "Обработан") {
+            return 3;
+        }
     }
 
 }

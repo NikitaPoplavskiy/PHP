@@ -102,4 +102,27 @@ class Order {
         // error_log("Продукт удален $id");
          $result->execute();
     }
+
+    public static function updateOrderById($options) {
+        $db = DB::getConnection();
+
+        $sql = "update product_order set user_name = :name, user_phone = :phone, user_comment = :comment, user_id = :user_id, date = :date, status = :status where id = :id";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(":id", $options["id"], PDO::PARAM_STR);
+        $result->bindParam(":name", $options["name"], PDO::PARAM_STR);
+        $result->bindParam(":phone", $options["phone"], PDO::PARAM_STR);
+        $result->bindParam(":comment", $options["comment"], PDO::PARAM_STR);
+        $result->bindParam(":user_id", $options["user_id"], PDO::PARAM_STR);
+        $result->bindParam(":date", $options["date"], PDO::PARAM_STR);
+        $result->bindParam(":status", $options["status"], PDO::PARAM_STR);        
+        
+        /*if (!$result->execute()) {
+            $error = $result->errorInfo();
+        }*/
+        
+        // return Product::getProductById($options["id"]);
+
+        return Order::getOrder($options["id"]);
+    }
 }

@@ -3,10 +3,7 @@
 <section>
     <div class="container">
         <div class="row">             
-            <div class = "col-sm-4 col-sm-offset-4 padding-right">
-            <?php if ($result): ?>
-                <h1>Товар отредактирован!</h1>
-            <?php endif; ?>                
+            <div class = "col-sm-4 col-sm-offset-4 padding-right">                            
             <?php if (isset($errors) && is_array($errors)): ?>
                         <ul>
                             <?php foreach ($errors as $error): ?>
@@ -15,51 +12,29 @@
                         </ul>
                     <?php endif; ?>
                 <div class="signup-form"><!--sign up form-->
-                    <h2>Редактирование товара №<?php echo $id; ?></h2>
+                    <h2>Редактирование заказа №<?php echo $id; ?></h2>
                     <div class="signup-form"><!--sign up form-->                    
                     <form action="#" method="post">                     
-                        <p>Название товара</p>   
-                        <input type="text" name="name" placeholder="Название" value = "<?php echo $product["name"]; ?>"/>
-                        <p>Артикул</p>
-                        <input type="text" name="code" placeholder="Артикул" value = "<?php echo $product["code"]; ?>"/>
-                        <p>Стоимость</p>
-                        <input type="text" name="price" placeholder="Цена" value="<?php echo $product["price"]; ?>"/>
-                        <p>Категория</p>                        
-                        <select name="category_id">
-                            <?php if ($categoryList): ?>
-                                <?php foreach($categoryList as $category): ?>
-                                    <option <?php echo $category["id"] == $product["category_id"] ? "selected" : "";?> value="<?php echo $category["id"]; ?>">
-                                        <?php echo $category["name"]; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </select>
-                        <p>Производитель</p>
-                        <input type="text" name="brand" placeholder="Производитель" value="<?php echo $product["brand"]; ?>"/>
+                        <p>Номер заказа</p>   
+                        <p><?php echo $order["id"]; ?></p>
+                        <p>Имя покупателя</p>
+                        <input type="text" name="name" placeholder="Имя" value = "<?php echo $order["user_name"]; ?>"/>
+                        <p>Телефон покупателя</p>
+                        <input type="text" name="phone" placeholder="Номер телефона" value="<?php echo $order["user_phone"]; ?>"/>                        
+                        <p>Комментарий клиента</p> 
+                        <input type="text" name="comment" placeholder="Комментарий к заказу" value="<?php echo $order["user_comment"]; ?>"/>
                         <!--p>Изображение товара</p>
                         <input type="file" name="image" placeholder="Изображение товара" value=""/-->
-                        <p>Наличие на складе</p>
-                        <select name="availability">
-                            <option value="1" <?php echo $product["availability"] > 0 ? "selected" : "";  ?>>Да</option>
-                            <option value="0" <?php echo $product["availability"] <= 0 ? "selected" : "";  ?>>Нет</option>
-                        </select>
-                        <p>Описание к товару</p>
-                        <input type="text" name="description" placeholder="Описание товара" value="<?php echo $product["description"]; ?>"/>
-                        <p>Новинка</p>
-                        <select name="is_new">
-                            <option value="1" <?php echo $product["is_new"] > 0 ? "selected" : "";  ?>>Да</option>
-                            <option value="0" <?php echo $product["is_new"] <= 0 ? "selected" : "";  ?>>Нет</option>
-                        </select>
-                        <p>Рекомендуем</p>
-                        <select name="is_recommended">
-                            <option value="1" <?php echo $product["is_recommended"] > 0 ? "selected" : "";  ?>>Да</option>
-                            <option value="0" <?php echo $product["is_recommended"] <= 0 ? "selected" : "";  ?>>Нет</option>
-                        </select>
-                        <p>Статус</p>
+                        <p>Id Клиента</p>                                           
+                        <input type="text" name="user_id" placeholder="Id" value="<?php echo $order["user_id"]; ?>"/>
+                        <p>Статус заказа</p>
                         <select name="status">
-                            <option value="1" <?php echo $product["status"] > 0 ? "selected" : "";  ?>> Отображается</option>
-                            <option value="0" <?php echo $product["status"] <= 0 ? "selected" : "";  ?>>Скрыт</option>
+                            <option value="1" <?php echo $order["status"] == 1 ? "selected" : "";  ?>>Новый заказ</option>
+                            <option value="2" <?php echo $order["status"] == 2 ? "selected" : "";  ?>>В обработке</option>
+                            <option value="3" <?php echo $order["status"] == 3 ? "selected" : "";  ?>>Обработан</option>
                         </select>
+                        <p>Дата заказа</p>
+                        <input type="text" name="date" placeholder="Дата" value="<?php echo $order["date"]; ?>"/>                        
                         <input type="submit" name="submit" class="btn btn-default" value="Сохранить">
                     </form>
                 </div>
