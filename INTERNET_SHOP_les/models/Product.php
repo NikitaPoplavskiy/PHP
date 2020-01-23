@@ -41,13 +41,13 @@ class Product
         return $productsList; 
     }
 
-    public static function Sorting($top,$page = 1,$categoryId = false) {
+    public static function Sorting($sort_op, $page = 1, $categoryId = false) {
         if ($categoryId) {             
             $page  = intval($page);
             $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
             $db = Db::getConnection();
-            $sql = "select id, name, price, is_new from product where status = 1 and category_id = :categoryId order by $top limit " . self::SHOW_BY_DEFAULT . " offset $offset";
+            $sql = "select id, name, price, is_new from product where status = 1 and category_id = :categoryId order by $sort_op limit " . self::SHOW_BY_DEFAULT . " offset $offset";
             $result = $db->prepare($sql);
             $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
             // $result->bindParam(":price", $top, PDO::PARAM_STR);
