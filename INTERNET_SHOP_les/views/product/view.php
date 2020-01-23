@@ -40,7 +40,7 @@
 						<div class="col-sm-5">
 							<div class="view-product">
 								<img src="/template/images/home/product1.jpg" alt="" />
-								<h3>ZOOM</h3>
+								<h3>Приблизить</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
@@ -80,11 +80,11 @@
 								<img  src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
 								<?php endif; ?>
 								<h2><?php echo $product["name"]; ?></h2>
-								<p>Web ID: <?php echo $product["code"]; ?></p>
+								<p>ID: <?php echo $product["code"]; ?></p>
 								<img src="/template/images/product-details/rating.png" alt="" />
 								<span>
 									<span>$<?php echo $product["price"]; ?></span>
-									<label>Quantity:</label>
+									<label>Количество:</label>
 									<input type="text" value="3" />
 									<!--button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
@@ -92,10 +92,10 @@
 									</button-->
 									<a href="#" class="btn btn-default add-to-cart" data-id=<?php echo $product["id"]; ?> ><i class="fa fa-shopping-cart"></i>Add to cart</a>
 								</span>								
-								<p><b>Availability:</b>&nbsp;<?php echo ($product["availability"] > 0) ? "В наличии" : " Нет в наличии"; ?></p>
+								<p><b>Наличие:</b>&nbsp;<?php echo ($product["availability"] > 0) ? "В наличии" : " Нет в наличии"; ?></p>
 								
-								<p><b>Condition:</b>&nbsp;<?php echo ($product["is_new"] > 0) ? "Новый" : "Не новый"; ?></p>
-								<p><b>Brand:</b>&nbsp;<?php echo $product["brand"]; ?></p>
+								<p><b>Состояние:</b>&nbsp;<?php echo ($product["is_new"] > 0) ? "Новый" : "Не новый"; ?></p>
+								<p><b>Производитель:</b>&nbsp;<?php echo $product["brand"]; ?></p>
 								<a href=""><img src="/template/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>
@@ -104,13 +104,13 @@
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li><a href="#details" data-toggle="tab">Details</a></li>
-								<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
-								<li><a href="#tag" data-toggle="tab">Tag</a></li>
-								<li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+								<li><a href="#details" data-toggle="tab">Детали</a></li>
+								<li><a href="#companyprofile" data-toggle="tab">Профиль компании</a></li>
+								<li><a href="#tag" data-toggle="tab">Тег</a></li>
+								<li class="active"><a href="#reviews" data-toggle="tab">Отзывы</a></li>
 							</ul>
 						</div>
-						<div class="tab-content">
+						<!--div class="tab-content">
 							<div class="tab-pane fade" id="details" >
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
@@ -211,7 +211,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div-->
 							
 							<div class="tab-pane fade" id="tag" >
 								<div class="col-sm-3">

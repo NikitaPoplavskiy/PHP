@@ -45,6 +45,9 @@ class Cart {
             // Если есть, то уменьшаем количество 
             if ($productsInCart[$id] > 0) {
                 $productsInCart[$id]--;
+            }
+            else {
+               unset($_SESSION["products"][$id]);
             }             
         }
         $_SESSION["products"] = $productsInCart;

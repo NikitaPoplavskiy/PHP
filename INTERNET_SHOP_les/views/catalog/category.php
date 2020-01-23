@@ -52,6 +52,16 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Последние товары</h2>
+						<form action="#" method="post">
+							<label>Сортировать товары</label>
+							<select name="price">
+								<option value="priceasc">По увеличению цены</option>
+								<option value="pricedesc">По уменьшению цены</option>
+								<option value="alpha">по алфавиту</option>
+							<select>
+							<input type="submit" value="Найти">
+						</form>
+						
 						<?php foreach ($latestProducts as $product): ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">

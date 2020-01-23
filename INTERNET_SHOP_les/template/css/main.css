@@ -76,6 +76,7 @@ a#scrollUp i{
   background: none repeat scroll 0 0 #F0F0E9;
 }
 
+
 .contactinfo ul li:first-child{
     margin-left: -15px;
 }
@@ -330,7 +331,7 @@ ul.sub-menu {
 }
 
 .navbar-nav li ul.sub-menu li a:hover{
-    color: #FDB45E;
+    color: #5ee5fd;
 }
 
 .fa-angle-down{
@@ -585,6 +586,7 @@ ul.sub-menu {
 .carousel-indicators li {
   background: #C4C4BE;
 }
+
 
 .carousel-indicators li.active {
 	  background: #FE980F;

@@ -41,6 +41,40 @@ class Product
         return $productsList; 
     }
 
+    public static function Sorting($top,$page = 1,$categoryId = false) {
+        if ($categoryId) {             
+            $page  = intval($page);
+            $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
+            $db = Db::getConnection();
+            $sql = "select id, name, price, is_new from product where status = 1 and category_id = :categoryId order by $top limit " . self::SHOW_BY_DEFAULT . " offset $offset";
+            $result = $db->prepare($sql);
+            $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
+            // $result->bindParam(":price", $top, PDO::PARAM_STR);
+            $result->execute();
+
+            //$result = $db->query("select id, name, price, is_new from product where status = 1 and category_id = '$categoryId' order by id asc limit"
+             //. self::SHOW_BY_DEFAULT . " offset $offset");
+            // echo var_dump($result);
+            // echo var_dump($result);
+
+            $products = array();
+            $i = 0;
+            while ($row = $result->fetch()) {
+                $products[$i]['id'] = $row['id'];
+                $products[$i]['name'] = $row['name'];
+                $products[$i]['price'] = $row['price'];
+                // $productsList[$i]['image'] = $row['image'];
+                $products[$i]['is_new'] = $row['is_new'];
+                $i++;
+            }
+
+            // echo var_dump($categoryList);
+
+            return $products;           
+        }
+    }
+
     public static function addProduct($options) { 
         $db = DB::getConnection();
 

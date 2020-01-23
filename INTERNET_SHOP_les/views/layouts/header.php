@@ -14,7 +14,7 @@
 	<link href="/template/css/main.css" rel="stylesheet">
 	<link href="/template/css/responsive.css" rel="stylesheet">
 	<link rel="stylesheet" href="/!resources/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
-	<link rel="stylesheet" href="/!resources/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/!resources/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">	
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -32,20 +32,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
-						<div class="contactinfo">
+						<!--div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
 								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
 							</ul>
-						</div>
+						</div-->
 					</div>
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<!--li><a href="#"><i class="fa fa-twitter"></i></a></li-->
+								<!--li><a href="#"><i class="fa fa-linkedin"></i></a></li-->
+								<!--li><a href="#"><i class="fa fa-dribbble"></i></a></li-->
 								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							</ul>
 						</div>
@@ -59,56 +59,9 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="/template/images/home/logo.png" alt="" /></a>
+							<a class="logo" href="index.html"><img src="/template/images/home/logo2.png" alt="" /></a>
 						</div>
-						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
-							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-8">
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li>
-									<a href="/cart/">
-										<i class="fa fa-shopping-cart"></i> Корзина
-										<span id="cart-count">(<?php echo Cart::countItems();?>)</span>
-									</a>
-								</li>									
-								<?php if (User::isGuest()): ?>																							
-								<li><a href="/user/login/"><i class="fa fa-lock"></i>Вход</a></li>
-								<li><a href="/user/register/"><i class="fa fa-lock"></i>Регистрация</a></li>
-								<?php else: ?>								
-									<li><a href="/cabinet/"><i class="fa fa-user"></i>Аккаунт</a></li>
-									<li><a href="/user/logout/"><i class="fa fa-lock"></i>Выход</a></li>
-								<?php endif; ?>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-middle-->
-	
-		<div class="header-bottom"><!--header-bottom-->
+						<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9">
@@ -152,4 +105,50 @@
 				</div-->
 			</div>
 		</div><!--/header-bottom-->
+						<!--div class="btn-group pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									USA
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Canada</a></li>
+									<li><a href="#">UK</a></li>
+								</ul>
+							</div>
+							
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									DOLLAR
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Canadian Dollar</a></li>
+									<li><a href="#">Pound</a></li>
+								</ul>
+							</div>
+						</div-->
+					</div>
+					<div class="col-sm-8">
+						<div class="shop-menu pull-right">
+							<ul class="nav navbar-nav">
+								<li>
+									<a href="/cart/">
+										<i class="fa fa-shopping-cart"></i> Корзина
+										<span id="cart-count">(<?php echo Cart::countItems();?>)</span>
+									</a>
+								</li>									
+								<?php if (User::isGuest()): ?>																							
+								<li><a href="/user/login/"><i class="fa fa-lock"></i>Вход</a></li>
+								<li><a href="/user/register/"><i class="fa fa-lock"></i>Регистрация</a></li>
+								<?php else: ?>								
+									<li><a href="/cabinet/"><i class="fa fa-user"></i>Аккаунт</a></li>
+									<li><a href="/user/logout/"><i class="fa fa-lock"></i>Выход</a></li>
+								<?php endif; ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->			
 	</header><!--/header-->

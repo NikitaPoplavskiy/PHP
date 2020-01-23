@@ -35,6 +35,7 @@ class Category
         return $categoryList;        
     }
 
+    
     public static function getAdminCategoryList() {
         $db = DB::getConnection();
 
