@@ -1,6 +1,7 @@
-<footer id="footer"><!--Footer-->
-		<div class="footer-top">
-			<!--div class="container">
+<footer id="footer">
+	<!--Footer-->
+	<div class="footer-top">
+		<!--div class="container">
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="companyinfo">
@@ -78,7 +79,7 @@
 				</div>
 			</div>
 		</div-->
-		
+
 		<!--div class="footer-widget">
 			<div class="container">
 				<div class="row">
@@ -144,61 +145,68 @@
 				</div>
 			</div>
 		</div-->
-		
+
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-left">Интернет-магазин лекарств</p>
 					<!--p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p-->
 				</div>
 			</div>
 		</div>
-		
-	</footer><!--/Footer-->
-	
 
-  
-    <script src="/template/js/jquery.js"></script>
-	<script src="/template/js/bootstrap.min.js"></script>
-	<script src="/template/js/jquery.scrollUp.min.js"></script>
-	<script src="/template/js/price-range.js"></script>
-    <script src="/template/js/jquery.prettyPhoto.js"></script>
-	<script src="/template/js/main.js"></script>
-	<script src="/!resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-	
-	<script>
-		$(document).ready(function() {
-			$(".add-to-cart").click(function() {								
-				var id = $(this).attr("data-id");
-				if (id) {									
-					console.log(`Перед добавлением продукта в корзину. Id: ${id}`);
-					$.post("/cart/addAjax/"+id, {}, function(data) {
-						$("#cart-count").html(data);
-						console.log(`После добавления продукта в корзину. Id: ${id}, количество продуктов в корзине: ${data}`);						
-					});
-				}
-				return false;
-			});
-		});
-	</script>
+</footer>
+<!--/Footer-->
 
-	<script>
+
+
+<script src="/template/js/jquery.js"></script>
+<script src="/template/js/bootstrap.min.js"></script>
+<script src="/template/js/jquery.scrollUp.min.js"></script>
+<script src="/template/js/price-range.js"></script>
+<script src="/template/js/jquery.prettyPhoto.js"></script>
+<script src="/template/js/main.js"></script>
+<script src="/!resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+
+<script>
 	$(document).ready(function() {
+		$(".add-to-cart").click(function() {
+			var id = $(this).attr("data-id");
+			if (id) {
+				console.log(`Перед добавлением продукта в корзину. Id: ${id}`);
+				$.post("/cart/addAjax/" + id, {}, function(data) {
+					$("#cart-count").html(data);
+					console.log(`После добавления продукта в корзину. Id: ${id}, количество продуктов в корзине: ${data}`);
+				});
+			}
+			return false;
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {		
+
 		$(".product_remove").click(function() {
 			var id = $(this).attr("data-id");
 			// var count = $(this).attr("count");
 			if (id) {
-				$.post("/cart/productRemove/" + id , {}, function(data) {
+				$.post("/cart/productRemove/" + id, {}, function(data) {
 					$("#product-count-" + id).html(data);
-				});	
+					console.log($("#product-count-" + id).html());
+					if ($("#product-count-" + id).html() <= 0) {
+						$("#cart_tr").remove();
+					}
+				});
 			}
-			return false;	
+			return false;
 		});
+
 		// Добавление продукта в корзину
 		$(".product_add").click(function() {
-			var id = $(this).attr("data-id");			
+			var id = $(this).attr("data-id");
 			if (id) {
-				$.post("/cart/productAdd/" + id , {}, function(data) {
+				$.post("/cart/productAdd/" + id, {}, function(data) {
 					$("#product-count-" + id).html(data);
 					/*console.log(JSON.stringify(data));
 					console.log(`Product ID: ${''id}` );
@@ -207,34 +215,47 @@
 				});
 			}
 			return false;
-		});		
-	});	
-	</script>
-
-	<script>
-		$(document).ready(function(){
-  			$(".owl-carousel").owlCarousel({
-				loop:true,
-				margin:10,
-				responsiveClass:true,
-				nav:true,
-				responsive:{
-					0:{
-						items:1
-					},
-					600:{
-						items:3
-					},
-					1000:{
-						items:5
-					}
-				}
-			});
 		});
-	</script>
-	
-	<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script-->
-	<script src="http://malsup.github.com/jquery.cycle2.js"></script>
-	<script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script>
+
+
+		$("#checkout").click(function() {
+			var totalPrice = document.getElementById("total_price").innerHTML;
+			if (totalPrice <= 0) {
+				console.log(totalPrice);
+				alert('Корзина пуста');
+			} else {
+				location.href = "/cart/checkout";
+			}
+		});
+
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$(".owl-carousel").owlCarousel({
+			loop: true,
+			margin: 10,
+			responsiveClass: true,
+			nav: true,
+			responsive: {
+				0: {
+					items: 1
+				},
+				600: {
+					items: 2
+				},
+				1000: {
+					items: 3
+				}
+			}
+		});
+	});
+</script>
+
+<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script-->
+<script src="http://malsup.github.com/jquery.cycle2.js"></script>
+<script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script>
 </body>
+
 </html>

@@ -43,7 +43,7 @@ class CartController {
             $products = Product::getProductsIds($productsIds);
 
             $totalPrice = Cart::getTotalPrice($products);
-        }
+        }                
         require_once(ROOT . "/views/cart/index.php");
     }
 

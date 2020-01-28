@@ -25,7 +25,7 @@
 				<h2 class="title text-center">Корзина</h2>
 				<?php if($productsInCart): ?>
 					<p>Вы выбрали такие товары</p>
-					<table class="table-bordered table-striped table">
+					<table class="table-bordered table-striped table" id="cart_table">
 						<tr>
 							<th>Код товара</th>
 							<th>Название</th>
@@ -33,7 +33,8 @@
 							<th>Количество</th>
 						</tr>
 						<?php foreach ($products as $product): ?>
-							<tr>
+							<?php if($productsInCart[$product["id"]] <= 0) {continue;} ?>
+							<tr id="cart_tr">
 								<td><?php echo $product["code"]; ?></td>
 								<td>
 									<a href="/product/<?php echo $product["id"]; ?>"></a>
@@ -43,7 +44,7 @@
 								<td>
 									<button class="product_remove" data-id="<?php echo $product["id"]; ?>">-</button>
 									<span id="product-count-<?php echo $product["id"]; ?>">
-										<?php echo $productsInCart[$product["id"]];?>
+										<?php echo $productsInCart[$product["id"]]; ?>
 									</span>
 									<button class="product_add" data-id="<?php echo $product["id"]; ?>">+</button>
 								</td>
@@ -51,10 +52,10 @@
 						<?php endforeach; ?>
 						<tr>
 							<td colspan="3">Общая стоимость</td>
-							<td><?php echo $totalPrice;?></td>
+							<td id="total_price"><?php echo $totalPrice;?></td>
 						</tr>
 				</table>
-				<a href="/cart/checkout" class="btn btn-default">
+				<a type="button" id="checkout" class="btn btn-default">
 					Оформить заказ
 				</a>
 				<?php else: ?>

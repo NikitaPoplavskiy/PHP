@@ -1,50 +1,37 @@
-<?php include ROOT."/views/layouts/header.php"; ?>   
-	
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">										
-						<div class="brands_products"><!--brands_products-->
-							<h2>Brands</h2>
-							<div class="brands-name">
-								<ul class="nav nav-pills nav-stacked">
-									<li><a href=""> <span class="pull-right">(50)</span>Acne</a></li>
-									<li><a href=""> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-									<li><a href=""> <span class="pull-right">(27)</span>Albiro</a></li>
-									<li><a href=""> <span class="pull-right">(32)</span>Ronhill</a></li>
-									<li><a href=""> <span class="pull-right">(5)</span>Oddmolly</a></li>
-									<li><a href=""> <span class="pull-right">(9)</span>Boudestijn</a></li>
-									<li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
-								</ul>
+<?php include ROOT . "/views/layouts/header.php"; ?>
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="left-sidebar">
+					<h2>Категория</h2>
+					<div class="panel-group category-products" id="accordian">
+						<!--category-productsr-->
+						<?php foreach ($categories as $categoryItem) : ?>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="/category/<?php echo $categoryItem["id"]; ?>">
+											<?php echo $categoryItem["name"]; ?>
+										</a>
+									</h4>
+								</div>
 							</div>
-						</div><!--/brands_products-->
-						
-						<div class="price-range"><!--price-range-->
-							<h2>Price Range</h2>
-							<div class="well">
-								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-								 <b>$ 0</b> <b class="pull-right">$ 600</b>
-							</div>
-						</div><!--/price-range-->
-						
-						<div class="shipping text-center"><!--shipping-->
-							<img src="/template/images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-						
+						<?php endforeach; ?>
 					</div>
 				</div>
-				
-				<div class="col-sm-9 padding-right">
-					<div class="product-details"><!--product-details-->
-						<div class="col-sm-5">
-							<div class="view-product">
-								<img src="/template/images/home/product1.jpg" alt="" />
-								<h3>Приблизить</h3>
-							</div>
-							<div id="similar-product" class="carousel slide" data-ride="carousel">
+			</div>
+			<div class="col-sm-9 padding-right">
+				<div class="product-details">
+					<!--product-details-->
+					<div class="col-sm-5">
+						<div class="view-product">
+							<img src="<?php echo Product::getProductImage($product["id"]); ?>" alt="" />
+							<h3>Приблизить</h3>
+						</div>
+						<!--div id="similar-product" class="carousel slide" data-ride="carousel">
 								
-								  <!-- Wrapper for slides -->
+								  <Wrapper for slides>
 								    <div class="carousel-inner">
 										<div class="item active">
 										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
@@ -64,67 +51,67 @@
 										
 									</div>
 
-								  <!-- Controls -->
+								  <Controls>
 								  <a class="left item-control" href="#similar-product" data-slide="prev">
 									<i class="fa fa-angle-left"></i>
 								  </a>
 								  <a class="right item-control" href="#similar-product" data-slide="next">
 									<i class="fa fa-angle-right"></i>
 								  </a>
-							</div>
-
-						</div>
-						<div class="col-sm-7">
-							<div class="product-information"><!--/product-information-->
-								<?php if ($product["is_new"] > 0): ?>
-								<img  src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
-								<?php endif; ?>
-								<h2><?php echo $product["name"]; ?></h2>
-								<p>ID: <?php echo $product["code"]; ?></p>
-								<img src="/template/images/product-details/rating.png" alt="" />
-								<span>
-									<span>$<?php echo $product["price"]; ?></span>
-									<label>Количество:</label>
-									<input type="text" value="3" />
-									<!--button type="button" class="btn btn-fefault cart">
+							</div-->
+					</div>
+					<div class="col-sm-7">
+						<div class="product-information">
+							<!--/product-information-->
+							<?php if ($product["is_new"] > 0) : ?>
+								<img src="<?php echo Product::getProductImage($product["id"]); ?>" class="newarrival" alt="" />
+							<?php endif; ?>
+							<h2><?php echo $product["name"]; ?></h2>
+							<p>ID: <?php echo $product["code"]; ?></p>
+							<img src="/template/images/product-details/rating.png" alt="" />
+							<span>
+								<span><?php echo $product["price"]; ?> грн</span>
+								<label>Количество:</label>
+								<input type="text" value="<?php echo Cart::countItems();?>"/>
+								<!--button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button-->
-									<a href="#" class="btn btn-default add-to-cart" data-id=<?php echo $product["id"]; ?> ><i class="fa fa-shopping-cart"></i>Add to cart</a>
-								</span>								
-								<p><b>Наличие:</b>&nbsp;<?php echo ($product["availability"] > 0) ? "В наличии" : " Нет в наличии"; ?></p>
-								
-								<p><b>Состояние:</b>&nbsp;<?php echo ($product["is_new"] > 0) ? "Новый" : "Не новый"; ?></p>
-								<p><b>Производитель:</b>&nbsp;<?php echo $product["brand"]; ?></p>
-								<a href=""><img src="/template/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
-							</div><!--/product-information-->
+								<a href="#" class="btn btn-default add-to-cart" data-id=<?php echo $product["id"]; ?>><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
+							</span>
+							<p><b>Наличие:</b>&nbsp;<?php echo ($product["availability"] > 0) ? "В наличии" : " Нет в наличии"; ?></p>
+
+							<p><b>Состояние:</b>&nbsp;<?php echo ($product["is_new"] > 0) ? "Новый" : "Не новый"; ?></p>
+							<p><b>Производитель:</b>&nbsp;<?php echo $product["brand"]; ?></p>
+							<!--a href=""><img src="/template/images/product-details/share.png" class="share img-responsive"  alt="" /></a-->
 						</div>
-					</div><!--/product-details-->
-					
-					<div class="category-tab shop-details-tab"><!--category-tab-->
-						<div class="col-sm-12">
-							<ul class="nav nav-tabs">
-								<li><a href="#details" data-toggle="tab">Детали</a></li>
-								<li><a href="#companyprofile" data-toggle="tab">Профиль компании</a></li>
-								<li><a href="#tag" data-toggle="tab">Тег</a></li>
-								<li class="active"><a href="#reviews" data-toggle="tab">Отзывы</a></li>
-							</ul>
-						</div>
-						<!--div class="tab-content">
-							<div class="tab-pane fade" id="details" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
+						<!--/product-information-->
+					</div>
+				</div>
+				<!--/product-details-->
+				<!--category-tab-->
+				<!--div class="category-tab shop-details-tab">					
+					<div class="col-sm-12">
+						<ul class="nav nav-tabs">
+							<li><a href="#details" data-toggle="tab">Детали</a></li>
+							<li><a href="#companyprofile" data-toggle="tab">Профиль компании</a></li>
+							<li><a href="#tag" data-toggle="tab">Тег</a></li>
+							<li class="active"><a href="#reviews" data-toggle="tab">Отзывы</a></li>
+						</ul>
+					</div-->
+
+				<!--div class="tab-content">
+						<div class="tab-pane fade" id="details">
+							<div class="col-sm-3">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<?php echo $product["description"]; ?>
 									</div>
 								</div>
-								<div class="col-sm-3">
+							</div-->
+
+
+				<!--div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
@@ -212,8 +199,8 @@
 									</div>
 								</div>
 							</div-->
-							
-							<div class="tab-pane fade" id="tag" >
+
+				<!--div class="tab-pane fade" id="tag">
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
@@ -262,9 +249,9 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							
-							<div class="tab-pane fade active in" id="reviews" >
+							</div-->
+
+				<!--div class="tab-pane fade active in" id="reviews">
 								<div class="col-sm-12">
 									<ul>
 										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
@@ -273,118 +260,41 @@
 									</ul>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 									<p><b>Write Your Review</b></p>
-									
+
 									<form action="#">
 										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
+											<input type="text" placeholder="Your Name" />
+											<input type="email" placeholder="Email Address" />
 										</span>
-										<textarea name="" ></textarea>
+										<textarea name=""></textarea>
 										<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
 										<button type="button" class="btn btn-default pull-right">
 											Submit
 										</button>
 									</form>
 								</div>
-							</div>
-							
-						</div>
-					</div><!--/category-tab-->
-					
-					<div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">recommended items</h2>
-						
-						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="item active">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend2.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend3.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend2.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend3.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							  </a>
-							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							  </a>			
-						</div>
-					</div><!--/recommended_items-->
-					
-				</div>
+							</div-->
 			</div>
 		</div>
-	</section>
-	
-    <?php include ROOT."/views/layouts/footer.php"; ?> 
+		<!--/category-tab-->
+
+		<h2 class="title text-center">Рекомендуемые товары</h2>
+		<div class="recommended_items">
+			<div class="owl-carousel owl-theme productinfo text-center">
+				<?php foreach ($recomendedProducts as $rProduct) : ?>
+					<div class="item">
+						<a href="/product/<?php echo $rProduct["id"]; ?>">
+							<img src="<?php echo Product::getProductImage($rProduct["id"]); ?>" alt="" />
+							<h2><?php echo $rProduct["price"]; ?> грн</h2>
+							<p><?php echo $rProduct["name"]; ?></p>
+						</a>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</section>
+
+<?php include ROOT . "/views/layouts/footer.php"; ?>

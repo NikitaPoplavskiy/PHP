@@ -3,7 +3,7 @@
 	<!--slider-->
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12">
+			<!--div class="col-sm-12">
 				<div id="slider-carousel" class="carousel slide" data-ride="carousel">
 					<ol class="carousel-indicators">
 						<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
@@ -63,7 +63,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section-->
 <!--/slider-->
 
 <section>
@@ -102,20 +102,20 @@
 							</div>
 						</div></brands_products-->
 
-					<div class="price-range">
-						<!--price-range-->
+					<!--price-range-->
+					<!--div class="price-range">						
 						<h2>Price Range</h2>
 						<div class="well text-center">
 							<input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
 							<b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
 						</div>
-					</div>
+					</div-->
 					<!--/price-range-->
 
-					<div class="shipping text-center">
-						<!--shipping-->
+					<!--shipping-->
+					<!--div class="shipping text-center">						
 						<img src="/template/images/home/shipping.jpg" alt="" />
-					</div>
+					</div-->
 					<!--/shipping-->
 
 				</div>
@@ -132,13 +132,13 @@
 									<div class="productinfo text-center">
 										<a href="/product/<?php echo $product["id"]; ?>">
 											<img src="<?php echo Product::getProductImage($product["id"]); ?>" alt="" />
-											<h2>$<?php echo $product["price"]; ?></h2>
+											<h2><?php echo $product["price"]; ?> грн</h2>
 											<p>
 												<?php echo $product["name"]; ?>
 											</p>
 										</a>
 										<!--a href="/product/ <?php echo $product["id"]; ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a-->
-										<a href="#" class="btn btn-default add-to-cart" data-id=<?php echo $product["id"]; ?>><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart" data-id=<?php echo $product["id"]; ?>><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
 									</div>
 									<?php if ($product["is_new"]) : ?>
 										<img src="/template/images/home/new.png" class="new" alt="" />
@@ -151,12 +151,12 @@
 											</div>
 										</div-->
 								</div>
-								<div class="choose">
+								<!--div class="choose">
 									<ul class="nav nav-pills nav-justified">
 										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
 										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
 									</ul>
-								</div>
+								</div-->
 							</div>
 						</div>
 					<?php endforeach; ?>
@@ -168,14 +168,15 @@
 						<img src="../!resources/img/веб-хуйня (1).jpg" alt="">
 					</div-->
 				</div>
+				<h2 class="title text-center">Рекомендуемые товары</h2>
 				<div class="recommended_items">
-					<div class="owl-carousel owl-theme">
+					<div class="owl-carousel owl-theme productinfo text-center">
 						<?php foreach ($recomendedProducts as $rProduct) : ?>
 							<div class="item">
 								<a href="/product/<?php echo $rProduct["id"]; ?>">
-									<img src="<?php echo Product::getProductImage($product["id"]); ?>" alt="" />
-									<h2><?php $rProduct["price"] ?></h2>
-									<p><?php $rProduct["name"] ?></p>
+									<img src="<?php echo Product::getProductImage($rProduct["id"]); ?>" alt="" />
+									<h2><?php echo $rProduct["price"]; ?></h2>
+									<p><?php echo $rProduct["name"]; ?></p>
 								</a>
 							</div>
 						<?php endforeach; ?>

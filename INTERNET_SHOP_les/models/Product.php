@@ -4,7 +4,7 @@
 class Product
 {
 
-    const SHOW_BY_DEFAULT = 4;
+    const SHOW_BY_DEFAULT = 6;
 
     /**
      * Returns an array of categories
@@ -236,7 +236,7 @@ class Product
             $db = Db::getConnection();            
 
 
-            $sql = "select id, name, price, is_new, availability, brand, code from product where status = 1 and id = :productId";
+            $sql = "select id, name, price, is_new, availability, brand, code, description from product where status = 1 and id = :productId";
 
             $result = $db->prepare($sql);
 

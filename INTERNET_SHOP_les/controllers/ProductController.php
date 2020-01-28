@@ -10,6 +10,12 @@ class ProductController {
         
         $product = Product::getProduct($id);
 
+        $categories = array();
+        $categories = Category::getCategoriesList();
+
+        $recomendedProducts = array();
+        $recomendedProducts = Product::getRecomendedProducts();
+
         require_once(ROOT . "/views/product/view.php");
         return true;        
     }
