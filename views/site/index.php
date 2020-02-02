@@ -162,10 +162,10 @@
 					<?php endforeach; ?>
 
 					<!--div class="slideshow" data-cycle-fx=carousel data-cycle-timeout=1000 data-cycle-carousel-visible=1 data-cycle-carousel-fluid=true>
-						<img src="../!resources/img/pepe.png" alt="">
-						<img src="../!resources/img/Снимок.png" alt="">
-						<img src="../!resources/img/pepe.png" alt="">
-						<img src="../!resources/img/веб-хуйня (1).jpg" alt="">
+						<img src="../resources/img/pepe.png" alt="">
+						<img src="../resources/img/Снимок.png" alt="">
+						<img src="../resources/img/pepe.png" alt="">
+						<img src="../resources/img/веб-хуйня (1).jpg" alt="">
 					</div-->
 				</div>
 				<h2 class="title text-center">Рекомендуемые товары</h2>

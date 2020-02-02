@@ -166,7 +166,7 @@
 <script src="/template/js/price-range.js"></script>
 <script src="/template/js/jquery.prettyPhoto.js"></script>
 <script src="/template/js/main.js"></script>
-<script src="/!resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+<script src="/resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
 
 <script>
 	$(document).ready(function() {

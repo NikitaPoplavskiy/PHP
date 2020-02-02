@@ -22,6 +22,10 @@ SET time_zone = "+00:00";
 -- База данных: `phpshop`
 --
 
+-- Dumping database structure for phpshop
+CREATE DATABASE IF NOT EXISTS `Nikita_pharmacy` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `Nikita_pharmacy`;
+
 -- --------------------------------------------------------
 
 --
