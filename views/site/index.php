@@ -170,12 +170,12 @@
 				</div>
 				<h2 class="title text-center">Рекомендуемые товары</h2>
 				<div class="recommended_items">
-					<div class="owl-carousel owl-theme productinfo text-center">
+					<div class="owl-carousel owl-theme text-center">
 						<?php foreach ($recomendedProducts as $rProduct) : ?>
-							<div class="item">
+							<div class="item productinfo">
 								<a href="/product/<?php echo $rProduct["id"]; ?>">
 									<img src="<?php echo Product::getProductImage($rProduct["id"]); ?>" alt="" />
-									<h2><?php echo $rProduct["price"]; ?></h2>
+									<h2><?php echo $rProduct["price"]; ?> грн</h2>
 									<p><?php echo $rProduct["name"]; ?></p>
 								</a>
 							</div>

@@ -1,4 +1,4 @@
-<?php include ROOT."/views/layouts/header.php"; ?>       	
+<?php include ROOT."/views/layouts/header_admin.php"; ?>       	
 	<section>		
 		<div class="col-sm-9 padding-right">
 			<div class="features_items">
@@ -34,4 +34,4 @@
 		</div>
 	</div>
 	</section>
-<?php include ROOT."/views/layouts/footer.php"; ?>
+<?php include ROOT."/views/layouts/footer_admin.php"; ?>

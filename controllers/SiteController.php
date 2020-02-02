@@ -47,7 +47,7 @@ class SiteController {
                 $isSend = true;
             }           
         }
-        require_once(ROOT . "/views/site/contacts.php");
+        require_once(ROOT . "/views/site/index.php");
 
         return true;    
     }    
@@ -55,5 +55,20 @@ class SiteController {
     public function actionAbout() {        
 
         require_once(ROOT . "/views/site/about.php");
+    }
+
+    public function actionSearch() {          
+        $categories = array();
+        $categories = Category::getCategoriesList();
+
+        $foundProducts = array();
+
+        if (isset($_POST["search"])) {            
+            $searchString = $_POST["search"];
+
+            $foundProducts = Product::Search($searchString);
+        }
+        
+        require_once(ROOT . "/views/product/search.php");
     }
 }

@@ -39,7 +39,7 @@ class Product
         // echo var_dump($categoryList);
 
         return $productsList; 
-    }
+    }    
 
     public static function Sorting($sort_op, $page = 1, $categoryId = false) {
         if ($categoryId) {             
@@ -322,6 +322,30 @@ class Product
             $products[$i]['name'] = $row['name'];
             $products[$i]['price'] = $row['price'];            
             $products[$i]['code'] = $row['code'];
+            $i++;
+        }
+        return $products;
+    }
+
+    // Поиск 
+    public static function Search($searchString) { 
+        $db = DB::getConnection();
+
+        $likeString = "%{$searchString}%";
+        
+        $sql = "select * from product where status = '1' and name like :search";
+        $result = $db->prepare($sql);
+        $result->bindParam(":search", $likeString, PDO::PARAM_STR);
+        $result->execute();
+
+        $products = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['name'] = $row['name'];
+            $products[$i]['price'] = $row['price'];
+            $products[$i]['code'] = $row['code'];
+            $products[$i]['is_new'] = $row['is_new'];
             $i++;
         }
         return $products;

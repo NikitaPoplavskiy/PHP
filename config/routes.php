@@ -16,7 +16,8 @@ return array(
     "cabinet/edit" => "cabinet/edit",
     "cabinet" => "cabinet/index",  
     "contacts" => "site/contacts",
-    "about" => "site/about",    
+    "about" => "site/about",
+    "search" => "site/search",
 
     "cart/add/([0-9]+)" => "cart/add/$1",
     "cart/addAjax/([0-9]+)" => "cart/addAjax/$1",
@@ -42,6 +43,10 @@ return array(
     "admin/order/update/([0-9]+)" => "adminOrder/update/$1",
     "admin/order/delete/([0-9]+)" => "adminOrder/delete/$1",
     "admin/order" => "adminOrder/index",
+
+    //Статистика
+    "admin/stat" => "adminStat/index",
+
     //Админка
     "admin" => "admin/index",
     "" => "site/index", // indexList в siteConroller
