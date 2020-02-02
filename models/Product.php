@@ -331,6 +331,8 @@ class Product
     public static function Search($searchString) { 
         $db = DB::getConnection();
 
+        $searchString = str_replace(['\\', '_', '%'], ['\\\\', '\\_', '\\%'], $searchString);;
+
         $likeString = "%{$searchString}%";
         
         $sql = "select * from product where status = '1' and name like :search";
