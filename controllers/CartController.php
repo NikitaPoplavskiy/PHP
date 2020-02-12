@@ -25,9 +25,24 @@ class CartController {
         echo Cart::countDec($id);
         return true;
     }
+
+    public function actionDeleteAjax($id) {
+        $productsInCart = Cart::deleteFromCart($id);
+
+        $basket = array();
+
+        $productsIds = array_keys($productsInCart);
+        $basket["products"] = Product::getProductsByIds($productsIds);
+
+        $basket["totalPrice"] = Cart::getTotalPrice($basket["products"]);
+
+        echo json_encode($basket);
+        // echo Cart::deleteFromCart($id);
+        return true;
+    }
+
     public function actionProductAdd($id) {
-        // echo json_encode(Cart::countInc($id));
-        echo Cart::countInc($id);
+        // echo json_encode(Cart::countInc($id));        
         return true;
     }
 
@@ -40,7 +55,7 @@ class CartController {
 
         if ($productsInCart) {
             $productsIds = array_keys($productsInCart);
-            $products = Product::getProductsIds($productsIds);
+            $products = Product::getProductsByIds($productsIds);
 
             $totalPrice = Cart::getTotalPrice($products);
         }                
@@ -67,7 +82,7 @@ class CartController {
 
             $productsInCart = Cart::getProducts();
             $productsIds = array_keys($productsInCart);
-            $products = Product::getProductsIds($productsIds);
+            $products = Product::getProductsByIds($productsIds);
             $totalPrice = Cart::getTotalPrice($products);
             $totalQuantity = Cart::countItems();
             
@@ -97,7 +112,7 @@ class CartController {
                 header("Location: /");
             } else {
                 $productsIds = array_keys($productsInCart);
-                $products = Product::getProductsIds($productsIds);
+                $products = Product::getProductsByIds($productsIds);
                 $totalPrice = Cart::getTotalPrice($products);
                 $totalQuantity = Cart::countItems();
 

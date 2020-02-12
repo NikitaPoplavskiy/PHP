@@ -47,7 +47,7 @@ class SiteController {
                 $isSend = true;
             }           
         }
-        require_once(ROOT . "/views/site/index.php");
+        require_once(ROOT . "/views/site/contacts.php");
 
         return true;    
     }    

@@ -301,8 +301,12 @@ class Product
         return $row["count"];
     }
 
-    public static function getProductsIds($idsArray) {
+    public static function getProductsByIds($idsArray) {        
         $products = array();
+
+        if (count($idsArray) == 0) {
+            return $products;
+        }         
 
         $db = DB::getConnection();
 

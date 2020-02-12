@@ -31,6 +31,15 @@ class Cart {
         return self::countItems();
     }
 
+    static function deleteFromCart($id) { 
+        $id = intval($id);
+
+        $productsInCart = array();
+        unset($_SESSION["products"][$id]);                
+        
+        return $_SESSION["products"];
+    }
+
     static function countDec($id) { 
         $id = intval($id);
 
@@ -43,12 +52,9 @@ class Cart {
 
         if (array_key_exists($id, $productsInCart)) {
             // Если есть, то уменьшаем количество 
-            if ($productsInCart[$id] > 0) {
+            if ($productsInCart[$id] > 1) {
                 $productsInCart[$id]--;
-            }
-            else {
-               unset($_SESSION["products"][$id]);
-            }             
+            }                       
         }
         $_SESSION["products"] = $productsInCart;
 

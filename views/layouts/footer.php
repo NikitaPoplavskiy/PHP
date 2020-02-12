@@ -186,17 +186,12 @@
 
 <script>
 	$(document).ready(function() {
-
 		$(".product_remove").click(function() {
 			var id = $(this).attr("data-id");
 			// var count = $(this).attr("count");
 			if (id) {
 				$.post("/cart/productRemove/" + id, {}, function(data) {
 					$("#product-count-" + id).html(data);
-					console.log($("#product-count-" + id).html());
-					if ($("#product-count-" + id).html() <= 0) {
-						$("#cart_tr").remove();
-					}
 				});
 			}
 			return false;
@@ -221,7 +216,7 @@
 		$("#checkout").click(function() {
 			var totalPrice = document.getElementById("total_price").innerHTML;
 			if (totalPrice <= 0) {
-				console.log(totalPrice);
+				// console.log(totalPrice);
 				alert('Корзина пуста');
 			} else {
 				location.href = "/cart/checkout";
@@ -263,22 +258,25 @@
 	});
 </script>
 
-<!-- TODO: Создать подвал для админки и переместить этот код туда -->
 <script>
 	$(document).ready(function() {
-		var data = {
-			// A labels array that can contain any sort of values
-			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-			// Our series array that contains series objects or in this case series data arrays
-			series: [
-				[5, 2, 4, 2, 0]
-			]
-		};
+		$(".delete_good").click(function() {
+			$("#confirm-delete").attr("data-id", $(this).attr("data-id"));
+		});
 
-		// Create a new line chart object where as first parameter we pass in a selector
-		// that is resolving to our chart container element. The Second parameter
-		// is the actual data object.
-		new Chartist.Line('.ct-chart', data);
+		$("#confirm-delete").click(function() {
+			var id = $(this).attr("data-id");				
+			if (id) {
+				$.post("/cart/deleteAjax/" + id, {}, function(data) {
+					$('.modal').modal("toggle");
+					$("#cart_tr-" + id).remove();					
+					var productInfo = JSON.parse(data);
+					console.log(productInfo.totalPrice);
+					$("#total_price").html(productInfo.totalPrice + " грн");
+				});
+			}
+			return false;
+		});
 	});
 </script>
 
