@@ -277,7 +277,7 @@
 			</div>
 		</div>
 		<!--/category-tab-->
-
+		<?php echo $product["description"]; ?>
 		<h2 class="title text-center">Рекомендуемые товары</h2>
 		<div class="recommended_items">
 			<div class="owl-carousel owl-theme text-center">

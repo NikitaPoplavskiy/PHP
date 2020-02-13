@@ -42,7 +42,8 @@ class CartController {
     }
 
     public function actionProductAdd($id) {
-        // echo json_encode(Cart::countInc($id));        
+        // echo json_encode(Cart::countInc($id)); 
+        echo Cart::countInc($id);
         return true;
     }
 

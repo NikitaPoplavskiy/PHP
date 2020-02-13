@@ -70,6 +70,7 @@ CREATE TABLE `product` (
   `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
 --
 -- Дамп данных таблицы `product`
 --
@@ -151,6 +152,23 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`) VALUES
 (4, 'Виктор Зинченко', 'zinchenko.us@gmail.com', '222222', 'admin'),
 (5, 'Сергей', 'serg@mail.com', '111111', ''),
 (6, 'Никита', 'adolphhitler@mail.com', '96e79218965eb72c92a549dd5a330112', 'admin');
+
+
+--
+-- Структура таблицы `user_recipes`
+--
+
+CREATE TABLE `user_recipes` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`user_id` INT(11) NOT NULL,
+	`date_created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`status` TINYINT(4) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1254014;
+
 
 --
 -- Индексы сохранённых таблиц

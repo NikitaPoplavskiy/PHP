@@ -41,8 +41,9 @@
 							<tr id="cart_tr-<?php echo $product["id"];?>">
 								<td><?php echo $product["code"]; ?></td>
 								<td>
-									<a href="/product/<?php echo $product["id"]; ?>"></a>
-									<?php echo $product["name"]; ?>
+									<a href="/product/<?php echo $product["id"]; ?>">
+										<?php echo $product["name"]; ?>
+									</a>
 								</td>
 								<td><?php echo $product["price"]; ?> грн</td>
 								<td>
@@ -51,7 +52,7 @@
 										<?php echo $productsInCart[$product["id"]]; ?>
 									</span>
 									<button class="product_add btn btn-default" data-id="<?php echo $product["id"]; ?>">+</button>
-									<a href="#" class="delete_good" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?php echo $product["id"]; ?>"><img src="/resources/img/delete_good.png" alt=""></a>
+									<a href="#"  style="color: Tomato; padding-left: 15px;" class="delete_good fa fa-times fa-lg" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?php echo $product["id"]; ?>"></a>									
 								</td>
 							</tr>
 						<?php endforeach; ?>
@@ -85,7 +86,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" id="confirm-delete" data-id="">Да</button>
+					<button type="button" class="btn btn-primary" style="margin-top: 0px" data-dismiss="modal" id="confirm-delete" data-id="">Да</button>
 				</div>
 			</div>
 		</div>

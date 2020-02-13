@@ -28,7 +28,7 @@ class Cart {
 
         // error_log(var_dump($_SESSION["products"]));
 
-        return self::countItems();
+        return $productsInCart[$id];
     }
 
     static function deleteFromCart($id) { 
