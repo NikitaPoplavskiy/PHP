@@ -225,6 +225,7 @@ class User
         $sql = "SELECT ur.`*`, us.name user_name, us.email user_email
                 FROM user_recipes AS ur
                 LEFT JOIN user AS us on us.id = ur.user_id
+                order by date_created desc
                 limit :limit offset :offset";
 
         $result = $db->prepare($sql);
