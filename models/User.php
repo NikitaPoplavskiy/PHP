@@ -1,7 +1,7 @@
 <?php
 
 class User
-{
+{    
 
     public static function register($name, $email, $password)
     {
@@ -213,5 +213,58 @@ class User
         $result->execute();
 
         return $db->lastInsertId();
+    }
+
+    public static function getRecipesList($options, $page = 1) {
+
+        $db = DB::getConnection();
+        
+        $offset = ($page - 1) * Product::SHOW_BY_DEFAULT;
+        $limit = Product::SHOW_BY_DEFAULT;
+
+        $sql = "SELECT ur.`*`, us.name user_name, us.email user_email
+                FROM user_recipes AS ur
+                LEFT JOIN user AS us on us.id = ur.user_id
+                limit :limit offset :offset";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(":limit", $limit, PDO::PARAM_INT);
+        $result->bindParam(":offset", $offset, PDO::PARAM_INT);        
+        $result->execute();
+        
+        $recipes = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $recipes[$i]['id'] = $row['id'];
+            $recipes[$i]['user_id'] = $row['user_id'];
+            $recipes[$i]['user_name'] = $row['user_name'];
+            $recipes[$i]['user_email'] = $row['user_email'];
+            $recipes[$i]['date_created'] = $row['date_created'];
+            $recipes[$i]['status'] = $row['status'];
+            $i++;
+        }
+        return $recipes;
+    }
+
+    public static function getTotalRecipes() {
+        $db = Db::getConnection();
+
+        $sql = "select count(id) as count from user_recipes";
+        $result = $db->prepare($sql);
+        $result->execute();
+
+        $row = $result->fetch();
+
+        return $row["count"];
+    }
+
+    public static function updateRecipeStatus($id, $status) {
+        $db = Db::getConnection();
+
+        $sql = "update user_recipes set status = :status where id = :id";
+        $result = $db->prepare($sql);
+        $result->bindParam(":status", $status, PDO::PARAM_INT);
+        $result->bindParam(":id", $id, PDO::PARAM_INT);
+        $result->execute();
     }
 }

@@ -9,11 +9,9 @@
 				</div>
 			</div>
 		</div>
-
+	</div>
 </footer>
 <!--/Footer-->
-
-
 
 <script src="/template/js/jquery.js"></script>
 <script src="/template/js/bootstrap.min.js"></script>
@@ -22,6 +20,8 @@
 <script src="/template/js/jquery.prettyPhoto.js"></script>
 <script src="/template/js/main.js"></script>
 <script src="/resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+<script src="http://malsup.github.com/jquery.cycle2.js"></script>
+<script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script>
 
 <script>
 	$(document).ready(function() {
@@ -123,13 +123,21 @@
 		// Create a new line chart object where as first parameter we pass in a selector
 		// that is resolving to our chart container element. The Second parameter
 		// is the actual data object.
-		new Chartist.Line('.ct-chart', data);
+		// new Chartist.Line('.ct-chart', data);
 	});
 </script>
 
-<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script-->
-<script src="http://malsup.github.com/jquery.cycle2.js"></script>
-<script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script>
+<script>
+	$(document).ready(function() {
+		 $(".recipe_image").click(function() {
+			$("#recipe").attr("aria-hidden", false);
+			var id = $(this).attr("data-id");
+			$("#recipe_image").attr("src","/upload/images/recipes/" + id + ".jpg");
+			return true;
+		});	
+	});
+</script>
+
 </body>
 
 </html>

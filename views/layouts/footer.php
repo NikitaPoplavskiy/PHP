@@ -203,15 +203,10 @@
 			if (id) {
 				$.post("/cart/productAdd/" + id, {}, function(data) {
 					$("#product-count-" + id).html(data);
-					/*console.log(JSON.stringify(data));
-					console.log(`Product ID: ${''id}` );
-					console.log(data['' + id]);
-					$("#product-count-" + id).html(data['' + id]);*/
 				});
 			}
 			return false;
 		});
-
 
 		$("#checkout").click(function() {
 			var totalPrice = document.getElementById("total_price").innerHTML;

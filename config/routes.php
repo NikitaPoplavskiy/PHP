@@ -29,7 +29,7 @@ return array(
     "cart/checkout$" => "cart/checkout",
     
 
-    //Управление товарами    
+    // Управление товарами    
     "admin/product/create" => "adminProduct/create",
     "admin/product/update/([0-9]+)" => "adminProduct/update/$1",
     "admin/product/delete/([0-9]+)" => "adminProduct/delete/$1",
@@ -41,16 +41,19 @@ return array(
     "admin/category/delete/([0-9]+)" => "adminCategory/delete/$1",
     "admin/category" => "adminCategory/index",
 
-    //Управление заказами    
+    // Управление заказами    
     "admin/order/view/([0-9]+)" => "adminOrder/view/$1",
     "admin/order/update/([0-9]+)" => "adminOrder/update/$1",
     "admin/order/delete/([0-9]+)" => "adminOrder/delete/$1",
     "admin/order" => "adminOrder/index",
 
-    //Статистика
+    // Управление рецептами
+    "admin/recipes/page-([0-9]+)" => "adminRecipes/index/$1",
+    // "category/([0-9]+)/page-([0-9]+)" => "catalog/category/$1/$2",
+    // Статистика
     "admin/stat" => "adminStat/index",
 
-    //Админка
+    // Админка
     "admin" => "admin/index",
     "" => "site/index", // indexList в siteConroller
         
