@@ -3,6 +3,18 @@
 	<div class="col-sm-9 padding-right">
 		<div class="features_items">
 			<h2 class="title text-center">Список рецептов всех пользователей</h2>
+			<div class="col-sm-3">
+				<div class="search_box pull-right">
+					<form id="search" action="/admin/search/page-1" method="post" enctype="multipart/form-data">
+						<input id="search_box" type="text" placeholder="Search" name="search" />
+						<select name="select">
+							<option value="name">По имени</option>
+							<option value="email">По email</option>							
+						</select>
+						<!--button type="submit"><i class="fa fa-search"></i></button-->
+					</form>
+				</div>
+			</div>
 			<table class="table-bordered table-striped table">
 				<tr>
 					<th>Id рецепта</th>
@@ -38,9 +50,8 @@
 			</table>
 		</div>
 		<?php echo $pagination->get(); ?>
-	</div>	
-
-	<!--MODAL-->	
+	</div>
+	<!--MODAL-->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
@@ -50,7 +61,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body" style="overflow-y:auto;">
 					<img id="recipe_image" src="" alt="">
 				</div>
 				<!--div class="modal-footer">

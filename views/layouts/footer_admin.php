@@ -138,6 +138,16 @@
 	});
 </script>
 
+<script>
+	$('#search_box').keypress(function(e) {
+		if (e.which == 13) {
+			$('form#search').submit();
+			console.log("success!");
+			return false; //<---- Add this line
+		}
+	});
+</script>
+
 </body>
 
 </html>

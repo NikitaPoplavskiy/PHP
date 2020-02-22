@@ -37,6 +37,12 @@
                     </form>
                 <?php else : ?>
                     <p>Нет загруженых рецептов</p>
+                    <h3>Загрузите новый рецепт</h3>
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="image" value="">
+                        <!--button type="submit" name="upload">Загрузить</button-->
+                        <input type="submit" name="submit" class="btn btn-default" value="Загрузить">
+                    </form>
                 <?php endif; ?>
             </div>
         </div>

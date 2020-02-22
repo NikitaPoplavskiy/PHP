@@ -62,7 +62,7 @@
 							<option value="priceasc">По увеличению цены</option>
 							<option value="pricedesc">По уменьшению цены</option>
 							<option value="alpha">по алфавиту</option>
-							<select>
+						<select>
 								<input type="submit" value="Отсортировать">
 					</form>
 

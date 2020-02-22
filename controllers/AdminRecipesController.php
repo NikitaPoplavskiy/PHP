@@ -14,13 +14,50 @@ class AdminRecipesController extends AdminBase {
         $recipesList = array();
         $options = array();
         $total = User::getTotalRecipes();
-        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, "page-");        
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, "page-");
+
+        /*$session_price = "priceasc";
+        $sort_op = "price ASC";*/        
+
         $recipesList = User::getRecipesList($options, $page);
         
 
         require_once(ROOT . "/views/admin_recipes/index.php");
         return true;
     }    
+
+    public function actionSearch($page = 1) {       
+
+        $foundRecipes = array();
+
+        $total = User::getTotalRecipes();
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, "page-");
+
+        if (isset($_POST["search"])) {            
+            $searchString = $_POST["search"];
+
+            if($_POST['select']=='email') {
+                $sql = "SELECT ur.*, us.name user_name, us.email user_email
+                FROM user_recipes AS ur
+                LEFT JOIN user AS us on us.id = ur.user_id
+                where us.email like :search
+                order by date_created desc
+                limit :limit offset :offset";
+              }              
+              else{
+                $sql = "SELECT ur.*, us.name user_name, us.email user_email
+                FROM user_recipes AS ur
+                LEFT JOIN user AS us on us.id = ur.user_id
+                where us.name like :search
+                order by date_created desc
+                limit :limit offset :offset";
+              }
+
+            $foundRecipes = Product::searchAdmin($searchString,$page,$sql);
+        }
+        
+        require_once(ROOT . "/views/admin_recipes/search_admin.php");
+    }
     
     public function actionDelete($id) {
 

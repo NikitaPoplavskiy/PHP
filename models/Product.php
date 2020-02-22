@@ -356,4 +356,34 @@ class Product
         }
         return $products;
     }
+
+    public static function searchAdmin($searchString, $page = 1, $sql) {
+        $db = DB::getConnection();
+
+        $offset = ($page - 1) * Product::SHOW_BY_DEFAULT;
+        $limit = Product::SHOW_BY_DEFAULT;
+
+        $searchString = str_replace(['\\', '_', '%'], ['\\\\', '\\_', '\\%'], $searchString);;
+
+        $likeString = "%{$searchString}%";                
+
+        $result = $db->prepare($sql);
+        $result->bindParam(":search", $likeString, PDO::PARAM_STR);    
+        $result->bindParam(":limit", $limit, PDO::PARAM_INT);
+        $result->bindParam(":offset", $offset, PDO::PARAM_INT);
+        $result->execute();
+
+        $recipes = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $recipes[$i]['id'] = $row['id'];
+            $recipes[$i]['user_name'] = $row['user_name'];
+            $recipes[$i]['user_email'] = $row['user_email'];
+            $recipes[$i]['date_created'] = $row['date_created'];
+            $recipes[$i]['status'] = $row['status'];
+            $i++;
+        }
+        return $recipes;
+
+    }
 }

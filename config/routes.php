@@ -48,13 +48,14 @@ return array(
     "admin/order" => "adminOrder/index",
 
     // Управление рецептами
-    "admin/recipes/page-([0-9]+)" => "adminRecipes/index/$1",
+    "admin/recipes/page-([0-9]+)" => "adminRecipes/index/$1",    
+    "admin/search/page-([0-9]+)" => "adminRecipes/search/$1",
     // "category/([0-9]+)/page-([0-9]+)" => "catalog/category/$1/$2",
     // Статистика
     "admin/stat" => "adminStat/index",
 
-    // Админка
-    "admin" => "admin/index",
+    // Админка    
+    "admin" => "admin/index",    
     "" => "site/index", // indexList в siteConroller
         
 );
