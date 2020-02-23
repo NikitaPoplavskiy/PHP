@@ -7,25 +7,27 @@ return array(
     //'products' => 'products/list', // actionList в  ProductsController
 
     "product/([0-9]+)" => "product/view/$1",
-    "catalog" => "catalog/index",
+    "catalog/?$" => "catalog/index",
     "category/([0-9]+)/page-([0-9]+)" => "catalog/category/$1/$2",
     "category/([0-9]+)" => "catalog/category/$1",
-    "user/register" => "user/register",
-    "user/login" => "user/login",
-    "user/logout" => "user/logout",
-    "cabinet/edit" => "cabinet/edit",
-    "cabinet" => "cabinet/index",  
-    "contacts" => "site/contacts",
-    "about" => "site/about",
-    "search" => "site/search",
+    "user/register/?$" => "user/register",
+    "user/login/?$" => "user/login",
+    "user/logout/?$" => "user/logout",
+    "cabinet/edit/?$" => "cabinet/edit",
+    "cabinet/history/?$" => "cabinet/history",
+    "cabinet/order/view/([0-9]+)" => "cabinet/view/$1",
+    "cabinet/?$" => "cabinet/index",      
+    "contacts/?$" => "site/contacts",
+    "about/?$" => "site/about",
+    "search/?$" => "site/search",
 
-    "cart$" => "cart/index",
+    "cart/?$" => "cart/index",
     "cart/add/([0-9]+)$" => "cart/add/$1",
     "cart/addAjax/([0-9]+)$" => "cart/addAjax/$1",    
     "cart/productRemove/([0-9]+)$" => "cart/productRemove/$1",
     "cart/productAdd/([0-9]+)$" => "cart/productAdd/$1",  
     "cart/deleteAjax/([0-9]+)$" => "cart/deleteAjax/$1",
-    "user/recipes$" => "user/recipes",    
+    "cabinet/recipes$" => "cabinet/recipes",
     "cart/checkout$" => "cart/checkout",
     
 
@@ -55,7 +57,7 @@ return array(
     "admin/stat" => "adminStat/index",
 
     // Админка    
-    "admin" => "admin/index",    
-    "" => "site/index", // indexList в siteConroller
+    "admin/?$" => "admin/index",    
+    "/?$" => "site/index", // indexList в siteConroller
         
 );

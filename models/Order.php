@@ -57,13 +57,21 @@ class Order {
         return $ordersList;
     }
 
-    public static function getOrder($id) { 
+    public static function getOrder($id, $userId = null) { 
         $db = DB::getConnection();
 
         $sql = "select * from product_order where id = :id";
 
+        if (!is_null($userId)) {
+            $sql .= " and user_id = :userid";
+        }
+
         $result = $db->prepare($sql);
         $result->bindParam(":id", $id, PDO::PARAM_STR);
+
+        if (!is_null($userId)) {
+            $result->bindParam(":userid", $userId, PDO::PARAM_STR);
+        }
         // error_log("Продукт удален $id");
         $result->execute();
 

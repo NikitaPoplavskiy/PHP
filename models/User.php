@@ -268,4 +268,16 @@ class User
         $result->bindParam(":id", $id, PDO::PARAM_INT);
         $result->execute();
     }
+
+    public static function getUserOrders($userId) {
+        $db = DB::getConnection();
+
+        $sql = "select * from product_order where user_id = :userId;";
+        $result = $db->prepare($sql);
+        $result->bindParam(":userId",$userId,PDO::PARAM_INT);
+        $result->execute();
+        $orderList = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        return $orderList;
+    }
 }

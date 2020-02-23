@@ -3,7 +3,7 @@
     spl_autoload_register(function($class_name) {
 
     // Массив, в котором хранятся названия папок, в которых находятся классы
-    $array_path = array("/models/","/components/","/db/");
+    $array_path = array("/models/","/components/","/db/","/controllers/");
 
     foreach ($array_path as $path) {
         // Формируем путь к нужному классу    

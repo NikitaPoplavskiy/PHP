@@ -19,6 +19,9 @@ class SiteController {
 
         return true;
     }
+    /**
+     * @param
+     */
 
     public function actionContacts() {        
         $email = '';

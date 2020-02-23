@@ -68,17 +68,18 @@
 							<?php endif; ?>
 							<h2><?php echo $product["name"]; ?></h2>
 							<p>ID: <?php echo $product["code"]; ?></p>
-							<img src="/template/images/product-details/rating.png" alt="" />
+							<!--img src="/template/images/product-details/rating.png" alt="" /-->
 							<span>
 								<span><?php echo $product["price"]; ?> грн</span>
-								<label>Количество:</label>
-								<input type="text" value="<?php echo Cart::countItems();?>"/>
+								<!--label>Количество:</label>
+								<input type="text" value="<?php echo Cart::countItems();?>"/-->
 								<!--button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button-->
-								<a href="#" class="btn btn-default add-to-cart" data-id=<?php echo $product["id"]; ?>><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
 							</span>
+							<br>
+							<a href="#" class="btn btn-default add-to-cart" data-id=<?php echo $product["id"]; ?>><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
 							<p><b>Наличие:</b>&nbsp;<?php echo ($product["availability"] > 0) ? "В наличии" : " Нет в наличии"; ?></p>
 
 							<p><b>Состояние:</b>&nbsp;<?php echo ($product["is_new"] > 0) ? "Новый" : "Не новый"; ?></p>

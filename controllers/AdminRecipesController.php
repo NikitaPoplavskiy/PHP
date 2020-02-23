@@ -53,10 +53,11 @@ class AdminRecipesController extends AdminBase {
                 limit :limit offset :offset";
               }
 
-            $foundRecipes = Product::searchAdmin($searchString,$page,$sql);
+            $foundRecipes = Product::searchAdmin($searchString, $page, $sql);
         }
         
         require_once(ROOT . "/views/admin_recipes/search_admin.php");
+        return true;
     }
     
     public function actionDelete($id) {

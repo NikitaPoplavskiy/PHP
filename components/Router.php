@@ -61,7 +61,7 @@ class Router {
                     }
                 }
 
-                if ($result != null) {
+                if (!is_null($result)) {
                     break;
                 }
             }

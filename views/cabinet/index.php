@@ -8,8 +8,8 @@
                 <h3>Привет, <?php echo $user["name"]; ?></h3>
                 <ul>
                     <li><a href="/cabinet/edit">Редактировать данные</a></li>
-                    <li><a href="/user/history">Список покупок</a></li>
-                    <li><a href="/user/recipes">Мои рецепты</a></li>
+                    <li><a href="/cabinet/history">Список покупок</a></li>
+                    <li><a href="/cabinet/recipes">Мои рецепты</a></li>
                 </ul>
 
             </div>            

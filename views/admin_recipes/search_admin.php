@@ -1,16 +1,18 @@
 <?php include ROOT . "/views/layouts/header_admin.php"; ?>
 <section>
-	<div class="col-sm-9 padding-right">
+	<div class="col-sm-12 padding-right">
 		<div class="features_items">
 			<h2 class="title text-center">Найдены такие рецепты</h2>
-			<div class="col-sm-3">
-				<div class="search_box pull-right">
-					<form id="search" action="/admin/search/page-1" method="post" enctype="multipart/form-data">
-						<input id="search_box" type="text" placeholder="Search" name="search"/>
-						<select name="select">
-							<option value="name">По имени</option>
-							<option value="email">По email</option>							
-						</select>
+			<div class="col-sm-3 pull-center">
+				<div class="search_box pull-right_">
+					<form id="search" action="/admin/search/page-1" method="post" class="container" enctype="multipart/form-data">
+						<div class="row">
+							<input class="col-md-4 col-sm-6 col-xs-6" id="search_box" type="text" placeholder="Search" name="search" />
+							<select class="col-md-4 col-sm-6 col-xs-6" name="select">
+								<option value="name">По имени</option>
+								<option value="email">По email</option>
+							</select>
+						</div>
 						<!--button type="submit"><i class="fa fa-search"></i></button-->
 					</form>
 				</div>
