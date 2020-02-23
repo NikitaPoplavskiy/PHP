@@ -57,6 +57,15 @@ class Order {
         return $ordersList;
     }
 
+    /**
+     * Возвращает данные по заказу по переданному идентификатору заказа.
+     * И, если задан идентификатор пользователя, то применяет по нему фильтр.
+     *
+     * @param  mixed $id Идентификатор заказа.
+     * @param  mixed $userId Идентификатор пользователя (опциональный).
+     *
+     * @return void
+     */
     public static function getOrder($id, $userId = null) { 
         $db = DB::getConnection();
 
