@@ -27,40 +27,42 @@
 				<h2 class="title text-center">Корзина</h2>
 				<?php if ($productsInCart) : ?>
 					<p>Вы выбрали такие товары</p>
-					<table class="table-bordered table-striped table" id="cart_table">
-						<tr>
-							<th>Код товара</th>
-							<th>Название</th>
-							<th>Стоимость</th>
-							<th>Количество</th>
-						</tr>
-						<?php foreach ($products as $product) : ?>
-							<?php if ($productsInCart[$product["id"]] <= 0) {
-								continue;
-							} ?>
-							<tr id="cart_tr-<?php echo $product["id"];?>">
-								<td><?php echo $product["code"]; ?></td>
-								<td>
-									<a href="/product/<?php echo $product["id"]; ?>">
-										<?php echo $product["name"]; ?>
-									</a>
-								</td>
-								<td><?php echo $product["price"]; ?> грн</td>
-								<td>
-									<button class="product_remove btn btn-default" data-id="<?php echo $product["id"]; ?>">-</button>
-									<span id="product-count-<?php echo $product["id"]; ?>">
-										<?php echo $productsInCart[$product["id"]]; ?>
-									</span>
-									<button class="product_add btn btn-default" data-id="<?php echo $product["id"]; ?>">+</button>
-									<a href="#"  style="color: Tomato; padding-left: 15px;" class="delete_good fa fa-times fa-lg" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?php echo $product["id"]; ?>"></a>									
-								</td>
+					<div style="overflow: auto;">
+						<table class="table-bordered table-striped table" id="cart_table">
+							<tr>
+								<th>Код товара</th>
+								<th>Название</th>
+								<th>Стоимость</th>
+								<th>Количество</th>
 							</tr>
-						<?php endforeach; ?>
-						<tr>
-							<td colspan="3">Общая стоимость</td>
-							<td id="total_price"><?php echo $totalPrice; ?> грн</td>
-						</tr>
-					</table>
+							<?php foreach ($products as $product) : ?>
+								<?php if ($productsInCart[$product["id"]] <= 0) {
+									continue;
+								} ?>
+								<tr id="cart_tr-<?php echo $product["id"]; ?>">
+									<td><?php echo $product["code"]; ?></td>
+									<td>
+										<a href="/product/<?php echo $product["id"]; ?>">
+											<?php echo $product["name"]; ?>
+										</a>
+									</td>
+									<td><?php echo $product["price"]; ?> грн</td>
+									<td>
+										<button class="product_remove btn btn-default" data-id="<?php echo $product["id"]; ?>">-</button>
+										<span id="product-count-<?php echo $product["id"]; ?>">
+											<?php echo $productsInCart[$product["id"]]; ?>
+										</span>
+										<button class="product_add btn btn-default" data-id="<?php echo $product["id"]; ?>">+</button>
+										<a href="#" style="color: Tomato; padding-left: 15px;" class="delete_good fa fa-times fa-lg" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?php echo $product["id"]; ?>"></a>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+							<tr>
+								<td colspan="3">Общая стоимость</td>
+								<td id="total_price"><?php echo $totalPrice;?> грн</td>
+							</tr>
+						</table>
+					</div>
 					<a type="button" id="checkout" class="btn btn-default">
 						Оформить заказ
 					</a>

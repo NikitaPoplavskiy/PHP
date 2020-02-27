@@ -1,4 +1,4 @@
-<footer id="footer">
+<footer id="footer" style="position: absolute; left: 0; right: 0; bottom: 0; height: 50px;">
 	<!--Footer-->
 	<div class="footer-top">
 		<!--div class="container">
@@ -167,6 +167,7 @@
 <script src="/template/js/jquery.prettyPhoto.js"></script>
 <script src="/template/js/main.js"></script>
 <script src="/resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+<!--script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script-->
 
 <script>
 	$(document).ready(function() {
@@ -210,14 +211,24 @@
 
 		$("#checkout").click(function() {
 			var totalPrice = document.getElementById("total_price").innerHTML;
-			if (totalPrice <= 0) {
+			// myArray = totalPrice.split(/([0-9]+)/);
+			var numbers = totalPrice.match(/\d+/g).map(Number);
+			if (numbers <= 0) {
 				// console.log(totalPrice);
-				alert('Корзина пуста');
+				// alert('Корзина пуста');
+				alertify.error('Корзина пуста!');
 			} else {
 				location.href = "/cart/checkout";
 			}
 		});
-
+		// alert(document.referrer);
+		/*$("#confirm-checkout").click(function() {
+			
+			if (document.referrer == "http://myshop.net/cart/checkout" && result == "true") {
+				alertify.success('Заказ успешно формлен!');
+			}
+		})*/
+		// alert(document.referrer);
 	});
 </script>
 
@@ -260,11 +271,11 @@
 		});
 
 		$("#confirm-delete").click(function() {
-			var id = $(this).attr("data-id");				
+			var id = $(this).attr("data-id");
 			if (id) {
 				$.post("/cart/deleteAjax/" + id, {}, function(data) {
 					$('.modal').modal("toggle");
-					$("#cart_tr-" + id).remove();					
+					$("#cart_tr-" + id).remove();
 					var productInfo = JSON.parse(data);
 					console.log(productInfo.totalPrice);
 					$("#total_price").html(productInfo.totalPrice + " грн");

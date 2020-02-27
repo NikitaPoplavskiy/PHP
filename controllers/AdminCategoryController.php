@@ -36,6 +36,7 @@ class AdminCategoryController extends AdminBase {
         }
         
         require_once(ROOT . "/views/admin_category/create.php");
+        return true;
     }
 
     public function actionUpdate($categoryId) {
@@ -62,6 +63,7 @@ class AdminCategoryController extends AdminBase {
         }
         
         require_once(ROOT . "/views/admin_category/update.php");
+        return true;
     }
 
     public function actionDelete($categoryId) {

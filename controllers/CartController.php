@@ -48,7 +48,7 @@ class CartController {
     }
 
     public function actionIndex() {
-
+        $valuta = " грн";
         $categories = array();
         $categories = Category::getCategoriesList();
 
@@ -72,6 +72,7 @@ class CartController {
             $userName = $_POST["name"];
             $userPhone = $_POST["phone"];
             $userComment = $_POST["comment"];
+            $result = false;
 
             $errors = false;
             if (!User::checkName($userName)) {
@@ -94,15 +95,16 @@ class CartController {
             }
             if ($errors == false) {
                 $result = Order::save($userName, $userPhone, $userComment, $userId, $productsInCart);
+
             }
 
             if ($result) {
-                $adminEmail = "nikitos06102001@gmail.com";
+                $adminEmail = "nik.s.poplavsky@gmail.com";
                 $message = "Заказ";
                 $subject = "Новый заказ";
                 // mail($adminEmail,$subject,$message);
 
-                // Cart::clear();
+                Cart::clear();                
             }
 
         } else {

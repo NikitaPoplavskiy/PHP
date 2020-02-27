@@ -58,12 +58,12 @@
 					<h2 class="title text-center">Последние товары</h2>
 					<form action="#" method="post">
 						<label>Сортировать товары</label>
-						<select name="price">
+						<select name="price" class="form-control">
 							<option value="priceasc">По увеличению цены</option>
 							<option value="pricedesc">По уменьшению цены</option>
 							<option value="alpha">по алфавиту</option>
 						<select>
-								<input type="submit" value="Отсортировать">
+							<input type="submit" class="btn btn-default" value="Отсортировать">
 					</form>
 
 					<?php foreach ($latestProducts as $product) : ?>

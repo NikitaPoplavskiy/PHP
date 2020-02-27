@@ -366,10 +366,9 @@ ul.sub-menu {
 *******Footer CSS******
 **************************/
 
-#footer {
+#footer {  
   background: #F0F0E9;
 }
-
 
 .footer-top .container {
   border-bottom: 1px solid #E0E0DA;

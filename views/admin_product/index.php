@@ -1,10 +1,13 @@
-<?php include ROOT."/views/layouts/header_admin.php"; ?>       	
-	<section>		
-		<div class="col-sm-9 padding-right">
-			<div class="features_items">
-				<h2 class="title text-center">Каталог товаров</h2>
-				<a href="/admin/product/create/" class="btn btn-default">Добавить товар</a>			
-				<table class="table-bordered table-striped table">
+<?php include ROOT . "/views/layouts/header_admin.php"; ?>
+<section>
+	<div class="col-sm-12 padding-right">
+		<div class="features_items">
+			<h2 class="title text-center">Каталог товаров</h2>
+			<a href="/admin/product/create/" class="btn btn-default">Добавить товар</a>
+			<div style="overflow: auto;">
+				<table class="table-bordered table-striped table" style="overflow-x:auto;">
+					<!--table id="dtHorizontalVerticalExample" class="table table-striped table-bordered table-sm " cellspacing="0"
+  width="100%"-->
 					<tr>
 						<th>Id товара</th>
 						<th>Артикул</th>
@@ -13,7 +16,7 @@
 						<th></th>
 						<th></th>
 					</tr>
-					<?php foreach ($productList as $product): ?>
+					<?php foreach ($productList as $product) : ?>
 						<tr>
 							<td><?php echo $product["id"]; ?></td>
 							<td>
@@ -31,5 +34,6 @@
 			</div>
 		</div>
 	</div>
-	</section>
-<?php include ROOT."/views/layouts/footer_admin.php"; ?>
+</section>
+
+<?php include ROOT . "/views/layouts/footer_admin.php"; ?>

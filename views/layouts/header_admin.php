@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 
 <head>
 	<meta charset="utf-8">
@@ -29,7 +29,7 @@
 </head>
 <!--/head-->
 
-<body>
+<body style="min-height:100%; position:relative; padding-bottom: 70px;">
 	<header id="header">
 		<!--header-->
 		<div class="header_top">

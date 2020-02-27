@@ -20,40 +20,42 @@
 			<?php if (count($foundRecipes) == 0) : ?>
 				<h1>Ничего не найдено</h1>
 			<?php else : ?>
-				<table class="table-bordered table-striped table">
-					<tr>
-						<th>Id рецепта</th>
-						<th>Имя пользователя</th>
-						<th>Email</th>
-						<th>Дата добавления</th>
-						<th>Статус</th>
-					</tr>
-					<?php foreach ($foundRecipes as $recipe) : ?>
+				<div style="overflow: auto;">
+					<table class="table-bordered table-striped table">
 						<tr>
-							<td><a data-toggle="modal" data-target="#exampleModal" href="#" class="recipe_image" data-id="<?php echo $recipe["id"]; ?>"><?php echo $recipe["id"]; ?></a></td>
-							<td>
-								<?php echo $recipe["user_name"]; ?>
-							</td>
-							<td>
-								<?php echo $recipe["user_email"]; ?>
-							</td>
-							<td>
-								<?php echo $recipe["date_created"]; ?>
-							</td>
-							<form action="" method="post">
-								<input type="hidden" name="recipe_id" value="<?php echo $recipe["id"]; ?>">
-								<td>
-									<select name="status" onchange="this.form.submit()">
-										<option value="0" <?php echo $recipe["status"] == 0 ? "selected" : "";  ?>>Рецепт в обработке</option>
-										<option value="1" <?php echo $recipe["status"] == 1 ? "selected" : "";  ?>>Рецепт действителен</option>
-										<option value="2" <?php echo $recipe["status"] == 2 ? "selected" : "";  ?>>Рецепт не действителен</option>
-									</select>
-								</td>
-							</form>
+							<th>Id рецепта</th>
+							<th>Имя пользователя</th>
+							<th>Email</th>
+							<th>Дата добавления</th>
+							<th>Статус</th>
 						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				</table>
+						<?php foreach ($foundRecipes as $recipe) : ?>
+							<tr>
+								<td><a data-toggle="modal" data-target="#exampleModal" href="#" class="recipe_image" data-id="<?php echo $recipe["id"]; ?>"><?php echo $recipe["id"]; ?></a></td>
+								<td>
+									<?php echo $recipe["user_name"]; ?>
+								</td>
+								<td>
+									<?php echo $recipe["user_email"]; ?>
+								</td>
+								<td>
+									<?php echo $recipe["date_created"]; ?>
+								</td>
+								<form action="" method="post">
+									<input type="hidden" name="recipe_id" value="<?php echo $recipe["id"]; ?>">
+									<td>
+										<select name="status" onchange="this.form.submit()">
+											<option value="0" <?php echo $recipe["status"] == 0 ? "selected" : "";  ?>>Рецепт в обработке</option>
+											<option value="1" <?php echo $recipe["status"] == 1 ? "selected" : "";  ?>>Рецепт действителен</option>
+											<option value="2" <?php echo $recipe["status"] == 2 ? "selected" : "";  ?>>Рецепт не действителен</option>
+										</select>
+									</td>
+								</form>
+							</tr>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					</table>
+				</div>
 		</div>
 		<?php echo $pagination->get(); ?>
 	</div>

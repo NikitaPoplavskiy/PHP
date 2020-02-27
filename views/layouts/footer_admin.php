@@ -1,6 +1,6 @@
-<footer id="footer">
+<footer id="footer" style="position: absolute; left: 0; right: 0; bottom: 0; height: 50px;">
 	<!--Footer-->
-	<div class="footer-top">		
+	<div class="footer-top">
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
@@ -40,7 +40,7 @@
 </script>
 
 <script>
-	$(document).ready(function() {		
+	$(document).ready(function() {
 
 		$(".product_remove").click(function() {
 			var id = $(this).attr("data-id");
@@ -129,12 +129,12 @@
 
 <script>
 	$(document).ready(function() {
-		 $(".recipe_image").click(function() {
+		$(".recipe_image").click(function() {
 			$("#recipe").attr("aria-hidden", false);
 			var id = $(this).attr("data-id");
-			$("#recipe_image").attr("src","/upload/images/recipes/" + id + ".jpg");
+			$("#recipe_image").attr("src", "/upload/images/recipes/" + id + ".jpg");
 			return true;
-		});	
+		});
 	});
 </script>
 

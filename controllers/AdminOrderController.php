@@ -51,6 +51,7 @@ class AdminOrderController extends AdminBase {
         }
 
         require_once(ROOT . "/views/admin_order/update.php");
+        return true;
     }
 
     public function actionView($id) {     

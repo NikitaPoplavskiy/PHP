@@ -2,6 +2,17 @@
 
 class Order {
 
+    /**
+     * Сохраняет в БД переданные данные
+     *
+     * @param  mixed $userName Имя пользователя
+     * @param  mixed $userPhone Номер телефона пользователя
+     * @param  mixed $userComment Комментарий пользователя
+     * @param  mixed $userId Идентификатор пользователя
+     * @param  mixed $productsInCart Товары, который заказал пользователь
+     *
+     * @return void
+     */
     public static function save($userName, $userPhone, $userComment, $userId, $productsInCart) {        
         $db = DB::getConnection();
 
@@ -30,6 +41,11 @@ class Order {
 
     }
 
+    /**
+     * Возвращает массив с информацией о всех заказах
+     *
+     * @return void
+     */
     public static function getOrders() {
         $db = DB::getConnection();
 
@@ -90,6 +106,13 @@ class Order {
         
     }
 
+    /**
+     * Возвращает список продуктов по переданным идентификаторам
+     *
+     * @param  mixed $idList массив идентификаторов
+     *
+     * @return void
+     */
     public static function getProductsByIds($idList) { 
         $db = DB::getConnection();
 
@@ -109,6 +132,13 @@ class Order {
         return $products;
     }
 
+    /**
+     * Удаляет заказ по идентификатору
+     *
+     * @param  mixed $id идентификатор заказа
+     *
+     * @return void
+     */
     public static function deleteOrderById($id) {
         $db = DB::getConnection();
 
@@ -120,6 +150,13 @@ class Order {
          $result->execute();
     }
 
+    /**
+     * Возвращает массив с обновленной информацией о заказе
+     *
+     * @param  mixed $options массив, который необходимо изменить
+     *
+     * @return void
+     */
     public static function updateOrderById($options) {
         $db = DB::getConnection();
 

@@ -21,14 +21,14 @@ class Cart {
             $productsInCart[$id]++; 
         } else {
             // Если нет, то создаем ключ и присваиваем начальное значение
-            $productsInCart[$id] = 1;
+            $productsInCart[$id] = 1;            
         }
 
         $_SESSION["products"] = $productsInCart;
 
         // error_log(var_dump($_SESSION["products"]));
 
-        return $productsInCart[$id];
+        return array_sum($productsInCart);
     }
 
     static function deleteFromCart($id) { 
@@ -72,7 +72,7 @@ class Cart {
         }
 
         if (array_key_exists($id, $productsInCart)) {
-            // Если есть, то уменьшаем количество
+            // Если есть, то увеличиваем количество
             $productsInCart[$id]++;
         }
         $_SESSION["products"] = $productsInCart;

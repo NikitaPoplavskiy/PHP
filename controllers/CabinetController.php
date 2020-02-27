@@ -21,7 +21,6 @@ class CabinetController
 
     public function actionEdit()
     {
-
         $userId = User::checkLogged();
 
         $user = User::getUserById($userId);
