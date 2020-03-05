@@ -160,14 +160,6 @@
 
 
 
-<script src="/template/js/jquery.js"></script>
-<script src="/template/js/bootstrap.min.js"></script>
-<script src="/template/js/jquery.scrollUp.min.js"></script>
-<script src="/template/js/price-range.js"></script>
-<script src="/template/js/jquery.prettyPhoto.js"></script>
-<script src="/template/js/main.js"></script>
-<script src="/resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-<!--script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script-->
 
 <script>
 	$(document).ready(function() {

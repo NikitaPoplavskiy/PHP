@@ -46,21 +46,38 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a class="logo" href="index.html"><img src="/template/images/home/logo2.png" alt="" /></a>
+							<a class="logo" href="index.html"><img src="/template/images/home/main_logo.png" alt="" /></a>
 						</div>
-						<div class="header-bottom">
-							<!--header-bottom-->
-							<div class="container">
-								<div class="row">
-									
-								</div>
-							</div>
-						</div>
-						<!--/header-bottom-->
 					</div>
 				</div>
 			</div>
 		</div>
 		<!--/header-middle-->
+		<div class="header-bottom">
+			<!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="mainmenu pull-left">
+						<ul class="nav navbar-nav collapse navbar-collapse">
+							<li><a href="/admin" class="active">Админ-панель</a></li>
+							<li class="dropdown"><a href="/admin/product">Управление товарами<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="/admin/product/create">Добавить товар</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a href="/admin/category">Управление категориями<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="/admin/category/create">Добавить категорию</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a href="/admin/order">Управление заказами<i class="fa fa-angle"></i></a>
+							<li class="dropdown"><a href="/admin/recipes/page-1">Управление рецептами<i class="fa fa-angle"></i></a>
+							<li class="dropdown"><a href="/admin/stat">Статистика<i class="fa fa-angle"></i></a>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/header-bottom-->		
 	</header>
 	<!--/header-->

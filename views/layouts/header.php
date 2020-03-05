@@ -43,6 +43,16 @@
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css" />
 	<!-- Bootstrap theme -->
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css" />
+
+	<script src="/template/js/jquery.js"></script>
+	<script defer src="/template/js/bootstrap.min.js"></script>
+	<script defer src="/template/js/jquery.scrollUp.min.js"></script>
+	<script defer src="/template/js/price-range.js"></script>
+	<script defer src="/template/js/jquery.prettyPhoto.js"></script>
+	<script defer src="/template/js/main.js"></script>
+	<script defer src="/resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+	<script defer src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
 </head>
 <!--/head-->
 
@@ -85,53 +95,47 @@
 						<div class="logo pull-left">
 							<a class="logo" href="/"><img src="/template/images/home/main_logo.png" alt="" /></a>
 						</div>
-						<div class="header-bottom">
-							<!--header-bottom-->
-							<div class="container">
-								<div class="row">
-									<div class="col-sm-9">
-										<div class="navbar-header">
-											<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-												<span class="sr-only">Toggle navigation</span>
-												<span class="icon-bar"></span>
-												<span class="icon-bar"></span>
-												<span class="icon-bar"></span>
-											</button>
-										</div>
-										<div class="mainmenu pull-left">
-											<ul class="nav navbar-nav collapse navbar-collapse">
-												<li><a href="/" class="active">Главная</a></li>
-												<li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
-													<ul role="menu" class="sub-menu">
-														<li><a href="/catalog/">Каталог</a></li>
-														<!--li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li-->
-													</ul>
-												</li>
-												<li class="dropdown"><a href="/blog/">Блог<i class="fa fa-angle-down_"></i></a>
-												</li>
-												<li><a href="/about/">О магазине</a></li>
-												<li><a href="/contacts/">Контакты</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="search_box pull-right">
-											<form id="search" action="/search" method="post" enctype="multipart/form-data">
-												<input id="search_box" type="text" placeholder="Search" name="search" />
-												<!--button type="submit"><i class="fa fa-search"></i></button-->
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--/header-bottom-->
 					</div>
-					<div class="col-sm-8">
+				</div>
+			</div>
+		</div>
+		<div class="header-bottom">
+			<!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li><a href="/" class="active">Главная</a></li>
+								<li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="/catalog/">Каталог</a></li>
+									</ul>
+								</li>
+								<li class="dropdown"><a href="/blog/">Блог<i class="fa fa-angle-down_"></i></a>
+								</li>
+								<li><a href="/about/">О магазине</a></li>
+								<li><a href="/contacts/">Контакты</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="search_box pull-right">
+							<form id="search" action="/search" method="post" enctype="multipart/form-data">
+								<input id="search_box" type="text" placeholder="Search" name="search" />
+								<!--button type="submit"><i class="fa fa-search"></i></button-->
+							</form>
+						</div>
+					</div>
+					<div class="col-sm-8 pull-right">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li>
@@ -153,6 +157,7 @@
 				</div>
 			</div>
 		</div>
+		<!--/header-bottom-->
 		<!--/header-middle-->
 	</header>
 	<!--/header-->

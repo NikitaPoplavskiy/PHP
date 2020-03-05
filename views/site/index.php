@@ -127,7 +127,7 @@
 					<h2 class="title text-center">Последние товары</h2>
 					<?php foreach ($latestProducts as $product) : ?>
 						<div class="col-sm-4">
-							<div class="product-image-wrapper">
+							<div class="product-image-wrapper" style="display: flex; justify-content: center;">
 								<div class="single-products">
 									<div class="productinfo text-center">
 										<a href="/product/<?php echo $product["id"]; ?>">

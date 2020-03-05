@@ -2,18 +2,25 @@
 
 <section>
     <div class="container">
-        <div class="row">             
-            <div class = "col-sm-4 col-sm-offset-4 padding-right">                        
-                <div class="signup-form"><!--sign up form-->
+        <div class="row">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/order">Управление заказами</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Просмотреть заказ</li>
+                </ol>
+            </nav>
+            <div class="col-sm-4 col-sm-offset-4 padding-right">
+                <div class="signup-form">
+                    <!--sign up form-->
                     <h2>Просмотр заказа #<?php echo $order["id"] ?></h2>
-                    <form action="#" method="post">                     
-                        <p>Номер заказа</p>   
+                    <form action="#" method="post">
+                        <p>Номер заказа</p>
                         <p><?php echo $order["id"]; ?></p>
                         <p>Имя покупателя</p>
                         <p><?php echo $order["user_name"]; ?></p>
                         <p>Телефон покупателя</p>
                         <p><?php echo $order["user_phone"]; ?></p>
-                        <p>Комментарий клиента</p>                        
+                        <p>Комментарий клиента</p>
                         <p><?php echo $order["user_comment"]; ?></p>
                         <p>Id Клиента</p>
                         <p><?php echo $order["user_id"]; ?></p>
@@ -22,32 +29,33 @@
                         <p>Статус заказа</p>
                         <p><?php echo AdminOrderController::orderStatusToString($order["status"]); ?></p>
                         <p>Дата заказа</p>
-                        <p><?php echo $order["date"]; ?></p>                        
+                        <p><?php echo $order["date"]; ?></p>
                     </form>
                     <table class="table-bordered table-striped table">
-						<tr>
-							<th>Код товара</th>
-							<th>Название</th>
-							<th>Стоимость</th>
-							<th>Количество</th>
-						</tr>
-						<?php foreach ($products as &$product): ?>
-							<tr>
-								<td><?php echo $product["code"]; ?></td>
-								<td>
-									<a href="/product/<?php echo $product["id"]; ?>"></a>
-									<?php echo $product["name"]; ?>
-								</td>
+                        <tr>
+                            <th>Код товара</th>
+                            <th>Название</th>
+                            <th>Стоимость</th>
+                            <th>Количество</th>
+                        </tr>
+                        <?php foreach ($products as &$product) : ?>
+                            <tr>
+                                <td><?php echo $product["code"]; ?></td>
+                                <td>
+                                    <a href="/product/<?php echo $product["id"]; ?>"></a>
+                                    <?php echo $product["name"]; ?>
+                                </td>
                                 <td><?php echo $product["price"]; ?></td>
                                 <td><?php echo $product["quantity"]; ?></td>
-							</tr>
-						<?php endforeach; ?>						
-				</table>
-                </div><!--/sign up form-->                        
-            <br/>
-            <br/>                       
-            </div>                        
-        </div>        
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+                <!--/sign up form-->
+                <br />
+                <br />
+            </div>
+        </div>
     </div>
 </section>
 

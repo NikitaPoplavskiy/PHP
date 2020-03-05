@@ -74,6 +74,7 @@
 										<a href="/product/<?php echo $product["id"]; ?>">
 											<img src="<?php echo Product::getProductImage($product["id"]); ?>" alt="" />
 											<h2><?php echo $product["price"]; ?> грн</h2>
+											<h2> <?php echo $product["discount_price"]?> грн</h2>
 											<p>
 												<?php echo $product["name"]; ?>
 											</p>

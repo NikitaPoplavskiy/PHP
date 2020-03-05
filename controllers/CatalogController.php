@@ -26,14 +26,9 @@ class CatalogController
         // echo "Категория: " . $page;
 
         $categories = array();
-        $categories = Category::getCategoriesList();
-
+        $categories = Category::getCategoriesList();    
+        
         $latestProducts = array();
-        $latestProducts = Product::getProductsListByCategory($categoryId, $page);
-
-        $total = Product::getTotalProductsInCategory($categoryId);
-
-        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, "page-");
 
         $session_price = "priceasc";
         $sort_op = "price ASC";
@@ -58,7 +53,13 @@ class CatalogController
                 $sort_op = "price ASC";
         }
 
-        $latestProducts = Product::Sorting($sort_op, $page, $categoryId);
+        $latestProducts = Product::getProductsListByCategory($sort_op, $categoryId, $page);
+        
+        $total = Product::getTotalProductsInCategory($categoryId);
+
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, "page-");        
+
+        // $latestProducts = Product::Sorting($sort_op, $page, $categoryId);
 
         require_once(ROOT . "/views/catalog/category.php");
 

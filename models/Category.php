@@ -22,7 +22,7 @@ class Category
 
         $result->execute();
         //$result = $db->query("SELECT id,name FROM category ORDER BY sort_order ASC");
-        
+
         $i = 0;
         while ($row = $result->fetch()) {
             $categoryList[$i]['id'] = $row['id'];
@@ -32,11 +32,12 @@ class Category
 
         // echo var_dump($categoryList);
 
-        return $categoryList;        
+        return $categoryList;
     }
 
-    
-    public static function getAdminCategoryList() {
+
+    public static function getAdminCategoryList()
+    {
         $db = DB::getConnection();
 
         $categoryList = array();
@@ -49,7 +50,7 @@ class Category
 
         $result->execute();
         //$result = $db->query("SELECT id,name FROM category ORDER BY sort_order ASC");
-        
+
         $i = 0;
         while ($row = $result->fetch()) {
             $categoryList[$i]['id'] = $row['id'];
@@ -61,10 +62,11 @@ class Category
 
         // echo var_dump($categoryList);
 
-        return $categoryList; 
+        return $categoryList;
     }
 
-    public static function addCategory($options) {
+    public static function addCategory($options)
+    {
         $db = DB::getConnection();
 
         $sql = "insert into category (name,sort_order,status) values (:name,:sort_order,:status)";
@@ -73,16 +75,17 @@ class Category
 
         $result->bindParam(":name", $options["name"], PDO::PARAM_STR);
         $result->bindParam(":sort_order", $options["sort_order"], PDO::PARAM_STR);
-        $result->bindParam(":status", $options["status"], PDO::PARAM_STR);        
+        $result->bindParam(":status", $options["status"], PDO::PARAM_STR);
 
         if ($result->execute()) {
             return $db->lastInsertId();
-        }        
-                            
-        return 0;        
+        }
+
+        return 0;
     }
 
-    public static function updateCategory($options) {
+    public static function updateCategory($options)
+    {
         $db = DB::getConnection();
 
         $sql = "update category set name = :name, sort_order = :sort_order, status = :status where id = :id";
@@ -92,16 +95,17 @@ class Category
         $result->bindParam(":id", $options["id"], PDO::PARAM_STR);
         $result->bindParam(":name", $options["name"], PDO::PARAM_STR);
         $result->bindParam(":sort_order", $options["sort_order"], PDO::PARAM_STR);
-        $result->bindParam(":status", $options["status"], PDO::PARAM_STR);        
+        $result->bindParam(":status", $options["status"], PDO::PARAM_STR);
 
         if ($result->execute()) {
             return Category::getCategoryById($options["id"]);
-        }        
+        }
 
         return 0;
     }
 
-    public static function deleteCategoryById($categoryId) {
+    public static function deleteCategoryById($categoryId)
+    {
         $db = DB::getConnection();
 
         $sql = "delete from category where id = :id";
@@ -109,12 +113,13 @@ class Category
         $result = $db->prepare($sql);
         $result->bindParam(":id", $categoryId, PDO::PARAM_STR);
         // error_log("Продукт удален $id");
-         $result->execute();    
+        $result->execute();
     }
 
-    public static function getCategoryById($categoryId) { 
+    public static function getCategoryById($categoryId)
+    {
         if ($categoryId) {
-            $db = Db::getConnection();            
+            $db = Db::getConnection();
 
             $sql = "select * from category where id = :categoryId";
 
@@ -123,12 +128,10 @@ class Category
             $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
 
             $result->execute();
-                      
-            $category = $result->fetch();            
-            
+
+            $category = $result->fetch();
+
             return $category;
         }
     }
-
-
 }
