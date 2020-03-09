@@ -62,8 +62,8 @@
 							<option value="priceasc">По увеличению цены</option>
 							<option value="pricedesc">По уменьшению цены</option>
 							<option value="alpha">по алфавиту</option>
-						<select>
-							<input type="submit" class="btn btn-default" value="Отсортировать">
+							<select>
+								<input type="submit" class="btn btn-default" value="Отсортировать">
 					</form>
 
 					<?php foreach ($latestProducts as $product) : ?>
@@ -73,8 +73,18 @@
 									<div class="productinfo text-center" style="width:237.5px; height:458.5px;">
 										<a href="/product/<?php echo $product["id"]; ?>">
 											<img src="<?php echo Product::getProductImage($product["id"]); ?>" alt="" />
-											<h2><?php echo $product["price"]; ?> грн</h2>
-											<h2> <?php echo $product["discount_price"]?> грн</h2>
+											<?php if ($product["discount_price"] == false) : ?>
+												<h2><?php echo $product["price"]; ?> грн</h2>
+											<?php else : ?>
+												<div class="style-4">
+													<del>
+														<span class="amount"><h3><?php echo $product["price"]; ?> грн</h3></span>
+													</del>
+													<div>
+														<h2><?php echo $product["discount_price"] ?> грн</h2>
+											</div>
+												</div>												
+											<?php endif; ?>
 											<p>
 												<?php echo $product["name"]; ?>
 											</p>
@@ -102,7 +112,7 @@
 								</div-->
 							</div>
 						</div>
-					<?php endforeach; ?>					
+					<?php endforeach; ?>
 				</div>
 				<?php echo $pagination->get(); ?>
 			</div>
