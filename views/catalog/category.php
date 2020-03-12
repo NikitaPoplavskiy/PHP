@@ -78,12 +78,14 @@
 											<?php else : ?>
 												<div class="style-4">
 													<del>
-														<span class="amount"><h3><?php echo $product["price"]; ?> грн</h3></span>
+														<span class="amount">
+															<h3><?php echo $product["price"]; ?> грн</h3>
+														</span>
 													</del>
 													<div>
 														<h2><?php echo $product["discount_price"] ?> грн</h2>
-											</div>
-												</div>												
+													</div>
+												</div>
 											<?php endif; ?>
 											<p>
 												<?php echo $product["name"]; ?>

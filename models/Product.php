@@ -39,7 +39,7 @@ class Product
         // echo var_dump($categoryList);
 
         return $productsList;
-    }    
+    }
 
     public static function addProduct($options)
     {
@@ -198,7 +198,22 @@ class Product
             $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
             $db = Db::getConnection();
-            $sql = "select id, name, price, is_new from product where status = 1 and category_id = :categoryId order by $sort_op limit " . self::SHOW_BY_DEFAULT . " offset $offset";
+            // $sql = "select id, name, price, is_new from product where status = 1 and category_id = :categoryId order by $sort_op limit " . self::SHOW_BY_DEFAULT . " offset $offset";
+
+            // Запрос возвращает спискок продуктов со скидками
+            $sql = "select pr.id, pr.name, pr.price, pr.is_new,
+            prod.date_start pr_date_start, prod.date_end pr_date_end, prod.item_id pr_item_id, prod.item_type pr_item_type, prod.discount pr_discount,
+            proc.date_start cat_date_start, proc.date_end cat_date_end, proc.item_id cat_item_id, proc.item_type cat_item_type, proc.discount cat_discount
+            from product pr
+            LEFT JOIN promotions_and_discounts prod
+            ON pr.id = prod.item_id AND prod.item_type = 'P' AND prod.date_start <= NOW()  and prod.date_end >= NOW()
+            LEFT JOIN promotions_and_discounts proc
+            ON pr.category_id = proc.item_id AND proc.item_type = 'C' AND proc.date_start <= NOW()  and proc.date_end >= NOW() 
+            where pr.status = 1 and category_id = :categoryId 
+            order by $sort_op 
+            limit " . self::SHOW_BY_DEFAULT . " 
+            offset $offset;";
+
             $result = $db->prepare($sql);
             $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
             $result->execute();
@@ -209,18 +224,29 @@ class Product
 
             $products = array();
             $i = 0;
-            while ($row = $result->fetch()) {                        
+            while ($row = $result->fetch()) {
                 $products[$i]['id'] = $row['id'];
                 $products[$i]['name'] = $row['name'];
-                $products[$i]['price'] = $row['price'];                
+                $products[$i]['price'] = $row['price'];
                 $products[$i]['is_new'] = $row['is_new'];
                 $products[$i]['discount_price'] = false;
-                $product_dis =  self::checkProductDiscount($row['id']);
-                if ($product_dis != false) {
+                // $product_dis =  self::checkProductDiscount($row['id']);
+                /*if ($product_dis != false) {
                     $products[$i]['discount_price'] =  $products[$i]['price'] - (($products[$i]['price']/100) * $product_dis['discount']);
                     $products[$i]['discount_date_end'] = $product_dis['date_end'];
                     $products[$i]['discount'] = $product_dis['discount'];
-                }                
+                }*/
+
+                if (!is_null($row["pr_discount"])) {
+                    $products[$i]['discount_price'] =  $products[$i]['price'] - (($products[$i]['price'] / 100) * $row['pr_discount']);
+                    $products[$i]['discount_date_end'] = $row['pr_date_end'];
+                    $products[$i]['discount'] = $row['pr_discount'];
+                } elseif (!is_null($row["cat_discount"])) {
+                    $products[$i]['discount_price'] =  $products[$i]['price'] - (($products[$i]['price'] / 100) * $row['cat_discount']);
+                    $products[$i]['discount_date_end'] = $row['cat_date_end'];
+                    $products[$i]['discount'] = $row['cat_discount'];
+                }
+
                 $i++;
             }
             // echo var_dump($categoryList);
@@ -404,7 +430,8 @@ class Product
         return $recipes;
     }
 
-    public static function checkProductDiscount($productId) {
+    /* public static function checkProductDiscount($productId)
+    {
 
         $items = self::getProductDiscount($productId, 'P');
 
@@ -419,7 +446,8 @@ class Product
         return false;
     }
 
-    public static function getProductDiscount($productId, $itemType) {
+    public static function getProductDiscount($productId, $itemType)
+    {
 
         $products = array();
         $db = Db::getConnection();
@@ -431,16 +459,16 @@ class Product
         where pr.id = :productId and pad.item_type = :itemType and pad.date_start <= NOW()  and pad.date_end >= NOW();";
 
         $result = $db->prepare($sql);
-        
+
         $result->bindParam(":productId", $productId, PDO::PARAM_INT);
         $result->bindParam(":itemType", $itemType, PDO::PARAM_STR_CHAR);
 
         $result->execute();
-        
+
         $result->setFetchMode(PDO::FETCH_ASSOC);
 
         $discounts = $result->fetchAll();
 
-        return $discounts;        
-    }
+        return $discounts;
+    }*/
 }
