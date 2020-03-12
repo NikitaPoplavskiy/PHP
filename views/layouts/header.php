@@ -52,6 +52,7 @@
 	<script defer src="/template/js/main.js"></script>
 	<script defer src="/resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
 	<script defer src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+	<script defer src="/components/main.js"></script>
 
 </head>
 <!--/head-->

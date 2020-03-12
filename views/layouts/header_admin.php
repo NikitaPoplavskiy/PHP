@@ -26,6 +26,17 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/template/images/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/template/images/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="/template/images/ico/apple-touch-icon-57-precomposed.png">
+
+	<script src="/template/js/jquery.js"></script>
+	<script defer src="/template/js/bootstrap.min.js"></script>
+	<script defer src="/template/js/jquery.scrollUp.min.js"></script>
+	<script defer src="/template/js/price-range.js"></script>
+	<script defer src="/template/js/jquery.prettyPhoto.js"></script>
+	<script defer src="/template/js/main.js"></script>
+	<script defer src="/resources/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+	<script defer src="http://malsup.github.com/jquery.cycle2.js"></script>
+	<script defer src="http://malsup.github.io/jquery.cycle2.carousel.js"></script>
+	<script defer src="/components/admin.js"></script>
 </head>
 <!--/head-->
 
@@ -78,6 +89,6 @@
 				</div>
 			</div>
 		</div>
-		<!--/header-bottom-->		
+		<!--/header-bottom-->
 	</header>
 	<!--/header-->
