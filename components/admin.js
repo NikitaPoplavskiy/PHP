@@ -13,7 +13,11 @@ $(document).ready(function () {
     });
 });
 
-
+// Инициализация компонента Bootstrap dateTimePicker
+/*$(document).ready(function () {
+    $('#sandbox-container .input-group.date').datepicker({
+    });
+});*/
 
 $(document).ready(function () {
 

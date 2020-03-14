@@ -56,6 +56,11 @@ return array(
     // Статистика
     "admin/stat" => "adminStat/index",
 
+
+    // Управление скидками
+    "admin/discount/create" => "adminDiscount/create",
+    "admin/discount" => "adminDiscount/index",
+    
     // Админка    
     "admin/?$" => "admin/index",    
     "/?$" => "site/index", // indexList в siteConroller

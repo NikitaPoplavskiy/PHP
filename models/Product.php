@@ -471,4 +471,39 @@ class Product
 
         return $discounts;
     }*/
+
+    public static function getDiscountList() {
+        $db = Db::getConnection();
+
+        $sql = "SELECT * from promotions_and_discounts;";
+        
+        $result = $db->prepare($sql);
+        $result->execute();
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        $discountsList = array();
+        $discountsList = $result->fetchAll();
+
+        return $discountsList;
+    }
+
+    public static function addDiscount($options) {
+        $db = Db::getConnection();
+
+        $sql = "insert into promotions_and_discounts (name,date_start,date_end,item_type,item_id,discount) values (:name,:date_start,:date_end,:item_type,:item_id,:discount)";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(":name", $options["name"], PDO::PARAM_INT);
+        $result->bindParam(":date_start", $options["date_start"], PDO::PARAM_INT);
+        $result->bindParam(":date_end", $options["date_end"], PDO::PARAM_INT);
+        $result->bindParam(":item_type", $options["item_type"], PDO::PARAM_INT);
+        $result->bindParam(":item_id", $options["item_id"], PDO::PARAM_INT);
+        $result->bindParam(":discount", $options["discount"], PDO::PARAM_INT);
+
+        if ($result->execute()) {
+            return $db->lastInsertId();
+        }
+
+        return 0;
+    }
 }

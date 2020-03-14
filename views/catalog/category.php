@@ -69,7 +69,7 @@
 					<?php foreach ($latestProducts as $product) : ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
-								<div class="single-products">
+								<div class="single-products" style="height:400px;">
 									<div class="productinfo text-center" style="width:237.5px; height:458.5px;">
 										<a href="/product/<?php echo $product["id"]; ?>">
 											<img src="<?php echo Product::getProductImage($product["id"]); ?>" alt="" />
@@ -77,10 +77,8 @@
 												<h2><?php echo $product["price"]; ?> грн</h2>
 											<?php else : ?>
 												<div class="style-4">
-													<del>
-														<span class="amount">
-															<h3><?php echo $product["price"]; ?> грн</h3>
-														</span>
+													<del>														
+														<h3><?php echo $product["price"]; ?> грн</h3>														
 													</del>
 													<div>
 														<h2><?php echo $product["discount_price"] ?> грн</h2>
