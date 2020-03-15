@@ -32,7 +32,7 @@
                         <p>Id элемена</p>
                         <input type="text" name="item_id" placeholder="Id элемента" value="<?php echo $item_id; ?>" />                        
                         <p>Скидка (в %)</p>
-                        <input type="text" name="discount" placeholder="Скидка" maxlength="2" value="<?php echo $discount; ?>" />
+                        <input type="text" name="discount" placeholder="Скидка" maxlength="2" value="<?php echo $discount_; ?>" />
                         <input type="submit" name="submit" class="btn btn-default" value="Сохранить">
                     </form>
                 </div>

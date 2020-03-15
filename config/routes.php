@@ -53,12 +53,14 @@ return array(
     "admin/recipes/page-([0-9]+)" => "adminRecipes/index/$1",    
     "admin/search/page-([0-9]+)" => "adminRecipes/search/$1",
     // "category/([0-9]+)/page-([0-9]+)" => "catalog/category/$1/$2",
+
     // Статистика
     "admin/stat" => "adminStat/index",
 
-
     // Управление скидками
     "admin/discount/create" => "adminDiscount/create",
+    "admin/discount/delete/([0-9]+)" => "adminDiscount/delete/$1",
+    "admin/discount/update/([0-9]+)" => "adminDiscount/update/$1",
     "admin/discount" => "adminDiscount/index",
     
     // Админка    

@@ -493,17 +493,65 @@ class Product
         $sql = "insert into promotions_and_discounts (name,date_start,date_end,item_type,item_id,discount) values (:name,:date_start,:date_end,:item_type,:item_id,:discount)";
 
         $result = $db->prepare($sql);
-        $result->bindParam(":name", $options["name"], PDO::PARAM_INT);
-        $result->bindParam(":date_start", $options["date_start"], PDO::PARAM_INT);
-        $result->bindParam(":date_end", $options["date_end"], PDO::PARAM_INT);
-        $result->bindParam(":item_type", $options["item_type"], PDO::PARAM_INT);
+        $result->bindParam(":name", $options["name"], PDO::PARAM_STR);
+        $result->bindParam(":date_start", $options["date_start"], PDO::PARAM_STR);
+        $result->bindParam(":date_end", $options["date_end"], PDO::PARAM_STR);
+        $result->bindParam(":item_type", $options["item_type"], PDO::PARAM_STR_CHAR);
         $result->bindParam(":item_id", $options["item_id"], PDO::PARAM_INT);
         $result->bindParam(":discount", $options["discount"], PDO::PARAM_INT);
 
-        if ($result->execute()) {
-            return $db->lastInsertId();
-        }
+        $result->execute();
 
-        return 0;
+        return true;
+    }
+
+    public static function deleteDiscountById($id) {
+        $db = DB::getConnection();
+
+        $sql = "delete from promotions_and_discounts where id = :id";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(":id", $id, PDO::PARAM_STR);
+
+        $result->execute();
+
+        return true;
+    }
+
+    public static function getDiscountById($id) {
+        $db = DB::getConnection();
+
+        $sql = "select * from promotions_and_discounts where id = :id;";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(":id",$id,PDO::PARAM_INT);
+
+        $result->execute();
+
+        $discount = $result->fetch();
+
+        return $discount;
+
+    }
+
+    public static function updateDiscount($options) {
+        $db = DB::getConnection();
+
+        $sql = "update promotions_and_discounts set name = :name, date_start = :date_start, date_end = :date_end, item_id = :item_id, item_type = :item_type, discount = :discount where id = :id";
+
+        $result = $db->prepare($sql);
+
+        $result->bindParam(":id",$options["id"],PDO::PARAM_STR);
+        $result->bindParam(":name",$options["name"],PDO::PARAM_STR);
+        $result->bindParam(":date_start",$options["date_start"],PDO::PARAM_STR);
+        $result->bindParam(":date_end",$options["date_end"],PDO::PARAM_STR);
+        $result->bindParam(":item_id",$options["item_id"],PDO::PARAM_INT);
+        $result->bindParam(":item_type",$options["item_type"],PDO::PARAM_STR_CHAR);
+        $result->bindParam(":discount",$options["discount"],PDO::PARAM_INT);
+
+        $result->execute();
+
+        return true;
+
     }
 }
