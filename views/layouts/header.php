@@ -121,7 +121,7 @@
 										<li><a href="/catalog/">Каталог</a></li>
 									</ul>
 								</li>
-								<li class="dropdown"><a href="/blog/">Блог<i class="fa fa-angle-down_"></i></a>
+								<li class="dropdown"><a href="/discounts/page-1">Скидки<i class="fa fa-angle-down_"></i></a>
 								</li>
 								<li><a href="/about/">О магазине</a></li>
 								<li><a href="/contacts/">Контакты</a></li>

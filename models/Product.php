@@ -472,10 +472,27 @@ class Product
         return $discounts;
     }*/
 
-    public static function getDiscountList() {
+    public static function getDiscountList($page = 1) {
         $db = Db::getConnection();
 
-        $sql = "SELECT * from promotions_and_discounts;";
+        $offset = ($page - 1) * Product::SHOW_BY_DEFAULT;
+
+        $sql = "SELECT *,
+        case 
+            when prom.item_type = 'P' then (
+                SELECT NAME 
+                FROM product AS pr
+                WHERE prom.item_id = pr.id
+            )
+            ELSE (
+                SELECT name
+                FROM category cat
+                WHERE prom.item_id = cat.id
+            )
+        END AS item_name
+        from promotions_and_discounts as prom
+        limit " . Product::SHOW_BY_DEFAULT . " 
+        offset $offset;";
         
         $result = $db->prepare($sql);
         $result->execute();
@@ -553,5 +570,45 @@ class Product
 
         return true;
 
+    }
+
+    public static function getTotalDiscounts() {
+        $db = DB::getConnection();
+
+        $sql = "select count(*) as count from promotions_and_discounts order by id desc;";
+
+        $result = $db->prepare($sql);
+
+        $result->execute();
+
+        $row = $result->fetch();
+
+        return $row["count"];
+    }
+
+    public static function getProductsWithDiscounts($page = 1) {
+        $db = DB::getConnection();
+
+        $offset = ($page - 1) * Product::SHOW_BY_DEFAULT;
+        
+        $sql = "select pr.id, pr.name, pr.price, pr.is_new,
+        prod.date_start pr_date_start, prod.date_end pr_date_end, prod.item_id pr_item_id, prod.item_type pr_item_type, prod.discount pr_discount,
+        proc.date_start cat_date_start, proc.date_end cat_date_end, proc.item_id cat_item_id, proc.item_type cat_item_type, proc.discount cat_discount
+        from product pr
+        LEFT JOIN promotions_and_discounts prod
+        ON pr.id = prod.item_id AND prod.item_type = 'P' AND prod.date_start <= NOW()  and prod.date_end >= NOW()
+        LEFT JOIN promotions_and_discounts proc
+        ON pr.category_id = proc.item_id AND proc.item_type = 'C' AND proc.date_start <= NOW()  and proc.date_end >= NOW() 
+        where pr.status = 1 and (prod.id is not null or proc.id is not null)
+        limit " . self::SHOW_BY_DEFAULT . " 
+        offset $offset;";
+
+        $result = $db->prepare($sql);
+
+        $result->execute();
+
+        $discount = $result->fetchAll();
+
+        return $discount;
     }
 }

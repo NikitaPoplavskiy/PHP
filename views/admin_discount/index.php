@@ -27,8 +27,6 @@
 		<a href="/admin/discount/create/" class="btn btn-default">Добавить скидку</a>
 		<div style="overflow: auto;">
 			<table class="table-bordered table-striped table" style="overflow-x:auto;">
-				<!--table id="dtHorizontalVerticalExample" class="table table-striped table-bordered table-sm " cellspacing="0"
-  width="100%"-->
 				<tr>
 					<th>Id скидки</th>
 					<th>Название скидки</th>
@@ -49,16 +47,16 @@
 							<?php echo $discount["name"]; ?>
 						</td>
 						<td>
-							<?php echo $discount["date_start"]; ?>
+							<?php echo Utils::formatDate($discount["date_start"]); ?>
 						</td>
 						<td>
-							<?php echo $discount["date_end"]; ?>
+							<?php echo Utils::formatDate($discount["date_end"]); ?>
 						</td>
 						<td>
-							<?php echo $discount["item_id"]; ?>
+							<?php echo $discount["item_name"]; ?>
 						</td>
 						<td>
-							<?php echo $discount["item_type"]; ?>
+							<?php echo  $discount["item_type"] == 'P' ? "Продукт" : "Категория"; ?>
 						</td>
 						<td>
 							<?php echo $discount["discount"]; ?>
@@ -70,6 +68,7 @@
 					</tr>
 				<?php endforeach; ?>
 			</table>
+			<?php echo $pagination->get(); ?>
 		</div>
 	</div>
 	</div>

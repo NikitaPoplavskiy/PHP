@@ -29,13 +29,17 @@
                             <p>Название скидки</p>
                             <input type="text" name="name" placeholder="Название" value="<?php echo $name; ?>" />
                             <p>Дата начала скидки</p>
-                            <input type="datetime-local" name="date_start" placeholder="Дата начала скидки" value="<?php echo $date_start; ?>" />
+                            <input type="date" name="date_start" placeholder="Дата начала скидки" value="<?php echo Utils::formatDate($date_start); ?>" />
                             <p>Дата окончания скидки</p>
-                            <input type="datetime-local" name="date_end" placeholder="Дата окончания скидки" value="<?php echo $date_end; ?>" />                            
+                            <input type="date" name="date_end" placeholder="Дата окончания скидки" value="<?php echo Utils::formatDate($date_end); ?>" />
                             <p>Id элемента скидки</p>
                             <input type="text" name="item_id" placeholder="Id" value="<?php echo $item_id; ?>" />                            
                             <p>Тип элемента для которого будет применена скидка</p>
-                            <input type="text" name="item_type" placeholder="Тип (P или C)" maxlength="1" value="<?php echo $item_type; ?>" />                            
+                            <select name="item_type">
+                                <option value="P" <?php echo $item_type == "P" ? "selected" : "";  ?>>Продукт</option>
+                                <option value="C" <?php echo $item_type == "C" ? "selected" : "";  ?>>Категория</option>
+                            </select>
+                            <!--input type="text" name="item_type" placeholder="Тип (P или C)" maxlength="1" value="<?php echo $item_type; ?>" /-->
                             <p>Величина скидки</p>
                             <input type="text" name="discount" placeholder="Скидка (в %)" value="<?php echo $discount_; ?>" />                            
                             <input type="submit" name="submit" class="btn btn-default" value="Сохранить">

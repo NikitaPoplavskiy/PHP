@@ -30,6 +30,7 @@ return array(
     "cabinet/recipes$" => "cabinet/recipes",
     "cart/checkout$" => "cart/checkout",
     
+    "discounts/page-([0-9]+)" => "site/discounts/$1",
 
     // Управление товарами    
     "admin/product/create" => "adminProduct/create",
@@ -61,7 +62,7 @@ return array(
     "admin/discount/create" => "adminDiscount/create",
     "admin/discount/delete/([0-9]+)" => "adminDiscount/delete/$1",
     "admin/discount/update/([0-9]+)" => "adminDiscount/update/$1",
-    "admin/discount" => "adminDiscount/index",
+    "admin/discount/page-([0-9]+)" => "adminDiscount/index/$1",
     
     // Админка    
     "admin/?$" => "admin/index",    

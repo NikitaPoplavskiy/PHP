@@ -4,13 +4,19 @@ require_once(ROOT . "/models/AdminBase.php");
 
 class AdminDiscountController extends AdminBase
 {
-    public function actionIndex()
+    public function actionIndex($page)
     {
 
         self::checkAdmin();
 
         $discountList = array();
-        $discountList = Product::getDiscountList();
+        $discountList = Product::getDiscountList($page);
+
+        $total = Product::getTotalDiscounts();
+
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, "page-");
+
+
 
         require_once(ROOT . "/views/admin_discount/index.php");
         return true;
@@ -31,8 +37,8 @@ class AdminDiscountController extends AdminBase
 
         if (isset($_POST["submit"])) {
             $options["name"] = $_POST["name"];
-            $options["date_start"] =  date('Y-m-d H:i:s', strtotime($_POST["date_start"]));
-            $options["date_end"] = date('Y-m-d H:i:s', strtotime($_POST["date_end"]));
+            $options["date_start"] = Utils::formatDate($_POST["date_start"]);
+            $options["date_end"] = Utils::formatDate($_POST["date_end"]);
             $options["item_id"] = $_POST["item_id"];
             $options["item_type"] = $_POST["item_type"];
             $options["discount"] = $_POST["discount"];
@@ -91,7 +97,7 @@ class AdminDiscountController extends AdminBase
         $discount = Product::getDiscountById($id);
 
         $name =  $discount["name"];
-        $date_start = $discount["date_start"];
+        $date_start = $discount["date_start"];        
         $date_end = $discount["date_end"];
         $item_id = $discount["item_id"];
         $item_type = $discount["item_type"];
@@ -102,8 +108,8 @@ class AdminDiscountController extends AdminBase
         if (isset($_POST["submit"])) {
             $options["id"] = $id;
             $options["name"] = $_POST["name"];
-            $options["date_start"] = date('Y-m-d H:i:s', strtotime($_POST["date_start"]));
-            $options["date_end"] = date('Y-m-d H:i:s', strtotime($_POST["date_end"]));
+            $options["date_start"] = Utils::formatDate($_POST["date_start"]);
+            $options["date_end"] = Utils::formatDate($_POST["date_end"]);
             $options["item_id"] = $_POST["item_id"];
             $options["item_type"] = $_POST["item_type"];
             $options["discount"] = $_POST["discount"];

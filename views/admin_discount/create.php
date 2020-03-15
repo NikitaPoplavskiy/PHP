@@ -24,9 +24,9 @@
                         <p>Название сидки</p>
                         <input type="text" name="name" placeholder="Название" value="<?php echo $name; ?>" />
                         <p>Дата начала скидки</p>
-                        <input type="datetime-local" name="date_start" placeholder="Дата начала скидки" value="<?php echo $date_start; ?>" />
+                        <input type="date" class="discount-start-date" min= "" name="date_start" placeholder="Дата начала скидки" value="<?php echo $date_start; ?>" />
                         <p>Дата окончания скидки</p>
-                        <input type="datetime-local" name="date_end" placeholder="Дата окончания скидки" value="<?php echo $date_end; ?>" />
+                        <input type="date" name="date_end" placeholder="Дата окончания скидки" value="<?php echo $date_end; ?>" />
                         <p>Тип элемента для которого будет применена скидка</p>
                         <input type="text" name="item_type" placeholder="Тип элемента (P или C)" maxlength="1" value="<?php echo $item_type; ?>" />
                         <p>Id элемена</p>

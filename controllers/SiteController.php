@@ -74,4 +74,15 @@ class SiteController {
         
         require_once(ROOT . "/views/product/search.php");
     }
+
+    public function actionDiscounts($page){
+
+        $discounts = Product::getProductsWithDiscounts($page);
+
+        
+
+
+        require_once(ROOT . "/views/site/discount.php");
+    }
+
 }
