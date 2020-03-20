@@ -25,7 +25,7 @@
 		<br>
 		<h2 class="title text-center">Каталог товаров</h2>
 		<a href="/admin/product/create/" class="btn btn-default">Добавить товар</a>
-		<div style="overflow: auto;">
+		<div style="overflow: auto; display: flex; flex-direction:column;">
 			<table class="table-bordered table-striped table" style="overflow-x:auto;">
 				<!--table id="dtHorizontalVerticalExample" class="table table-striped table-bordered table-sm " cellspacing="0"
   width="100%"-->
@@ -52,6 +52,9 @@
 					</tr>
 				<?php endforeach; ?>
 			</table>
+			<div style="display:flex; justify-content:center;">
+				<?php echo $pagination->get(); ?>
+			</div>
 		</div>
 	</div>
 	</div>

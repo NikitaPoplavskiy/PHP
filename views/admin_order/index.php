@@ -1,11 +1,11 @@
 <?php include ROOT . "/views/layouts/header_admin.php"; ?>
 <section>
 	<div class="col-sm-12 padding-right">
-		<div class="features_items">			
+		<div class="features_items">
 		</div>
 		<br>
 		<h2 class="title text-center">Список заказов</h2>
-		<div style="overflow: auto;">
+		<div style="overflow: auto; display: flex; flex-direction:column;">
 			<table class="table-bordered table-striped table">
 				<tr>
 					<th>Номер заказа</th>
@@ -34,6 +34,9 @@
 					</tr>
 				<?php endforeach; ?>
 			</table>
+			<div style="display:flex; justify-content:center;">
+				<?php echo $pagination->get(); ?>
+			</div>
 		</div>
 	</div>
 	</div>

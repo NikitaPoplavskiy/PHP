@@ -56,6 +56,10 @@ class AdminCategoryController extends AdminBase {
                 $errors[] = "Заполните название категории";
             }
 
+            if (!isset($options["sort_order"]) || empty($options["sort_order"])) {
+                $errors[] = "Укажите порядок отображение её в списке категорий!";
+            }
+
             if ($errors == false) {
                 $category = Category::updateCategory($options);
                 header("Location:/admin/category");

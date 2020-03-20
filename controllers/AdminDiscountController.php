@@ -68,7 +68,7 @@ class AdminDiscountController extends AdminBase
 
             if ($errors == false) {
                 Product::addDiscount($options);
-                header("Location: /admin/discount");
+                header("Location: /admin/discount/page-1");
             }
         }
 
@@ -82,7 +82,7 @@ class AdminDiscountController extends AdminBase
 
         if (isset($_POST["submit"])) {
             Product::deleteDiscountById($id);
-            header("Location: /admin/discount");
+            header("Location: /admin/discount/page-1");
         }
 
         require_once(ROOT . "/views/admin_discount/delete.php");

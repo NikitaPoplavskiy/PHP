@@ -3,10 +3,15 @@
 require_once(ROOT . "/models/AdminBase.php");
 
 class AdminOrderController extends AdminBase {
-    public function actionIndex() {
+    
+    public function actionIndex($page) {
         self::checkAdmin();
 
-        $ordersList = Order::getOrders();        
+        $ordersList = Order::getOrders($page);
+
+        $total = Order::getTotalOrders();
+
+        $pagination = new Pagination($total, $page, Order::SHOW_BY_DEFAULT, "page-");
 
         require_once(ROOT . "/views/admin_order/index.php");
         return true;

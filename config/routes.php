@@ -36,7 +36,7 @@ return array(
     "admin/product/create" => "adminProduct/create",
     "admin/product/update/([0-9]+)" => "adminProduct/update/$1",
     "admin/product/delete/([0-9]+)" => "adminProduct/delete/$1",
-    "admin/product" => "adminProduct/index",
+    "admin/product/page-([0-9]+)" => "adminProduct/index/$1",
 
     // Управление категориями        
     "admin/category/create" => "adminCategory/create",
@@ -48,7 +48,7 @@ return array(
     "admin/order/view/([0-9]+)" => "adminOrder/view/$1",
     "admin/order/update/([0-9]+)" => "adminOrder/update/$1",
     "admin/order/delete/([0-9]+)" => "adminOrder/delete/$1",
-    "admin/order" => "adminOrder/index",
+    "admin/order/page-([0-9]+)" => "adminOrder/index/$1",
 
     // Управление рецептами
     "admin/recipes/page-([0-9]+)" => "adminRecipes/index/$1",    

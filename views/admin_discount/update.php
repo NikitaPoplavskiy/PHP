@@ -5,7 +5,7 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">                    
-                    <li class="breadcrumb-item"><a href="/admin/discount">Управление скидками</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/discount/page-1">Управление скидками</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Редактирование скидки</li>                    
                 </ol>
             </nav>

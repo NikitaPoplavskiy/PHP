@@ -6,6 +6,8 @@ class Product
 
     const SHOW_BY_DEFAULT = 6;
 
+    const SHOW_BY_DEFAULT_PRODUCT = 10;
+
     /**
      * Returns an array of categories
      */
@@ -67,13 +69,16 @@ class Product
         return 0;
     }
 
-    public static function getProductsList()
+    public static function getProductsList($page = 1)
     {
         $db = DB::getConnection();
 
+        $offset = ($page - 1) * Product::SHOW_BY_DEFAULT_PRODUCT;
+
         $productsList = array();
 
-        $sql = "select id, code, name, price from product";
+        $sql = "select id, code, name, price from product limit " . Order::SHOW_BY_DEFAULT . " 
+        offset $offset;";
 
         $result = $db->prepare($sql);
         $result->execute();
@@ -610,5 +615,20 @@ class Product
         $discount = $result->fetchAll();
 
         return $discount;
+    }
+
+    public static function getTotalProducts() {
+
+        $db = DB::getConnection();
+
+        $sql = "select count(*) as count from product order by id desc;";
+
+        $result = $db->prepare($sql);
+
+        $result->execute();
+
+        $row = $result->fetch();
+
+        return $row["count"];
     }
 }

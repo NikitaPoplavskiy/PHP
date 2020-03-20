@@ -2,6 +2,8 @@
 
 class Order {
 
+
+    const SHOW_BY_DEFAULT = 10;
     /**
      * Сохраняет в БД переданные данные
      *
@@ -46,12 +48,15 @@ class Order {
      *
      * @return void
      */
-    public static function getOrders() {
+    public static function getOrders($page = 1) {
         $db = DB::getConnection();
+
+        $offset = ($page - 1) * Order::SHOW_BY_DEFAULT;
 
         $ordersList = array();
         // Подготовленный запрос со специальным placeHolder (:email). Нужен для безопасности.
-        $sql = "select * from product_order";
+        $sql = "select * from product_order limit " . Order::SHOW_BY_DEFAULT . " 
+        offset $offset;";
         
         $result = $db->prepare($sql);        
         $result->execute();
@@ -179,5 +184,20 @@ class Order {
         // $result->execute();
 
         return Order::getOrder($options["id"]);
+    }
+
+    public static function getTotalOrders() {
+        $db = DB::getConnection();
+
+        $sql = "select count(*) as count from product_order order by id desc;";
+
+        $result = $db->prepare($sql);
+
+        $result->execute();
+
+        $row = $result->fetch();
+
+        return $row["count"];
+
     }
 }

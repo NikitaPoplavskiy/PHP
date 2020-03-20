@@ -1,24 +1,14 @@
 <?php include ROOT . "/views/layouts/header_admin.php"; ?>
 <section>
-	<div class="col-sm-9 padding-right">
-		<div class="features_items">
-			<div class="social-icons pull-left">
-				<ul class="nav navbar-nav">
-					<li><a href="/admin"><i class="">Главная</i></a></li>
-					<li><a href="/admin/product"><i class="">Управление товарами</i></a></li>
-					<li><a href="/admin/category"><i class="">Управление категориями</i></a></li>
-					<li><a href="/admin/order"><i class="">Управление заказами</i></a></li>
-					<li><a href="/admin/recipes/page-1"><i class="">Управление рецептами</i></a></li>
-					<li><a href="/admin/stat"><i class="">Управление Стастистика</i></a></li>
-				</ul>
-			</div>
+	<div class="col-sm-12 padding-right">
+		<div class="features_items">			
 		</div>
 		<br>
 		<h2 class="title text-center">Список рецептов всех пользователей</h2>
 		<div class="col-sm-3_">
 			<div class="search_box pull-right_">
 				<form class="container" id="search" action="/admin/search/page-1" method="post" enctype="multipart/form-data">
-					<div class="row">
+					<div class="row" style="display: flex; justify-content: space-around">
 						<input class="col-md-4 col-sm-6 col-xs-6" id="search_box" type="text" placeholder="Search" name="search"/>						
 						<select class="col-md-4 col-sm-6 col-xs-6" name="select">
 							<option value="name">По имени</option>

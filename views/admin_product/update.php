@@ -5,7 +5,7 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">                    
-                    <li class="breadcrumb-item"><a href="/admin/product">Управление товарами</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/product/page-1">Управление товарами</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Редактировать товар</li>                    
                 </ol>
             </nav>
