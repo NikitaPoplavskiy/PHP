@@ -125,6 +125,7 @@
 								</li>
 								<li><a href="/about/">О магазине</a></li>
 								<li><a href="/contacts/">Контакты</a></li>
+								<li><a href="/map/">Карта</a></li>
 							</ul>
 						</div>
 					</div>

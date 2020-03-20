@@ -63,6 +63,10 @@ return array(
     "admin/discount/delete/([0-9]+)" => "adminDiscount/delete/$1",
     "admin/discount/update/([0-9]+)" => "adminDiscount/update/$1",
     "admin/discount/page-([0-9]+)" => "adminDiscount/index/$1",
+
+
+    // Карта
+    "map/?$" => "site/map",
     
     // Админка    
     "admin/?$" => "admin/index",    

@@ -221,41 +221,16 @@ class Product
 
             $result = $db->prepare($sql);
             $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
-            $result->execute();
-
-            //$result = $db->query("select id, name, price, is_new from product where status = 1 and category_id = '$categoryId' order by id asc limit"
-            //. self::SHOW_BY_DEFAULT . " offset $offset");
-            // echo var_dump($result);
+            $result->execute();            
 
             $products = array();
             $i = 0;
             while ($row = $result->fetch()) {
-                $products[$i]['id'] = $row['id'];
-                $products[$i]['name'] = $row['name'];
-                $products[$i]['price'] = $row['price'];
-                $products[$i]['is_new'] = $row['is_new'];
-                $products[$i]['discount_price'] = false;
-                // $product_dis =  self::checkProductDiscount($row['id']);
-                /*if ($product_dis != false) {
-                    $products[$i]['discount_price'] =  $products[$i]['price'] - (($products[$i]['price']/100) * $product_dis['discount']);
-                    $products[$i]['discount_date_end'] = $product_dis['date_end'];
-                    $products[$i]['discount'] = $product_dis['discount'];
-                }*/
-
-                if (!is_null($row["pr_discount"])) {
-                    $products[$i]['discount_price'] =  $products[$i]['price'] - (($products[$i]['price'] / 100) * $row['pr_discount']);
-                    $products[$i]['discount_date_end'] = $row['pr_date_end'];
-                    $products[$i]['discount'] = $row['pr_discount'];
-                } elseif (!is_null($row["cat_discount"])) {
-                    $products[$i]['discount_price'] =  $products[$i]['price'] - (($products[$i]['price'] / 100) * $row['cat_discount']);
-                    $products[$i]['discount_date_end'] = $row['cat_date_end'];
-                    $products[$i]['discount'] = $row['cat_discount'];
-                }
-
-                $i++;
-            }
-            // echo var_dump($categoryList);
-
+                $product = $row;                
+                $product['discount_price'] = false;
+                Product::fillDiscountInfo($product);
+                array_push($products, $product);
+            }            
             return $products;
         }
     }
@@ -611,10 +586,24 @@ class Product
         $result = $db->prepare($sql);
 
         $result->execute();
+        $products = array();
 
-        $discount = $result->fetchAll();
+        /**
+         * TODO: Разобраться как правильно это сделать, а не как ниже
+         */
+        $products = $result->fetchAll();        
+        foreach ($products as &$product) {            
+            Product::fillDiscountInfo($product);            
+        }
 
-        return $discount;
+        /*while ($row = $result->fetch()) {
+            $product = $row;                
+            $product['discount_price'] = false;
+            Product::fillDiscountInfo($product);
+            array_push($products, $product);
+        }*/    
+
+        return $products;
     }
 
     public static function getTotalProducts() {
@@ -631,4 +620,21 @@ class Product
 
         return $row["count"];
     }
+
+    public static function fillDiscountInfo(&$product) {
+
+        if (!is_null($product["pr_discount"])) {
+            $product['discount_price'] =  $product['price'] - (($product['price'] / 100) * $product['pr_discount']);
+            $product['discount_date_end'] = $product['pr_date_end'];
+            $product['discount'] = $product['pr_discount'];
+        } elseif (!is_null($product["cat_discount"])) {
+            $product['discount_price'] =  $product['price'] - (($product['price'] / 100) * $product['cat_discount']);
+            $product['discount_date_end'] = $product['cat_date_end'];
+            $product['discount'] = $product['cat_discount'];
+        }
+
+        return $product;
+     }
+
 }
+

@@ -79,10 +79,16 @@ class SiteController {
 
         $discounts = Product::getProductsWithDiscounts($page);
 
-        
+        $categories = array();
+        $categories = Category::getCategoriesList();
 
 
         require_once(ROOT . "/views/site/discount.php");
+    }
+
+    public function actionMap(){
+
+        require_once(ROOT . "/views/test_map/map.php");
     }
 
 }
