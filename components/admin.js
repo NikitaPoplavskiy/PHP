@@ -105,7 +105,7 @@ $(document).ready(function () {
     // new Chartist.Line('.ct-chart', data);
 });
 
-
+// Просмотр фотографии рецепта в модале
 $(document).ready(function () {
     $(".recipe_image").click(function () {
         $("#recipe").attr("aria-hidden", false);

@@ -31,7 +31,11 @@
                         <form action="#" method="post">
                             <input type="text" name="name" placeholder="Имя" value="<?php echo $name ?>" />
                             <input type="email" name="email" placeholder="E-mail" value="<?php echo $email ?>" />
-                            <input type="password" name="password" placeholder="Пароль" value="<?php echo $password ?>" />
+                            <div class="password_field">
+                                <input id="password_field" type="password" name="password" placeholder="Пароль" value="<?php echo $password ?>" />
+                                <i id="show_password" class="fa fa-eye fa-2x"></i>
+                            </div>
+                            
                             <input type="submit" name="submit" class="btn btn-default" value="Регистрация" />
                         </form>
                     </div>

@@ -9,6 +9,7 @@
 	<title>Home | E-Shopper</title>
 	<link href="/template/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/template/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/template/css/my.css" rel="stylesheet">
 	<!--link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"-->
 	<link href="/template/css/prettyPhoto.css" rel="stylesheet">
 	<link href="/template/css/price-range.css" rel="stylesheet">

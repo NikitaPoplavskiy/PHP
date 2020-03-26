@@ -87,7 +87,27 @@ $('#search_box').keypress(function (e) {
     }
 });
 
+// Просмотр фотографии рецепта в модале
+$(document).ready(function () {
+    $(".recipe_image").click(function () {
+        $("#recipe").attr("aria-hidden", false);
+        var id = $(this).attr("data-id");
+        $("#recipe_image").attr("src", "/upload/images/recipes/" + id + ".jpg");
+        return true;
+    });
+});
 
+$(document).ready(function () {
+    $("#show_password").mousedown(function () {
+        $("#password_field").attr("type", "text");
+        return true;        
+    });
+
+    $("#show_password").mouseup(function () {
+        $("#password_field").attr("type", "password");
+        return true;
+    });
+});
 
 $(document).ready(function () {
     $(".delete_good").click(function () {

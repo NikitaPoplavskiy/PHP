@@ -1,0 +1,15 @@
+#password_field {
+    padding-right: 30px;
+}
+
+/* Кнопка для отображения пароля */
+#show_password {
+    margin-left: -30px;
+    margin-top: -10px;    
+}
+
+.password_field {
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+}

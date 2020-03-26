@@ -33,6 +33,7 @@
                             <input type="text" name="name" placeholder="Имя" value="<?php echo $userName ?>" />
                             <input type="text" name="phone" placeholder="Ваш номер телефона" value="<?php echo $userPhone ?>" />
                             <input type="text" name="comment" placeholder="Комментарий к заказу" value="<?php echo $userComment ?>" />
+                            <iframe src="https://www.google.com/maps/d/embed?mid=1A83Ei34GS9c6ypmEXP7TQGLZo-5a0BDt" width="640" height="450" frameborder="0" style="border:0" allowfullscreen="false"></iframe>
                             <input type="submit" name="submit" id="confirm-checkout" class="btn btn-default" value="Оформить" data-result="<?php echo $result; ?>" />
                         </form>
                     </div>
