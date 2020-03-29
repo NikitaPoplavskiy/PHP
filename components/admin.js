@@ -125,6 +125,21 @@ $('#search_box').keypress(function (e) {
     }
 });
 
+/*$(document).ready(function () {
+    let status = document.getElementById(".status_color");
+
+    if(status == "Новый заказ") {
+        $(".status_color").css("color", "49DA23");
+    }
+});*/
+
+/*$(document).ready(function () {
+    var status = document.getElementsByClassName(".status_color").innerHTML;
+
+    if(status == "Новый заказ") {
+        $(".status_color").css("color", "49DA23");
+    }
+});*/
 
 $(document).ready(function () {
     var today = new Date();

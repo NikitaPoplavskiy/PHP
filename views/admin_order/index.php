@@ -25,7 +25,7 @@
 						</td>
 						<td><?php echo $order["user_phone"]; ?></td>
 						<td><?php echo $order["date"]; ?></td>
-						<td><?php echo AdminOrderController::orderStatusToString($order["status"]); ?></td>
+						<td><p class="status_color"><?php echo AdminOrderController::orderStatusToString($order["status"]); ?></p></td>
 						<td><a href="/admin/order/view/<?php echo $order["id"]; ?>">Просмотреть</a></td>
 						<td>
 							<a href="/admin/order/update/<?php echo $order["id"]; ?>">Редактировать</a>

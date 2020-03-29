@@ -50,7 +50,7 @@ class AdminOrderController extends AdminBase {
 
             if ($errors == false) {
                 $order = Order::updateOrderById($options);                
-                header("Location: /admin/order");
+                header("Location: /admin/order/page-1");
             }                        
             // header("Location: /admin/order");
         }

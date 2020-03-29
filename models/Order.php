@@ -3,7 +3,7 @@
 class Order {
 
 
-    const SHOW_BY_DEFAULT = 10;
+    const SHOW_BY_DEFAULT = 11;
     /**
      * Сохраняет в БД переданные данные
      *
@@ -55,8 +55,8 @@ class Order {
 
         $ordersList = array();
         // Подготовленный запрос со специальным placeHolder (:email). Нужен для безопасности.
-        $sql = "select * from product_order limit " . Order::SHOW_BY_DEFAULT . " 
-        offset $offset;";
+        $sql = "select * from product_order order by date desc limit " . Order::SHOW_BY_DEFAULT . "
+        offset $offset; order by date asc";
         
         $result = $db->prepare($sql);        
         $result->execute();

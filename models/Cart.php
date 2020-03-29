@@ -110,7 +110,12 @@ class Cart {
 
         if ($products) {            
             foreach ($products as $item) {
-                $total += $item["price"] * $productsInCart[$item["id"]];
+                if ($item["discount_price"]) {
+                    $total += $item["discount_price"] * $productsInCart[$item["id"]];
+                } else {
+                    $total += $item["price"] * $productsInCart[$item["id"]];
+                }
+                
             }
         }
 

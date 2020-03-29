@@ -157,41 +157,7 @@ class Product
         }
         return $productsList;
     }
-
-    /* public static function Sorting($sort_op, $page = 1, $categoryId = false)
-    {
-        if ($categoryId) {
-            $page  = intval($page);
-            $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
-
-            $db = Db::getConnection();
-            $sql = "select id, name, price, is_new from product where status = 1 and category_id = :categoryId order by $sort_op limit " . self::SHOW_BY_DEFAULT . " offset $offset";
-            $result = $db->prepare($sql);
-            $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
-            // $result->bindParam(":price", $top, PDO::PARAM_STR);
-            $result->execute();
-
-            //$result = $db->query("select id, name, price, is_new from product where status = 1 and category_id = '$categoryId' order by id asc limit"
-            //. self::SHOW_BY_DEFAULT . " offset $offset");
-            // echo var_dump($result);
-            // echo var_dump($result);
-
-            $products = array();
-            $i = 0;
-            while ($row = $result->fetch()) {
-                $products[$i]['id'] = $row['id'];
-                $products[$i]['name'] = $row['name'];
-                $products[$i]['price'] = $row['price'];
-                // $productsList[$i]['image'] = $row['image'];
-                $products[$i]['is_new'] = $row['is_new'];
-                $i++;
-            }
-
-            // echo var_dump($categoryList);
-
-            return $products;
-        }
-    }*/
+    
 
     /**
      * Returns an array of products for category
@@ -221,16 +187,16 @@ class Product
 
             $result = $db->prepare($sql);
             $result->bindParam(":categoryId", $categoryId, PDO::PARAM_STR);
-            $result->execute();            
+            $result->execute();
 
             $products = array();
             $i = 0;
             while ($row = $result->fetch()) {
-                $product = $row;                
+                $product = $row;
                 $product['discount_price'] = false;
                 Product::fillDiscountInfo($product);
                 array_push($products, $product);
-            }            
+            }
             return $products;
         }
     }
@@ -250,21 +216,44 @@ class Product
      */
     public static function getProduct($productId)
     {
-
         if ($productId) {
             $db = Db::getConnection();
+            /*$sql = "select id, name, price, is_new, availability, brand, code, description
+            from product pr left join promotions_and_discounts prod  where status = 1 and id = :productId";*/
 
-
-            $sql = "select id, name, price, is_new, availability, brand, code, description from product where status = 1 and id = :productId";
+            $sql = "select pr.id, pr.name, pr.code, pr.availability, pr.brand, pr.description, pr.price, pr.is_new,
+            prod.date_start pr_date_start, prod.date_end pr_date_end, prod.item_id pr_item_id, prod.item_type pr_item_type, prod.discount pr_discount,
+            proc.date_start cat_date_start, proc.date_end cat_date_end, proc.item_id cat_item_id, proc.item_type cat_item_type, proc.discount cat_discount
+            from product pr
+            LEFT JOIN promotions_and_discounts prod
+            ON pr.id = prod.item_id AND prod.item_type = 'P' AND prod.date_start <= NOW()  and prod.date_end >= NOW()
+            LEFT JOIN promotions_and_discounts proc
+            ON pr.category_id = proc.item_id AND proc.item_type = 'C' AND proc.date_start <= NOW()  and proc.date_end >= NOW() 
+            where pr.status = 1 and pr.id = :productId";
 
             $result = $db->prepare($sql);
-
             $result->bindParam(":productId", $productId, PDO::PARAM_STR);
-
             $result->execute();
+
+            $product = array();
+
+            // $product = $result->fetch();
+
+            $i = 0;
+            while ($row = $result->fetch()) {
+                $product = $row;
+                $product['discount_price'] = false;
+                Product::fillDiscountInfo($product);
+                array_push($product, $product);
+            }
+            // return $products;
+
+            // $result = $db->prepare($sql);            
+
+            // $result->execute();
             //$result = $db->query("select id, name, price, is_new, availability, brand, code from product where status = 1 and id = '$productId'");
             // echo var_dump($result);            
-            $product = $result->fetch();
+
 
             //echo var_dump($product);
 
@@ -334,22 +323,47 @@ class Product
 
         $idString = implode(',', $idsArray);
 
-        $sql = "select * from product where status = '1' and id in ($idString)";
+        // $sql = "select * from product where status = '1' and id in ($idString)";
 
-        //$result->bindParam(":idString", $idString, PDO::PARAM_STR);
+        $sql = "select pr.id, pr.name, pr.code, pr.price, pr.is_new,
+        prod.date_start pr_date_start, prod.date_end pr_date_end, prod.item_id pr_item_id, prod.item_type pr_item_type, prod.discount pr_discount,
+        proc.date_start cat_date_start, proc.date_end cat_date_end, proc.item_id cat_item_id, proc.item_type cat_item_type, proc.discount cat_discount
+        from product pr
+        LEFT JOIN promotions_and_discounts prod
+        ON pr.id = prod.item_id AND prod.item_type = 'P' AND prod.date_start <= NOW()  and prod.date_end >= NOW()
+        LEFT JOIN promotions_and_discounts proc
+        ON pr.category_id = proc.item_id AND proc.item_type = 'C' AND proc.date_start <= NOW()  and proc.date_end >= NOW() 
+        where pr.status = 1 and pr.id in ($idString)";
 
-        $result = $db->query($sql);
+        $result = $db->prepare($sql);
+        // $result->bindParam(":idString", $idString, PDO::PARAM_STR);
+        $result->execute();
 
-        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $products = array();
+            $i = 0;
+            while ($row = $result->fetch()) {
+                $product = $row;
+                $product['discount_price'] = false;
+                Product::fillDiscountInfo($product);
+                array_push($products, $product);
+            }
+            // return $products;
 
-        $i = 0;
+        // $result->bindParam(":idString", $idString, PDO::PARAM_STR);
+
+        // $result = $db->query($sql);
+
+        // $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        /*$i = 0;
         while ($row = $result->fetch()) {
             $products[$i]['id'] = $row['id'];
             $products[$i]['name'] = $row['name'];
             $products[$i]['price'] = $row['price'];
             $products[$i]['code'] = $row['code'];
             $i++;
-        }
+        }*/        
+
         return $products;
     }
 
@@ -452,7 +466,8 @@ class Product
         return $discounts;
     }*/
 
-    public static function getDiscountList($page = 1) {
+    public static function getDiscountList($page = 1)
+    {
         $db = Db::getConnection();
 
         $offset = ($page - 1) * Product::SHOW_BY_DEFAULT;
@@ -473,7 +488,7 @@ class Product
         from promotions_and_discounts as prom
         limit " . Product::SHOW_BY_DEFAULT . " 
         offset $offset;";
-        
+
         $result = $db->prepare($sql);
         $result->execute();
         $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -484,7 +499,8 @@ class Product
         return $discountsList;
     }
 
-    public static function addDiscount($options) {
+    public static function addDiscount($options)
+    {
         $db = Db::getConnection();
 
         $sql = "insert into promotions_and_discounts (name,date_start,date_end,item_type,item_id,discount) values (:name,:date_start,:date_end,:item_type,:item_id,:discount)";
@@ -502,7 +518,8 @@ class Product
         return true;
     }
 
-    public static function deleteDiscountById($id) {
+    public static function deleteDiscountById($id)
+    {
         $db = DB::getConnection();
 
         $sql = "delete from promotions_and_discounts where id = :id";
@@ -515,44 +532,45 @@ class Product
         return true;
     }
 
-    public static function getDiscountById($id) {
+    public static function getDiscountById($id)
+    {
         $db = DB::getConnection();
 
         $sql = "select * from promotions_and_discounts where id = :id;";
 
         $result = $db->prepare($sql);
-        $result->bindParam(":id",$id,PDO::PARAM_INT);
+        $result->bindParam(":id", $id, PDO::PARAM_INT);
 
         $result->execute();
 
         $discount = $result->fetch();
 
         return $discount;
-
     }
 
-    public static function updateDiscount($options) {
+    public static function updateDiscount($options)
+    {
         $db = DB::getConnection();
 
         $sql = "update promotions_and_discounts set name = :name, date_start = :date_start, date_end = :date_end, item_id = :item_id, item_type = :item_type, discount = :discount where id = :id";
 
         $result = $db->prepare($sql);
 
-        $result->bindParam(":id",$options["id"],PDO::PARAM_STR);
-        $result->bindParam(":name",$options["name"],PDO::PARAM_STR);
-        $result->bindParam(":date_start",$options["date_start"],PDO::PARAM_STR);
-        $result->bindParam(":date_end",$options["date_end"],PDO::PARAM_STR);
-        $result->bindParam(":item_id",$options["item_id"],PDO::PARAM_INT);
-        $result->bindParam(":item_type",$options["item_type"],PDO::PARAM_STR_CHAR);
-        $result->bindParam(":discount",$options["discount"],PDO::PARAM_INT);
+        $result->bindParam(":id", $options["id"], PDO::PARAM_STR);
+        $result->bindParam(":name", $options["name"], PDO::PARAM_STR);
+        $result->bindParam(":date_start", $options["date_start"], PDO::PARAM_STR);
+        $result->bindParam(":date_end", $options["date_end"], PDO::PARAM_STR);
+        $result->bindParam(":item_id", $options["item_id"], PDO::PARAM_INT);
+        $result->bindParam(":item_type", $options["item_type"], PDO::PARAM_STR_CHAR);
+        $result->bindParam(":discount", $options["discount"], PDO::PARAM_INT);
 
         $result->execute();
 
         return true;
-
     }
 
-    public static function getTotalDiscounts() {
+    public static function getTotalDiscounts()
+    {
         $db = DB::getConnection();
 
         $sql = "select count(*) as count from promotions_and_discounts order by id desc;";
@@ -566,11 +584,12 @@ class Product
         return $row["count"];
     }
 
-    public static function getProductsWithDiscounts($page = 1) {
+    public static function getProductsWithDiscounts($page = 1)
+    {
         $db = DB::getConnection();
 
         $offset = ($page - 1) * Product::SHOW_BY_DEFAULT;
-        
+
         $sql = "select pr.id, pr.name, pr.price, pr.is_new,
         prod.date_start pr_date_start, prod.date_end pr_date_end, prod.item_id pr_item_id, prod.item_type pr_item_type, prod.discount pr_discount,
         proc.date_start cat_date_start, proc.date_end cat_date_end, proc.item_id cat_item_id, proc.item_type cat_item_type, proc.discount cat_discount
@@ -591,9 +610,9 @@ class Product
         /**
          * TODO: Разобраться как правильно это сделать, а не как ниже
          */
-        $products = $result->fetchAll();        
-        foreach ($products as &$product) {            
-            Product::fillDiscountInfo($product);            
+        $products = $result->fetchAll();
+        foreach ($products as &$product) {
+            Product::fillDiscountInfo($product);
         }
 
         /*while ($row = $result->fetch()) {
@@ -601,12 +620,13 @@ class Product
             $product['discount_price'] = false;
             Product::fillDiscountInfo($product);
             array_push($products, $product);
-        }*/    
+        }*/
 
         return $products;
     }
 
-    public static function getTotalProducts() {
+    public static function getTotalProducts()
+    {
 
         $db = DB::getConnection();
 
@@ -621,7 +641,8 @@ class Product
         return $row["count"];
     }
 
-    public static function fillDiscountInfo(&$product) {
+    public static function fillDiscountInfo(&$product)
+    {
 
         if (!is_null($product["pr_discount"])) {
             $product['discount_price'] =  $product['price'] - (($product['price'] / 100) * $product['pr_discount']);
@@ -634,7 +655,5 @@ class Product
         }
 
         return $product;
-     }
-
+    }
 }
-

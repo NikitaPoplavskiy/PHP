@@ -70,9 +70,22 @@
 							<p>ID: <?php echo $product["code"]; ?></p>
 							<!--img src="/template/images/product-details/rating.png" alt="" /-->
 							<span>
-								<span><?php echo $product["price"]; ?> грн</span>
+								<span>
+									<?php if ($product["discount_price"] == false) : ?>
+										<h2><?php echo $product["price"]; ?> грн</h2>
+									<?php else : ?>
+										<div class="style-4">
+											<del>
+												<h3><?php echo $product["price"]; ?> грн</h3>
+											</del>
+											<div>
+												<h2><?php echo $product["discount_price"] ?> грн</h2>
+											</div>
+										</div>
+									<?php endif; ?>
+								</span>
 								<!--label>Количество:</label>
-								<input type="text" value="<?php echo Cart::countItems();?>"/-->
+								<input type="text" value="<?php echo Cart::countItems(); ?>"/-->
 								<!--button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart

@@ -65,7 +65,7 @@
 						</select>
 						<input type="submit" class="btn btn-default" value="Отсортировать">
 					</form>
-					<div style="display: flex;">
+					<div style="display: flex; flex-wrap: wrap; justify-content: center;">
 						<?php foreach ($latestProducts as $product) : ?>
 							<div class="col-sm-4">
 								<div class="product-image-wrapper">

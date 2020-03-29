@@ -46,7 +46,11 @@
 											<?php echo $product["name"]; ?>
 										</a>
 									</td>
-									<td><?php echo $product["price"]; ?> грн</td>
+									<td><?php if ($product["discount_price"] == false) : ?>
+											<?php echo $product["price"]; ?> грн
+										<?php else : ?>
+											<?php echo $product["discount_price"] ?> грн
+										<?php endif; ?></td>
 									<td>
 										<button class="product_remove btn btn-default" data-id="<?php echo $product["id"]; ?>">-</button>
 										<span id="product-count-<?php echo $product["id"]; ?>">
@@ -59,7 +63,7 @@
 							<?php endforeach; ?>
 							<tr>
 								<td colspan="3">Общая стоимость</td>
-								<td id="total_price"><?php echo $totalPrice;?> грн</td>
+								<td id="total_price"><?php echo $totalPrice; ?> грн</td>
 							</tr>
 						</table>
 					</div>

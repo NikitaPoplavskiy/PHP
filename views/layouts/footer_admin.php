@@ -13,6 +13,23 @@
 </footer>
 <!--/Footer-->
 
+<script>
+	$(document).ready(function() {
+		var arrayFromPHP = <?php echo json_encode($order); ?>;
+
+		var status = $('.status_color').html();
+
+		if (status == "Новый заказ") {
+			$(".status_color").css("color", "49DA23");
+		}
+		else if (status == "Обработан") {
+			$(".status_color").css("color", "F0E31D");
+		}
+		else {
+			$(".status_color").css("color", "ED3623");
+		}
+	});
+</script>
 </body>
 
 </html>
