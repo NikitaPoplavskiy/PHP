@@ -87,7 +87,7 @@ a#scrollUp i{
 **************************/
 
 .header_top {
-  background: none repeat scroll 0 0 #F0F0E9;
+  /*background: none repeat scroll 0 0 #F0F0E9;*/
 }
 
 
@@ -294,7 +294,7 @@ a#scrollUp i{
 
 .navbar-header 
 .navbar-toggle .icon-bar {
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 
 
@@ -1200,6 +1200,13 @@ h2.title {
   width: 100%;
 }
 
+/* MY */
+
+.view-product:hover img {
+  transform: scale(2);
+  transition: all .2s linear;
+}
+
 .view-product h3 {
   background: #00CCFF;
   bottom: 0;
@@ -1275,7 +1282,7 @@ h2.title {
   color: #00CCFF;
   float: left;
   font-family: 'Roboto', sans-serif;
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 700;
   margin-right: 20px;
   margin-top: 0px;
@@ -1664,7 +1671,6 @@ h2.title {
   width: 35px;
   float: left;
 }
-
 
 .cart_quantity_input {
   color: #696763;

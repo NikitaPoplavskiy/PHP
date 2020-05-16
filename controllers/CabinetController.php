@@ -76,15 +76,18 @@ class CabinetController
         return true;
     }
 
-    public function actionHistory()
+    public function actionHistory($page = 1)
     {
         $userId = User::checkLogged();
 
         $user = User::getUserById($userId);
 
+        $total = User::getTotalUsersOrders($userId);
+        $pagination = new Pagination($total, $page, Order::SHOW_BY_DEFAULT, "page-");
+
         if ($user) {
 
-            $userOrdersList = User::getUserOrders($userId);
+            $userOrdersList = User::getUserOrders($userId, $page);            
 
             require_once(ROOT . "/views/cabinet/history.php");
         } else {

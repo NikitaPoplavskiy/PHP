@@ -14,7 +14,7 @@ return array(
     "user/login/?$" => "user/login",
     "user/logout/?$" => "user/logout",
     "cabinet/edit/?$" => "cabinet/edit",
-    "cabinet/history/?$" => "cabinet/history",
+    "cabinet/history/page-([0-9]+)/?$" => "cabinet/history/$1",
     "cabinet/order/view/([0-9]+)" => "cabinet/view/$1",
     "cabinet/?$" => "cabinet/index",      
     "contacts/?$" => "site/contacts",

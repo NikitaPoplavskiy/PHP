@@ -41,7 +41,7 @@
 <!--/head-->
 
 <body style="min-height:100%; position:relative; padding-bottom: 70px;">
-	<header id="header">
+	<header style="background-color: #BCF1F1" id="header">
 		<!--header-->
 		<div class="header_top">
 			<!--header_top-->

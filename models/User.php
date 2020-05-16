@@ -269,15 +269,36 @@ class User
         $result->execute();
     }
 
-    public static function getUserOrders($userId) {
+    public static function getUserOrders($userId , $page = 1) {
         $db = DB::getConnection();
 
-        $sql = "select * from product_order where user_id = :userId;";
+        $offset = ($page - 1) * Order::SHOW_BY_DEFAULT;
+        $limit = Order::SHOW_BY_DEFAULT;
+
+        $sql = "select * from product_order where user_id = :userId order by date desc limit :limit offset :offset";
         $result = $db->prepare($sql);
+
         $result->bindParam(":userId",$userId,PDO::PARAM_INT);
+        $result->bindParam(":limit",$limit,PDO::PARAM_INT);
+        $result->bindParam(":offset",$offset,PDO::PARAM_INT);
         $result->execute();
+
         $orderList = $result->fetchAll(PDO::FETCH_ASSOC);
 
         return $orderList;
+    }
+
+    public static function getTotalUsersOrders($userId) {
+        $db = DB::getConnection();
+
+        $sql = "select count(user_id) as count from product_order where user_id = :userId";
+        $result = $db->prepare($sql);
+
+        $result->bindParam(":userId",$userId,PDO::PARAM_INT);
+        $result->execute();
+
+        $row = $result->fetch();
+
+        return $row["count"];
     }
 }

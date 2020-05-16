@@ -1,7 +1,7 @@
 <?php
 
 
-//include_once ROOT . "/models/Product.php";
+// include_once ROOT . "/models/Product.php";
 
 class ProductController {
 
@@ -14,7 +14,10 @@ class ProductController {
         $categories = Category::getCategoriesList();
 
         $recomendedProducts = array();
-        $recomendedProducts = Product::getRecomendedProducts();
+        // $recomendedProducts = Product::getRecomendedProducts();
+        $recomendedProducts = Product::getRecommendedProductByCategory($id);
+
+        $discounts = Product::getProductsWithDiscounts($page = 1);
 
         require_once(ROOT . "/views/product/view.php");
         return true;        

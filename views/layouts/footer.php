@@ -163,6 +163,19 @@
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script>
 
+<script>
+	$(document).ready(function() {
+		$("#myImage").imagezoomsl({
+			zoomrange: [1, 10],
+			magnifiereffectanimate: "fadeIn",
+			innerzoom: true,
+			magnifierborder: 'none'
+		});						
+	})	
+			
+		
+</script>
+
 </body>
 
 </html>

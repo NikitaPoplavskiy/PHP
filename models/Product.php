@@ -6,7 +6,7 @@ class Product
 
     const SHOW_BY_DEFAULT = 6;
 
-    const SHOW_BY_DEFAULT_PRODUCT = 10;
+    const SHOW_BY_DEFAULT_PRODUCT = 16;
 
     /**
      * Returns an array of categories
@@ -655,5 +655,24 @@ class Product
         }
 
         return $product;
+    }
+
+    public static function getRecommendedProductByCategory($idProduct) {
+
+        $recProducts = array();
+
+        $db = DB::getConnection();
+
+        $sql = "SELECT * FROM product WHERE category_id = (SELECT category_id FROM product WHERE id = :idProduct)";
+
+        $result = $db->prepare($sql);
+
+        $result->bindParam(":idProduct", $idProduct, PDO::PARAM_STR);
+
+        $result->execute();
+
+        $recProducts = $result->fetchAll();
+
+        return $recProducts;
     }
 }

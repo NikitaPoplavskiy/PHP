@@ -120,7 +120,7 @@ class AdminProductController extends AdminBase
 
             if ($errors == false) {
                 $id = Product::addProduct($options);
-                header("Location: /admin/product");
+                header("Location: /admin/product/page-1");
             }
 
             if ($id) {

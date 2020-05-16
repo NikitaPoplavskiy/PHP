@@ -77,7 +77,7 @@
 													<h2><?php echo $product["price"]; ?> грн</h2>
 												<?php else : ?>
 													<div class="style-4">
-														<del>
+														<del style="color: #C4C4C4;">
 															<h3><?php echo $product["price"]; ?> грн</h3>
 														</del>
 														<div>

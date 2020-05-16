@@ -100,7 +100,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#show_password").mousedown(function () {
         $("#password_field").attr("type", "text");
-        return true;        
+        return true;
     });
 
     $("#show_password").mouseup(function () {
@@ -126,5 +126,8 @@ $(document).ready(function () {
             });
         }
         return false;
-    });
+    });    
+
 });
+
+
