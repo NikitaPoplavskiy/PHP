@@ -25,7 +25,7 @@
 							</td>
 							<!--td><?php echo htmlspecialchars($product["name"]); ?></td-->
 							<td><?php echo $category["sort_order"]; ?></td>
-							<td><?php echo AdminCategoryController::categoryStatusToString($category["status"]); ?></td>
+							<td><?php echo Category::categoryStatusToString($category["status"]); ?></td>
 							<td>
 								<a href="/admin/category/update/<?php echo $category["id"]; ?>">Редактировать</a>
 							</td>

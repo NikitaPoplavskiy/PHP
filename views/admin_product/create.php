@@ -47,7 +47,7 @@
                             <option value="0">Нет</option>
                         </select>
                         <p>Описание к товару</p>
-                        <input type="text" name="description" placeholder="Описание товара" value="<?php echo $description; ?>" />
+                        <textarea rows="4" cols="50" name="description" placeholder="Описание товара" value=""> <?php echo $description; ?> </textarea>
                         <p>Новинка</p>
                         <select name="is_new">
                             <option value="1" selected="selected">Да</option>

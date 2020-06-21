@@ -53,7 +53,7 @@
                                 <option value="0" <?php echo $product["availability"] <= 0 ? "selected" : "";  ?>>Нет</option>
                             </select>
                             <p>Описание к товару</p>
-                            <input type="text" name="description" placeholder="Описание товара" value="<?php echo $product["description"]; ?>" />
+                            <textarea rows="15" cols="50" name="description" placeholder="Описание товара" value=""> <?php echo $product["description"]; ?> </textarea>
                             <p>Новинка</p>
                             <select name="is_new">
                                 <option value="1" <?php echo $product["is_new"] > 0 ? "selected" : "";  ?>>Да</option>

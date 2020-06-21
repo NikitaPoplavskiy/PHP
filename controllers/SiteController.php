@@ -4,16 +4,24 @@
 include_once ROOT . '/models/Product.php';*/
 
 class SiteController {
+
     public function actionIndex() {
                 
         $categories = array();
         $categories = Category::getCategoriesList();
 
         $latestProducts = array();
-        $latestProducts = Product::getLatestProducts(6);
+        $latestProducts = Product::getLatestProducts(12);
 
-        $recomendedProducts = array();
-        $recomendedProducts = Product::getRecomendedProducts();
+        $organiChuvstv = array();
+        $organiChuvstv = Product::getOrganiChuvstv();
+
+        $obezbPrep = array();
+        $obezbPrep = Product::getObezbPrep();
+
+        /*$recomendedProducts = array();
+        $recomendedProducts = Product::getRecomendedProducts();*/
+
          
         require_once(ROOT . "/views/site/index.php");
 

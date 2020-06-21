@@ -27,7 +27,7 @@
                         <!--p>Изображение товара</p>
                         <input type="file" name="image" placeholder="Изображение товара" value=""/-->
                         <p>Статус заказа</p>
-                        <p><?php echo AdminOrderController::orderStatusToString($order["status"]); ?></p>
+                        <p><?php echo Order::orderStatusToString($order["status"]); ?></p>
                         <p>Дата заказа</p>
                         <p><?php echo $order["date"]; ?></p>
                     </form>

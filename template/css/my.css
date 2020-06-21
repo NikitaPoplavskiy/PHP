@@ -14,3 +14,25 @@
     align-items:center;
 }
 
+#recipe {
+    color:red;
+}
+
+#cart {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+#cart-category {
+    display: flex;
+    width: 45%;
+}
+
+#back-to-main-page-container {
+    display: flex;
+    justify-content: center;
+}
+.btn .btn-default .back-to-main-page {
+    font-size: 25px;;
+}

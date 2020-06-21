@@ -11,8 +11,7 @@
                     <li><a href="/admin/category">Управление категориями</a></li>
                     <li><a href="/admin/order/page-1">Управление заказами</a></li>
                     <li><a href="/admin/recipes/page-1">Управление рецептами</a></li>
-                    <li><a href="/admin/discount/page-1">Управление Скидками</a></li>
-                    <li><a href="/admin/stat">Статистика</a></li>
+                    <li><a href="/admin/discount/page-1">Управление скидками</a></li>                    
                 </ul>
             </div>            
         </div>        

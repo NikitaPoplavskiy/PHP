@@ -3,7 +3,9 @@
 /*include_once ROOT . '/models/Category.php';
 include_once ROOT . '/models/Product.php';*/
 
-class UserController {
+
+class UserController
+{
     public function actionRegister() {
 
         $name = '';

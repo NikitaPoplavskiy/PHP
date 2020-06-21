@@ -1,8 +1,8 @@
 <?php include ROOT . "/views/layouts/header.php"; ?>
 <section>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-3">
+	<div class="container" id="cart">
+		<div class="row" id="cart-category">
+			<div class="col-sm-8">
 				<div class="left-sidebar">
 					<h2>Категория</h2>
 					<div class="panel-group category-products" id="accordian">
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-9 padding-right">
+		<div class="col-sm-7 padding-right">
 			<div class="features_items">
 				<h2 class="title text-center">Корзина</h2>
 				<?php if ($productsInCart) : ?>
@@ -70,12 +70,17 @@
 					<a type="button" id="checkout" class="btn btn-default">
 						Оформить заказ
 					</a>
+					<a type="button" class="btn btn-default" href="/">
+						Вернуться к покупкам
+					</a>						
+					</div>
 				<?php else : ?>
 					<p>Корзина пуста</p>
 				<?php endif; ?>
 			</div>
 		</div>
 	</div>
+
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

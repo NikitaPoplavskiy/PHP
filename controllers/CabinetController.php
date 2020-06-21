@@ -1,10 +1,10 @@
 <?php
 
+
 class CabinetController
 {
     public function actionIndex()
     {
-
 
         $userId = User::checkLogged();
 

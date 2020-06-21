@@ -2,7 +2,7 @@
 
 class CartController {
 
-    public function actionAdd($id) {
+    /*public function actionAdd($id) {
         
         //Добавляем товар в корзину 
         Cart::addProduct($id);
@@ -14,7 +14,7 @@ class CartController {
         header("Location:  $referrer");        
 
         return true;
-    }        
+    } */       
 
     public function actionAddAjax($id) {
         echo Cart::addProduct($id);        

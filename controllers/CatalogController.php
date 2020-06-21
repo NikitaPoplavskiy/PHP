@@ -4,9 +4,10 @@
 include_once ROOT . '/models/Product.php';
 include_once ROOT . '/components/Pagination.php';*/
 
+
 class CatalogController
 {
-    public function actionIndex()
+    /*public function actionIndex()
     {
 
         $categories = array();
@@ -19,7 +20,7 @@ class CatalogController
         require_once(ROOT . "/views/catalog/index.php");
 
         return true;
-    }
+    }*/
 
     public function actionCategory($categoryId, $page = 1)
     {

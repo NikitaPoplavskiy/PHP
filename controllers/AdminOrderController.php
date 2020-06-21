@@ -77,28 +77,8 @@ class AdminOrderController extends AdminBase {
         require_once(ROOT . "/views/admin_order/view.php");
         return true;
     }
-    
-    public static function orderStatusToString($status) { 
-        $stringStatus = "";
-        switch($status) {
-            case 1 :{ 
-                $stringStatus = "Новый заказ";                
-                break;
-            }
-            case 2: {
-                $stringStatus = "В обрабоке";
-                break;
-            }
-            case 3 : {
-                $stringStatus = "Обработан";
-                break;
-            }
-            default: $stringStatus = "unknown";
-        }
-        return $stringStatus;
-    }
-
-    public static function orderStatusToNum($status) { 
+        
+    /*public static function orderStatusToNum($status) { 
         if ($status == "Новый заказ") {
             return 1;
         }
@@ -108,6 +88,6 @@ class AdminOrderController extends AdminBase {
         elseif ($status == "Обработан") {
             return 3;
         }
-    }
+    }*/
 
 }

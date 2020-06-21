@@ -1,7 +1,7 @@
 <?php include ROOT . "/views/layouts/header_admin.php"; ?>
 <section>
 	<div style="display:flex; justify-content:center;">
-		<div class="col-sm-5 padding-right">
+		<div class="col-sm-6 padding-right">
 			<div class="features_items">
 				<!--div class="social-icons pull-left">
 				<ul class="nav navbar-nav">
@@ -69,7 +69,9 @@
 						</tr>
 					<?php endforeach; ?>
 				</table>
+				<div style="display:flex; justify-content:center;">
 				<?php echo $pagination->get(); ?>
+			</div>
 			</div>
 		</div>
 	</div>

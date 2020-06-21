@@ -161,22 +161,30 @@
 						</div>
 					<?php endforeach; ?>
 
-					<!--div class="slideshow" data-cycle-fx=carousel data-cycle-timeout=1000 data-cycle-carousel-visible=1 data-cycle-carousel-fluid=true>
-						<img src="../resources/img/pepe.png" alt="">
-						<img src="../resources/img/Снимок.png" alt="">
-						<img src="../resources/img/pepe.png" alt="">
-						<img src="../resources/img/веб-хуйня (1).jpg" alt="">
-					</div-->
 				</div>
-				<h2 class="title text-center">Рекомендуемые товары</h2>
+				<h2 class="title text-center">Органы чувств</h2>
 				<div class="recommended_items">
 					<div class="owl-carousel owl-theme text-center">
-						<?php foreach ($recomendedProducts as $rProduct) : ?>
+						<?php foreach ($organiChuvstv as $product) : ?>
 							<div class="item productinfo">
-								<a href="/product/<?php echo $rProduct["id"]; ?>">
-									<img src="<?php echo Product::getProductImage($rProduct["id"]); ?>" alt="" />
-									<h2><?php echo $rProduct["price"]; ?> грн</h2>
-									<p><?php echo $rProduct["name"]; ?></p>
+								<a href="/product/<?php echo $product["id"]; ?>">
+									<img src="<?php echo Product::getProductImage($product["id"]); ?>" alt="" />
+									<h2><?php echo $product["price"]; ?> грн</h2>
+									<p><?php echo $product["name"]; ?></p>
+								</a>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				<h2 class="title text-center">Обезболивающие препараты</h2>
+				<div class="recommended_items">
+					<div class="owl-carousel owl-theme text-center">
+						<?php foreach ($obezbPrep as $product) : ?>
+							<div class="item productinfo">
+								<a href="/product/<?php echo $product["id"]; ?>">
+									<img src="<?php echo Product::getProductImage($product["id"]); ?>" alt="" />
+									<h2><?php echo $product["price"]; ?> грн</h2>
+									<p><?php echo $product["name"]; ?></p>
 								</a>
 							</div>
 						<?php endforeach; ?>

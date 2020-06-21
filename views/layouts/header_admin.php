@@ -41,7 +41,7 @@
 <!--/head-->
 
 <body style="min-height:100%; position:relative; padding-bottom: 70px;">
-	<header style="background-color: #BCF1F1" id="header">
+	<header id="header">
 		<!--header-->
 		<div class="header_top">
 			<!--header_top-->
@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a class="logo" href="index.html"><img src="/template/images/home/main_logo.png" alt="" /></a>
+							<!--a class="logo" href="index.html"><img src="/template/images/home/main_logo.png" alt="" /></a-->
 						</div>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 				<div class="row">
 					<div class="mainmenu pull-left">
 						<ul class="nav navbar-nav collapse navbar-collapse">
-							<li><a href="/admin" class="active">Админ-панель</a></li>
+							<li><a href="/admin" class="active">Главная</a></li>
 							<li class="dropdown"><a href="/admin/product/page-1">Управление товарами<i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="/admin/product/create">Добавить товар</a></li>
@@ -82,8 +82,11 @@
 								</ul>
 							</li>
 							<li class="dropdown"><a href="/admin/order/page-1">Управление заказами<i class="fa fa-angle"></i></a>
-							<li class="dropdown"><a href="/admin/recipes/page-1">Управление рецептами<i class="fa fa-angle"></i></a>
-							<li class="dropdown"><a href="/admin/stat">Статистика<i class="fa fa-angle"></i></a>
+							<li class="dropdown"><a href="/admin/recipes/page-1">Управление рецептами<i class="fa fa-angle"></i></a>							
+							<li class="dropdown"><a href="/admin/discount/page-1">Управление скидками<i class="fa fa-angle"></i></a>
+							<ul role="menu" class="sub-menu">
+									<li><a href="/admin/discount/create">Добавить скидку</a></li>
+								</ul>
 						</ul>
 					</div>
 				</div>

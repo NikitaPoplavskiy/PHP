@@ -60,9 +60,10 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $(".owl-carousel").owlCarousel({
-        loop: true,
-        margin: 10,
+        //loop: true,
+        margin: 5,
         responsiveClass: true,
+        autoplay: true,
         nav: true,
         responsive: {
             0: {
@@ -126,8 +127,10 @@ $(document).ready(function () {
             });
         }
         return false;
-    });    
+    });
+    
 
 });
+
 
 

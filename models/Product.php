@@ -4,7 +4,7 @@
 class Product
 {
 
-    const SHOW_BY_DEFAULT = 6;
+    const SHOW_BY_DEFAULT = 8;
 
     const SHOW_BY_DEFAULT_PRODUCT = 16;
 
@@ -19,12 +19,9 @@ class Product
 
         $productsList = array();
 
-        $sql = "select id, name, price, is_new from product where status = 1 order by id desc limit " . $count;
+        $sql = "select id, name, price, is_new from product where status = 1 order by RAND() desc limit " . $count;
 
         $result = $db->prepare($sql);
-
-        //$result = $db->query("select id, name, price, is_new from product where status = 1 order by id desc limit " . $count);
-        // echo var_dump($result);
 
         $result->execute();
 
@@ -217,11 +214,9 @@ class Product
     public static function getProduct($productId)
     {
         if ($productId) {
-            $db = Db::getConnection();
-            /*$sql = "select id, name, price, is_new, availability, brand, code, description
-            from product pr left join promotions_and_discounts prod  where status = 1 and id = :productId";*/
+            $db = Db::getConnection();          
 
-            $sql = "select pr.id, pr.name, pr.code, pr.availability, pr.brand, pr.description, pr.price, pr.is_new,
+            $sql = "select pr.id, pr.name, pr.code, pr.availability, pr.brand, pr.description, pr.price, pr.recipe, pr.is_new,
             prod.date_start pr_date_start, prod.date_end pr_date_end, prod.item_id pr_item_id, prod.item_type pr_item_type, prod.discount pr_discount,
             proc.date_start cat_date_start, proc.date_end cat_date_end, proc.item_id cat_item_id, proc.item_type cat_item_type, proc.discount cat_discount
             from product pr
@@ -235,9 +230,7 @@ class Product
             $result->bindParam(":productId", $productId, PDO::PARAM_STR);
             $result->execute();
 
-            $product = array();
-
-            // $product = $result->fetch();
+            $product = array();        
 
             $i = 0;
             while ($row = $result->fetch()) {
@@ -245,18 +238,7 @@ class Product
                 $product['discount_price'] = false;
                 Product::fillDiscountInfo($product);
                 array_push($product, $product);
-            }
-            // return $products;
-
-            // $result = $db->prepare($sql);            
-
-            // $result->execute();
-            //$result = $db->query("select id, name, price, is_new, availability, brand, code from product where status = 1 and id = '$productId'");
-            // echo var_dump($result);            
-
-
-            //echo var_dump($product);
-
+            }        
 
             return $product;
         }
@@ -675,4 +657,39 @@ class Product
 
         return $recProducts;
     }
+
+    public static function getOrganiChuvstv() {
+
+        $organiChuvstv = array();
+        $db = DB::getConnection();
+
+        $sql = "select id, name, price from product where category_id = 13";
+
+        $result = $db->prepare($sql);
+
+        $result->execute();
+
+        $organiChuvstv = $result->fetchAll();
+
+        return $organiChuvstv;
+    }
+
+    public static function getObezbPrep() {
+
+        $obezbPrep = array();
+        $db = DB::getConnection();
+
+        $sql = "select id, name, price
+        from product
+        where category_id = 15";
+
+        $result = $db->prepare($sql);
+
+        $result->execute();
+
+        $obezbPrep = $result->fetchAll();
+
+        return $obezbPrep;
+    }
+    
 }

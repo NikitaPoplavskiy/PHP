@@ -27,7 +27,7 @@ class AdminProductController extends AdminBase
 
         if (isset($_POST["submit"])) {
             Product::deleteProductById($id);
-            header("Location: /admin/product");
+            header("Location: /admin/product/page-1");
         }
 
         require_once(ROOT . "/views/admin_product/delete.php");

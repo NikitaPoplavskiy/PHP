@@ -33,37 +33,7 @@
 						</div>
 						<?php if ($product["is_new"] > 0) : ?>
 							<img src="/template/images/home/new.png" class="new" alt="">
-						<?php endif; ?>
-						<!--div id="similar-product" class="carousel slide" data-ride="carousel">
-								
-								  <Wrapper for slides>
-								    <div class="carousel-inner">
-										<div class="item active">
-										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-										</div>
-										<div class="item">
-										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-										</div>
-										<div class="item">
-										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-										</div>
-										
-									</div>
-
-								  <Controls>
-								  <a class="left item-control" href="#similar-product" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								  </a>
-								  <a class="right item-control" href="#similar-product" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								  </a>
-							</div-->
+						<?php endif; ?>						
 					</div>
 					<div class="col-sm-7">
 						<div class="product-information">
@@ -104,8 +74,8 @@
 				</div>
 			</div>
 		</div>
-		<!--/category-tab-->
-		<?php echo $product["description"]; ?>		
+		<!--/category-tab-->	
+		<?php echo $product["description"]; ?>				
 		<h2 class="title text-center">Рекомендуемые товары</h2>
 		<div class="recommended_items">
 			<div class="owl-carousel owl-theme text-center">				

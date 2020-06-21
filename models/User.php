@@ -41,7 +41,8 @@ class User
     public static function checkPhone($phone)
     {
         // TODO: Доделать валидацию номера телефона
-        if (strlen($phone) == 12 && is_numeric($phone)) {
+        $pattern = "/^\+380\d{3}\d{2}\d{2}\d{2}$/";
+        if (strlen($phone) >= 12 && is_numeric($phone) && preg_match($pattern, $phone)) {
             return true;
         }
         return false;
@@ -252,6 +253,21 @@ class User
 
         $sql = "select count(id) as count from user_recipes";
         $result = $db->prepare($sql);
+        $result->execute();
+
+        $row = $result->fetch();
+
+        return $row["count"];
+    }
+
+    public static function getTotalRecipesOfUser($searchString){
+        $db = Db::getConnection();
+
+        $sql = "select count(id) as count from users where name like :searchString ";
+
+        $result = $db->prepare($sql);
+
+        $result->bindParam(":searchString", $searchString, PDO::PARAM_INT);
         $result->execute();
 
         $row = $result->fetch();

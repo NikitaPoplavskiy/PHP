@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Home | E-Shopper</title>
+	<title>Лекарства</title>
 	<link href="/template/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/template/css/font-awesome.min.css" rel="stylesheet">
 	<link href="/template/css/my.css" rel="stylesheet">
@@ -71,7 +71,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a class="logo" href="/"><img src="/template/images/home/main_logo.png" alt="" /></a>
+							<!--a class="logo" href="/"><img src="/template/images/home/main_logo.png" alt="" /></a-->
 						</div>
 					</div>
 				</div>
@@ -92,24 +92,17 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="/" class="active">Главная</a></li>
-								<li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
-									<ul role="menu" class="sub-menu">
-										<li><a href="/catalog/">Каталог</a></li>
-									</ul>
-								</li>
+								<li><a href="/" class="active">Главная</a></li>								
 								<li class="dropdown"><a href="/discounts/page-1">Скидки<i class="fa fa-angle-down_"></i></a>
 								</li>
-								<li><a href="/about/">О магазине</a></li>
-								<li><a href="/contacts/">Контакты</a></li>
-								<li><a href="/map/">Карта</a></li>
+								<li><a href="/about/">О магазине</a></li>														
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
 							<form id="search" action="/search" method="post" enctype="multipart/form-data">
-								<input id="search_box" type="text" placeholder="Search" name="search" />
+								<input id="search_box" type="text" placeholder="Поиск" name="search" />
 								<!--button type="submit"><i class="fa fa-search"></i></button-->
 							</form>
 						</div>

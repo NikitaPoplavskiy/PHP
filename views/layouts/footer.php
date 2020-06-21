@@ -172,8 +172,11 @@
 			magnifierborder: 'none'
 		});						
 	})	
-			
-		
+	var users = <?php echo json_encode($product); ?>;
+	//alert(users["recipe"]);
+	if(users["recipe"] == 0) {
+		document.getElementById('recipe').style.visibility = 'hidden';
+	}	
 </script>
 
 </body>

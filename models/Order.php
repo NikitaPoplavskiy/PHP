@@ -200,4 +200,24 @@ class Order {
         return $row["count"];
 
     }
+    
+    public static function orderStatusToString($status) { 
+        $stringStatus = "";
+        switch($status) {
+            case 1 :{ 
+                $stringStatus = "Новый заказ";                
+                break;
+            }
+            case 2: {
+                $stringStatus = "В обрабоке";
+                break;
+            }
+            case 3 : {
+                $stringStatus = "Обработан";
+                break;
+            }
+            default: $stringStatus = "unknown";
+        }
+        return $stringStatus;
+    }
 }

@@ -134,4 +134,21 @@ class Category
             return $category;
         }
     }
+
+    public static function categoryStatusToString($status) { 
+        $stringStatus = "";
+        switch($status) {
+            case 1 :{ 
+                $stringStatus = "Отображать";                
+                break;
+            }
+            case 0: {
+                $stringStatus = "Скрыть";
+                break;
+            }            
+            default: $stringStatus = "unknown";
+        }
+        return $stringStatus;
+    }
 }
+

@@ -12,7 +12,7 @@
                         <h2>Просмотр заказа #<?php echo $order["id"] ?></h2>
                         <div>
                             <p>Статус заказа</p>
-                            <p><?php echo AdminOrderController::orderStatusToString($order["status"]); ?></p>
+                            <p><?php echo Order::orderStatusToString($order["status"]); ?></p>
                             <p>Дата заказа</p>
                             <p><?php echo $order["date"]; ?></p>
                         </div>

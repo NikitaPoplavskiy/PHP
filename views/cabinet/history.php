@@ -23,7 +23,7 @@
 							</td-->
 								<td><?php echo $order["user_phone"]; ?></td>
 								<td><?php echo $order["date"]; ?></td>
-								<td><?php echo AdminOrderController::orderStatusToString($order["status"]); ?></td>
+								<td><?php echo Order::orderStatusToString($order["status"]); ?></td>
 								<td><a href="/cabinet/order/view/<?php echo $order["id"]; ?>">Просмотреть</a></td>
 							</tr>
 						<?php endforeach; ?>

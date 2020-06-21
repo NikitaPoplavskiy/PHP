@@ -1,8 +1,10 @@
 <?php
 
+
 require_once(ROOT . "/models/AdminBase.php");
 
-class AdminCategoryController extends AdminBase {
+class AdminCategoryController extends AdminBase
+{
     public function actionIndex() {        
         self::checkAdmin();
 
@@ -82,20 +84,4 @@ class AdminCategoryController extends AdminBase {
         return true;
     }
 
-
-    public static function categoryStatusToString($status) { 
-        $stringStatus = "";
-        switch($status) {
-            case 1 :{ 
-                $stringStatus = "Отображать";                
-                break;
-            }
-            case 0: {
-                $stringStatus = "Скрыть";
-                break;
-            }            
-            default: $stringStatus = "unknown";
-        }
-        return $stringStatus;
-    }
 }
