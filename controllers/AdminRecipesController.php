@@ -28,10 +28,12 @@ class AdminRecipesController extends AdminBase {
 
     public function actionSearch($page = 1) {
 
-        $foundRecipes = array();        
+        self::checkAdmin();        
+
+        $foundRecipes = array();                
 
         if (isset($_POST["search"])) {            
-            $searchString = $_POST["search"];
+            $searchString = $_POST["search"];           
             $total = User::getTotalRecipesOfUser($searchString);
             $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, "page-");
 

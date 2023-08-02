@@ -354,7 +354,7 @@ class Product
     {
         $db = DB::getConnection();
 
-        $searchString = str_replace(['\\', '_', '%'], ['\\\\', '\\_', '\\%'], $searchString);;
+        $searchString = str_replace(['\\', '_', '%'], ['\\\\', '\\_', '\\%'], $searchString);
 
         $likeString = "%{$searchString}%";
 
